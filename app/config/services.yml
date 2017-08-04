@@ -24,8 +24,8 @@ services:
 
     # controllers are imported separately to make sure they're public
     # and have a tag that allows actions to type-hint services
-    AppBundle\Controller\:
-        resource: '../../src/AppBundle/Controller'
+    AppBundle\Action\:
+        resource: '../../src/AppBundle/Action'
         public: true
         tags: ['controller.service_arguments']
 
