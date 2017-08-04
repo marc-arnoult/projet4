@@ -1,0 +1,13 @@
+language: php
+php:
+  - '7.0'
+  - '7.1'
+
+services:
+  - mysql
+
+before_script:
+  - composer install
+  - php bin/console doctrine:database:create --env=test
+  - php bin/console doctrine:schema:create --env=test
+  - php bin/console doctrine:fixture:load -n --env=test
