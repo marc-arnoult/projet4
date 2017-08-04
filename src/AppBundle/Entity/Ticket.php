@@ -67,7 +67,6 @@ class Ticket
      * @var Command
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Command")
-     * @ORM\Column(nullable=false)
      */
     private $command;
     /**
