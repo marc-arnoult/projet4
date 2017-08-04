@@ -6,7 +6,7 @@ Encore
     .setOutputPath('web/build/')
     .setPublicPath('/build')
     .enableSassLoader()
-    .addStyleEntry('app', './web/assets/css/bulma/bulma.sass')
+    .addStyleEntry('app', './web/assets/css/main.sass')
     .addEntry('main', './web/assets/js/main.js')
     .cleanupOutputBeforeBuild()
     .addPlugin(new ExtractCss("app.css"))

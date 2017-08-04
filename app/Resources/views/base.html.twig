@@ -4,12 +4,58 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('assets/font-awesome-4.7.0 3/css/font-awesome.min.css') }}">
             <link rel="stylesheet" href="{{ asset('build/app.css') }}">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        <header class="container is-fluid">
+            <nav class="navbar">
+                <div class="navbar-brand">
+                    <a href="#">
+                        <img src="http://www.adhere-rh.com/wp-content/uploads/2015/08/Musee_Du_Louvre.png" alt="Logo" width="140px">
+                    </a>
+                </div>
+                <div class="navbar-end">
+                    <a class="navbar-item" href="#">Contact</a>
+                    <a class="navbar-item" href="#">Nous trouver</a>
+                </div>
+            </nav>
+        </header>
         {% block body %}{% endblock %}
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="columns">
+                    <div class="column has-text-left">
+                        <a href="#" class="button is-link">Mentions légales</a>
+                        <a href="#" class="button is-link">CGV</a>
+                    </div>
+                    <div class="column has-text-centered">
+                        <p>Copyright</p>
+                    </div>
+                    <div class="column has-text-right">
+                        <div class="columns">
+                            <div class="column">
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </div>
+                            <div class="column">
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </div>
+                            <div class="column">
+                                <a href="#">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
         {% block javascripts %}
             <script src="{{ asset('build/main.js') }}"></script>
         {% endblock %}
