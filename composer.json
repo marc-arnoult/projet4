@@ -1,5 +1,6 @@
 {
     "name": "marc/projet4",
+    "description": "Projet4 of the OC path",
     "license": "proprietary",
     "type": "project",
     "autoload": {
