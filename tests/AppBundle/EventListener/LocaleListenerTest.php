@@ -2,7 +2,7 @@
 
 namespace Test\AppBundle\EventListener;
 
-use AppBundle\EventListener\LocaleListener;
+use AppBundle\Domain\EventListener\LocaleListener;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;

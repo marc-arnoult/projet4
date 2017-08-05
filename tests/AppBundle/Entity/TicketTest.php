@@ -2,9 +2,9 @@
 
 namespace Test\AppBundle\Entity;
 
-use AppBundle\Entity\Command;
+use AppBundle\Domain\Entity\Command;
+use AppBundle\Domain\Entity\Ticket;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use AppBundle\Entity\Ticket;
 
 class TicketTest extends WebTestCase
 {

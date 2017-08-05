@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace AppBundle\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -66,7 +66,7 @@ class Ticket
     /**
      * @var Command
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Command")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Domain\Entity\Command")
      */
     private $command;
     /**
@@ -289,11 +289,11 @@ class Ticket
     /**
      * Set command
      *
-     * @param \AppBundle\Entity\Command $command
      *
+     * @param Command $command
      * @return Ticket
      */
-    public function setCommand(\AppBundle\Entity\Command $command)
+    public function setCommand(Command $command)
     {
         $this->command = $command;
 
@@ -303,7 +303,7 @@ class Ticket
     /**
      * Get command
      *
-     * @return \AppBundle\Entity\Command
+     * @return \AppBundle\Domain\Entity\Command
      */
     public function getCommand()
     {

@@ -3,7 +3,7 @@
 namespace Test\AppBundle\Entity;
 
 
-use AppBundle\Entity\Command;
+use AppBundle\Domain\Entity\Command;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 
