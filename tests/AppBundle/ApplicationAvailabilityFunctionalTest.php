@@ -6,20 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ApplicationAvailabilityFunctionalTest extends WebTestCase
 {
-    /**
-     * @param $url
-     *
-     * @dataProvider urlProvider
-     */
-    public function test_page_is_successful($url)
+    public function testHomePage()
     {
         $client = self::createClient();
-        $client->request('GET', $url);
+        $client->request('GET', '/');
 
         $this->assertTrue($client->getResponse()->isSuccessful());
     }
 
-    public function test_setLocale_redirect()
+    public function testSetLocale()
     {
         $client = self::createClient();
         $client->request('GET', '/setLocale/en');
@@ -28,11 +23,5 @@ class ApplicationAvailabilityFunctionalTest extends WebTestCase
         $client->followRedirect();
 
         $this->assertTrue($client->getResponse()->isSuccessful());
-    }
-    public function urlProvider()
-    {
-        return [
-            ['/']
-        ];
     }
 }
