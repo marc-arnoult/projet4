@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class CommandTest extends WebTestCase
 {
-    public function test_create_command()
+    public function testCommand()
     {
         $command = new Command();
         $command->setEmail('marc.arnoult@hotmail.fr');

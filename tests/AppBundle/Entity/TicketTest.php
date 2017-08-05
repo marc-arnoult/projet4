@@ -8,7 +8,7 @@ use AppBundle\Entity\Ticket;
 
 class TicketTest extends WebTestCase
 {
-    public function test_create_ticket()
+    public function testTicket()
     {
         $now = new \DateTime('NOW');
         $birthday = new \DateTime('1991-09-01');

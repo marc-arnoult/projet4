@@ -19,7 +19,7 @@
                 </div>
                 <div class="navbar-end">
                     <a class="navbar-item" href="#">Contact</a>
-                    <a class="navbar-item" href="#">Nous trouver</a>
+                    <a class="navbar-item" href="#">{{ 'Find us'|trans }}</a>
                 </div>
             </nav>
         </header>
@@ -28,7 +28,7 @@
             <div class="container-fluid">
                 <div class="columns">
                     <div class="column has-text-left">
-                        <a href="#" class="button is-link">Mentions légales</a>
+                        <a href="#" class="button is-link">{{ 'Legals mentions' | trans }}</a>
                         <a href="#" class="button is-link">CGV</a>
                     </div>
                     <div class="column has-text-centered">
@@ -38,21 +38,34 @@
                         <div class="columns">
                             <div class="column">
                                 <a href="#">
-                                    <i class="fa fa-twitter"></i>
+                                    <span class="icon is-medium">
+                                        <i class="fa fa-twitter"></i>
+                                    </span>
                                 </a>
                             </div>
                             <div class="column">
                                 <a href="#">
-                                    <i class="fa fa-facebook"></i>
+                                    <span class="icon is-medium">
+                                        <i class="fa fa-facebook"></i>
+                                    </span>
                                 </a>
                             </div>
                             <div class="column">
                                 <a href="#">
-                                    <i class="fa fa-google-plus"></i>
+                                    <span class="icon is-medium">
+                                        <i class="fa fa-google-plus"></i>
+                                    </span>
                                 </a>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <hr>
+            <div class="container-fluid" id="change-language">
+                <div class="has-text-right">
+                    <a href="{{ path('set_locale', {language: 'fr'}) }}" class="button is-link">{{ 'French' | trans }}</a>
+                    <a href="{{ path('set_locale', {language: 'en'}) }}" class="button is-link">{{ 'English' | trans }}</a>
                 </div>
             </div>
         </footer>

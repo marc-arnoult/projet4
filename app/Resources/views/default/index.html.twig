@@ -2,7 +2,10 @@
 
 {% block body %}
     <div class="container">
-        <h1 class="title is-1 has-text-centered">BILLETERIE</h1>
+        <h1 class="title is-1 has-text-centered">
+            {{ 'Ticketing' | trans | upper }}
+        </h1>
     </div>
     <citation-generator></citation-generator>
+    <ticketing></ticketing>
 {% endblock %}
