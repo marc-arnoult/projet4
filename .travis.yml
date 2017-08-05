@@ -11,3 +11,8 @@ before_script:
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:create --env=test
   - php bin/console doctrine:fixture:load --fixtures=src/AppBundle/Domain/DataFixtures/ORM -n --env=test
+
+script:
+  - vendor/bin/phpunit --coverage-clover=coverage.xml
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
