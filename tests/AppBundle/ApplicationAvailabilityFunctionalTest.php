@@ -19,10 +19,20 @@ class ApplicationAvailabilityFunctionalTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isSuccessful());
     }
 
+    public function test_setLocale_redirect()
+    {
+        $client = self::createClient();
+        $client->request('GET', '/setLocale/en');
+
+        $this->assertTrue($client->getResponse()->isRedirect());
+        $client->followRedirect();
+
+        $this->assertTrue($client->getResponse()->isSuccessful());
+    }
     public function urlProvider()
     {
         return [
-            ['/'],
+            ['/']
         ];
     }
 }
