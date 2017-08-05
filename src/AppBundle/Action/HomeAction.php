@@ -2,6 +2,7 @@
 
 namespace AppBundle\Action;
 
+use AppBundle\Responder\HomeResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,8 +14,13 @@ class HomeAction
     private $twig;
     private $translator;
 
-    public function __construct(EngineInterface $twig, TranslatorInterface $translator)
+    public function __construct(
+        EngineInterface $twig,
+        TranslatorInterface $translator,
+        HomeResponder $responder
+    )
     {
+        $this->responder = $responder;
         $this->translator = $translator;
         $this->twig = $twig;
     }
@@ -26,6 +32,6 @@ class HomeAction
      */
     public function __invoke(Request $request)
     {
-        return new Response($this->twig->render(':default:index.html.twig'));
+        return $this->responder->__invoke();
     }
 }

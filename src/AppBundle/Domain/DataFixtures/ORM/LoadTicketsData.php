@@ -1,10 +1,10 @@
 <?php
-namespace AppBundle\DataFixtures\ORM;
+namespace AppBundle\Domain\DataFixtures\ORM;
 
-use AppBundle\Entity\Command;
+use AppBundle\Domain\Entity\Command;
+use AppBundle\Domain\Entity\Ticket;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\Entity\Ticket;
 
 /**
  * Class LoadTicketsData
