@@ -8,10 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
  * Ticket
  *
  * @ORM\Table(name="ticket")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TicketRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Domain\Repository\TicketRepository")
  */
 class Ticket
 {
+    const TICKET_LIMIT = 1000;
+
     /**
      * @var int
      *
@@ -84,6 +86,11 @@ class Ticket
     private $createdAt;
 
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime('NOW');
+    }
+
     /**
      * Get id
      *
@@ -144,8 +151,6 @@ class Ticket
 
     /**
      * Set birthday
-     *
-     * @param \DateTime $birthday
      *
      * @return Ticket
      */
@@ -241,8 +246,6 @@ class Ticket
     /**
      * Set entryAt
      *
-     * @param \DateTime $entryAt
-     *
      * @return Ticket
      */
     public function setEntryAt($entryAt)
@@ -265,13 +268,13 @@ class Ticket
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
-     *
      * @return Ticket
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt()
     {
-        $this->createdAt = $createdAt;
+        if (empty($this->createdAt)) {
+            $this->createdAt = new \DateTime('NOW');
+        }
 
         return $this;
     }

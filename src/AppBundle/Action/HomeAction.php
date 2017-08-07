@@ -2,6 +2,7 @@
 
 namespace AppBundle\Action;
 
+use AppBundle\Domain\Manager\CommandManager;
 use AppBundle\Responder\HomeResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

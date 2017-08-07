@@ -5,10 +5,10 @@ namespace AppBundle\Domain\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Command
+ * CommandManager
  *
  * @ORM\Table(name="command")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CommandRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Domain\Repository\CommandRepository")
  */
 class Command
 {
@@ -41,7 +41,6 @@ class Command
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
-
 
     /**
      * Get id
@@ -124,4 +123,9 @@ class Command
     {
         return $this->createdAt;
     }
+
+    /**
+     * @return mixed
+     */
+
 }

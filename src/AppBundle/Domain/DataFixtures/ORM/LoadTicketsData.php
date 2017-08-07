@@ -32,7 +32,6 @@ class LoadTicketsData implements FixtureInterface
             $ticket->setFirstName('Marc');
             $ticket->setCountry('France');
             $ticket->setBirthday(new \DateTime('1991-09-01'));
-            $ticket->setCreatedAt(new \DateTime('NOW'));
             $ticket->setCommand($command);
             $manager->persist($ticket);
         }

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace AppBundle\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,10 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
  * Ticket
  *
  * @ORM\Table(name="ticket")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TicketRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Domain\Repository\TicketRepository")
  */
 class Ticket
 {
+    const TICKET_LIMIT = 1000;
+
     /**
      * @var int
      *
@@ -66,8 +68,7 @@ class Ticket
     /**
      * @var Command
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Command")
-     * @ORM\Column(nullable=false)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Domain\Entity\Command", inversedBy="ticket")
      */
     private $command;
     /**
@@ -290,11 +291,11 @@ class Ticket
     /**
      * Set command
      *
-     * @param \AppBundle\Entity\Command $command
      *
+     * @param Command $command
      * @return Ticket
      */
-    public function setCommand(\AppBundle\Entity\Command $command)
+    public function setCommand(Command $command)
     {
         $this->command = $command;
 
@@ -304,7 +305,7 @@ class Ticket
     /**
      * Get command
      *
-     * @return \AppBundle\Entity\Command
+     * @return \AppBundle\Domain\Entity\Command
      */
     public function getCommand()
     {

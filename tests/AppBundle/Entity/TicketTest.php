@@ -17,7 +17,6 @@ class TicketTest extends WebTestCase
         $command = new Command();
         $ticket = new Ticket();
 
-        $ticket->setCreatedAt($now);
         $ticket->setCommand($command);
         $ticket->setBirthday($birthday);
         $ticket->setCountry('France');
@@ -27,7 +26,6 @@ class TicketTest extends WebTestCase
         $ticket->setEntryAt($entry);
         $ticket->setReduction(false);
 
-        $this->assertEquals($now, $ticket->getCreatedAt());
         $this->assertInstanceOf(Command::class, $ticket->getCommand());
         $this->assertEquals($birthday, $ticket->getBirthday());
         $this->assertEquals('France', $ticket->getCountry());

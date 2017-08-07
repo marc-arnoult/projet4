@@ -29,6 +29,14 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
+    AppBundle\Responder\:
+        resource: '../../src/AppBundle/Responder'
+        public: true
+
+    AppBundle\Domain\Manager\:
+        resource: '../../src/AppBundle/Domain/Manager'
+        public: true
+
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:
     #     arguments:

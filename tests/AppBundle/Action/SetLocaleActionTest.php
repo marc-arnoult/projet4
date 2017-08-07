@@ -18,4 +18,15 @@ class SetLocaleActionTest extends WebTestCase
         $this->assertCount(1, $crawler->filter('footer a:contains("English")'));
         $this->assertCount(1, $crawler->filter('footer a:contains("Legals mentions")'));
     }
+
+    public function testSetLocale()
+    {
+        $client = self::createClient();
+        $client->request('GET', '/setLocale/en');
+
+        $this->assertTrue($client->getResponse()->isRedirect());
+        $client->followRedirect();
+
+        $this->assertTrue($client->getResponse()->isSuccessful());
+    }
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace AppBundle\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Command
+ * CommandManager
  *
  * @ORM\Table(name="command")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CommandRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Domain\Repository\CommandRepository")
  */
 class Command
 {
@@ -42,6 +42,10 @@ class Command
      */
     private $createdAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Domain\Entity\Ticket", mappedBy="command")
+     */
+    private $tickets;
 
     /**
      * Get id
@@ -123,5 +127,21 @@ class Command
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
+    }
+
+    /**
+     * @param mixed $tickets
+     */
+    public function setTickets($tickets)
+    {
+        $this->tickets = $tickets;
     }
 }
