@@ -5,17 +5,14 @@ namespace AppBundle\Domain\Manager;
 use AppBundle\Domain\Entity\Command;
 use AppBundle\Domain\Entity\Ticket;
 use Doctrine\ORM\EntityManagerInterface;
-use JMS\Serializer\SerializerInterface;
 
 class CommandManager
 {
     private $doctrine;
-    private $serializer;
 
-    public function __construct(EntityManagerInterface $doctrine, SerializerInterface $serializer)
+    public function __construct(EntityManagerInterface $doctrine)
     {
         $this->doctrine = $doctrine;
-        $this->serializer = $serializer;
     }
 
     public function addCommand($data)
