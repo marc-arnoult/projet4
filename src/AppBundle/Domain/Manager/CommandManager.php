@@ -5,6 +5,7 @@ namespace AppBundle\Domain\Manager;
 use AppBundle\Domain\Entity\Command;
 use AppBundle\Domain\Entity\Ticket;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CommandManager
 {
@@ -18,18 +19,19 @@ class CommandManager
     public function addCommand($data)
     {
         $command = new Command();
+        $tickets = [];
+
         $command->setCreatedAt(new \DateTime('NOW'));
         $command->setEmail('marc.arnoult@hotmail.fr');
         $command->setType('Journées');
-        $tickets = [];
 
         foreach (json_decode($data) as $item) {
             $ticket = new Ticket();
-            $ticket->setFirstName($item->first_name);
-            $ticket->setLastName($item->last_name);
+            $ticket->setFirstName($item->firstName);
+            $ticket->setLastName($item->lastName);
             $ticket->setCountry($item->country);
-            $ticket->setEntryAt((new \DateTime('NOW')));
-            $ticket->setBirthday((new \DateTime('NOW')));
+            $ticket->setEntryAt(new \DateTime($item->entryAt));
+            $ticket->setBirthday(new \DateTime($item->birthday));
             $ticket->setPrice(12);
             $ticket->setReduction($item->reduction);
             $ticket->setCommand($command);
@@ -41,6 +43,6 @@ class CommandManager
         $this->doctrine->persist($command);
         $this->doctrine->flush();
 
-        return $tickets;
+        return JsonResponse::HTTP_CREATED;
     }
 }
