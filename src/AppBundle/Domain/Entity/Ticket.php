@@ -40,7 +40,7 @@ class Ticket
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birthday", type="datetime")
+     * @ORM\Column(name="birthday", type="date")
      */
     private $birthday;
 
@@ -74,7 +74,7 @@ class Ticket
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="entry_at", type="date")
+     * @ORM\Column(name="entry_at", type="datetime")
      */
     private $entryAt;
 
@@ -88,7 +88,7 @@ class Ticket
 
     public function __construct()
     {
-        $this->createdAt = new \DateTime('NOW');
+        $this->createdAt = new \DateTime('NOW', new \DateTimeZone("Europe/Paris"));
     }
 
     /**
@@ -163,8 +163,6 @@ class Ticket
 
     /**
      * Get birthday
-     *
-     * @return \DateTime
      */
     public function getBirthday()
     {
@@ -257,8 +255,6 @@ class Ticket
 
     /**
      * Get entryAt
-     *
-     * @return \DateTime
      */
     public function getEntryAt()
     {
@@ -281,8 +277,6 @@ class Ticket
 
     /**
      * Get createdAt
-     *
-     * @return \DateTime
      */
     public function getCreatedAt()
     {

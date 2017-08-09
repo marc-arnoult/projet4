@@ -17,7 +17,7 @@ class LoadTicketsData implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $command = new Command();
-        $command->setCreatedAt(new \DateTime('NOW'));
+        $command->setCreatedAt(new \DateTime('NOW', new \DateTimeZone("Europe/Paris")));
         $command->setType('Journée');
         $command->setEmail('marc.arnoult@hotmail.fr');
 

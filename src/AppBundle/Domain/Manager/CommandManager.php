@@ -16,16 +16,17 @@ class CommandManager
         $this->doctrine = $doctrine;
     }
 
-    public function addCommand($data)
+    public function createCommand($data)
     {
         $command = new Command();
         $tickets = [];
 
         $command->setCreatedAt(new \DateTime('NOW'));
         $command->setEmail('marc.arnoult@hotmail.fr');
-        $command->setType('Journées');
 
         foreach (json_decode($data) as $item) {
+            $command->setType($item->type);
+
             $ticket = new Ticket();
             $ticket->setFirstName($item->firstName);
             $ticket->setLastName($item->lastName);

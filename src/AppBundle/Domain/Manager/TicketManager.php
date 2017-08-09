@@ -29,9 +29,9 @@ class TicketManager
     {
         $repository = $this->doctrine->getRepository('AppBundle:Ticket');
 
-        if ($day = $this->request->getCurrentRequest()->get('day')) {
-            $date = new \DateTime($day);
-            $ticketSold = $repository->getTicketByDay($date->format('Y-m-d'));
+        if ($date = $this->request->getCurrentRequest()->get('day')) {
+            $day = new \DateTime($date);
+            $ticketSold = $repository->getTicketByDay($day->format('Y-m-d'));
 
             $data = ['ticket_remaining' => (Ticket::TICKET_LIMIT - $ticketSold)];
 
