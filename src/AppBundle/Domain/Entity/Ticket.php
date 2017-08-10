@@ -4,6 +4,7 @@ namespace AppBundle\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Domain\Validator\Constraints as CustomAssert;
 
 /**
  * Ticket
@@ -80,23 +81,17 @@ class Ticket
     private $command;
     /**
      * @var \DateTime
+     * @CustomAssert\IsHoliday()
      * @ORM\Column(name="entry_at", type="datetime")
      */
     private $entryAt;
 
     /**
      * @var \DateTime
+     * @CustomAssert\IsClosed()
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
-
-
-    public function __construct()
-    {
-        if (empty($this->createdAt)) {
-            $this->createdAt = new \DateTime('NOW');
-        }
-    }
 
     /**
      * Get id
@@ -271,13 +266,12 @@ class Ticket
     /**
      * Set createdAt
      *
+     * @param \DateTime $createdAt
      * @return Ticket
      */
-    public function setCreatedAt()
+    public function setCreatedAt(\DateTime $createdAt)
     {
-        if (empty($this->createdAt)) {
-            $this->createdAt = new \DateTime('NOW');
-        }
+        $this->createdAt = $createdAt;
 
         return $this;
     }

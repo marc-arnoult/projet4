@@ -25,7 +25,7 @@ class TicketTest extends WebTestCase
         $ticket->setPrice(12);
         $ticket->setEntryAt($entry);
         $ticket->setReduction(false);
-        $ticket->setCreatedAt($now->format('Y-m-d'));
+        $ticket->setCreatedAt($now);
         $ticket->setType('Journées');
 
         $this->assertInstanceOf(Command::class, $ticket->getCommand());

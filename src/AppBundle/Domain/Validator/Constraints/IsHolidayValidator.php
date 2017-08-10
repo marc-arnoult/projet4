@@ -7,11 +7,11 @@ namespace AppBundle\Domain\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-class isClosedValidator extends ConstraintValidator
+class IsHolidayValidator extends ConstraintValidator
 {
-    private $closed = ['Tue', 'Sun'];
+    private $closed = ['01/05', '01/11', '25/12'];
     /**
-     * Checks if the passed value is valid.
+     * Checks if the date is not holiday
      *
      * @param mixed $value The value that should be validated
      * @param Constraint $constraint The constraint for the validation
@@ -19,7 +19,7 @@ class isClosedValidator extends ConstraintValidator
     public function validate($value, Constraint $constraint)
     {
         foreach ($this->closed as $dayClosed) {
-            if ($dayClosed === date('D', $value->getTimeStamp())) {
+            if ($dayClosed === $value->format('d/m')) {
                 $this->context->buildViolation($constraint->message)
                     ->addViolation();
             }
