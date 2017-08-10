@@ -23,6 +23,7 @@ class LoadTicketsData implements FixtureInterface
 
         for ($i = 0; $i < 10; $i++) {
             $ticket = new Ticket();
+            $ticket->setCreatedAt(new \DateTime('NOW'));
             $ticket->setEntryAt(new \DateTime('2017-09-09'));
             $ticket->setReduction(false);
             $ticket->setPrice(16);

@@ -31,6 +31,7 @@ class CommandManager
         $this->doctrine->persist($command);
 
         $tickets = $this->serializer->deserialize($data, 'array<AppBundle\\Domain\\Entity\\Ticket>', 'json');
+
         foreach ($tickets as $index => $ticket) {
             $ticketRemaining = Ticket::TICKET_LIMIT - $this->doctrine->getRepository('AppBundle:Ticket')->getTicketByDay($ticket->getEntryAt());
 
