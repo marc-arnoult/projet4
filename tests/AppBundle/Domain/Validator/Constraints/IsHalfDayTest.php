@@ -7,7 +7,7 @@ use AppBundle\Domain\Entity\Command;
 use AppBundle\Domain\Entity\Ticket;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class IsHolidayTest extends WebTestCase
+class IsHalfDayTest extends WebTestCase
 {
     private $ticket;
 
@@ -29,7 +29,7 @@ class IsHolidayTest extends WebTestCase
         $ticket->setEntryAt($entry);
         $ticket->setReduction(false);
         $ticket->setCreatedAt($now);
-        $ticket->setType('Journées');
+        $ticket->setType('Journée');
 
         $this->ticket = $ticket;
     }
@@ -43,32 +43,5 @@ class IsHolidayTest extends WebTestCase
 
         $errors = $validator->validate($this->ticket);
         $this->assertCount(0, $errors);
-    }
-
-    public function testDateIsPassed()
-    {
-        $kernel = self::createKernel();
-        $kernel->boot();
-
-        $validator = $kernel->getContainer()->get('validator');
-
-        $this->ticket->setCreatedAt(new \DateTime('2017-02-14'));
-
-        $errors = $validator->validate($this->ticket);
-        $this->assertCount(1, $errors);
-    }
-
-    public function testIsNotValid()
-    {
-        $kernel = self::createKernel();
-        $kernel->boot();
-
-        $validator = $kernel->getContainer()->get('validator');
-
-        $this->ticket->setCreatedAt(new \DateTime('2017-08-15'));
-        $this->ticket->setEntryAt(new \DateTime('2017-11-01'));
-
-        $errors = $validator->validate($this->ticket);
-        $this->assertCount(2, $errors);
     }
 }

@@ -11,6 +11,7 @@ use AppBundle\Domain\Validator\Constraints as CustomAssert;
  *
  * @ORM\Table(name="ticket")
  * @ORM\Entity(repositoryClass="AppBundle\Domain\Repository\TicketRepository")
+ * @CustomAssert\IsHalfDay
  */
 class Ticket
 {

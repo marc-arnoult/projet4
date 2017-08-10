@@ -48,6 +48,6 @@ class TicketManager
             return $data;
         }
 
-        return ['content' => 'You should fill the day parameter', 'status_code' => JsonResponse::HTTP_BAD_REQUEST];
+        return ['content' => 'Le champ date doit être correction rempli', 'status_code' => JsonResponse::HTTP_BAD_REQUEST];
     }
 }
