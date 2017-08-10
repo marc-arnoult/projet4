@@ -4,6 +4,7 @@ namespace AppBundle\Action;
 
 
 use AppBundle\Responder\HomeResponder;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,10 +14,12 @@ class HomeAction
 {
 
     private $responder;
+    private $manager;
 
-    public function __construct(HomeResponder $responder)
+    public function __construct(HomeResponder $responder, EntityManagerInterface $manager)
     {
         $this->responder = $responder;
+        $this->manager = $manager;
     }
 
     /**

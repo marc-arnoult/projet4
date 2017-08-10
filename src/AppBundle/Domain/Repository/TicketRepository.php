@@ -13,9 +13,9 @@ class TicketRepository extends \Doctrine\ORM\EntityRepository
     public function getTicketByDay($date)
     {
         return $this->createQueryBuilder('t')
-            ->select('COUNT(t.entryAt)')
-            ->where('t.entryAt = :day')
-            ->setParameter(':day', $date)
+            ->select('COUNT(t)')
+            ->where("t.entryAt LIKE :day")
+            ->setParameter(':day', "$date%")
             ->getQuery()
             ->getSingleScalarResult();
     }
