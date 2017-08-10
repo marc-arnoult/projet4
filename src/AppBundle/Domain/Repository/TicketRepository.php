@@ -10,4 +10,13 @@ namespace AppBundle\Domain\Repository;
  */
 class TicketRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getTicketByDay($date)
+    {
+        return $this->createQueryBuilder('t')
+            ->select('COUNT(t.entryAt)')
+            ->where('t.entryAt = :day')
+            ->setParameter(':day', $date)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

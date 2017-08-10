@@ -3,15 +3,20 @@
 namespace AppBundle\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Domain\Validator\Constraints as CustomAssert;
 
 /**
  * Ticket
  *
  * @ORM\Table(name="ticket")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TicketRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Domain\Repository\TicketRepository")
+ * @CustomAssert\IsHalfDay
  */
 class Ticket
 {
+    const TICKET_LIMIT = 1000;
+
     /**
      * @var int
      *
@@ -24,27 +29,29 @@ class Ticket
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="should not be blank")
      * @ORM\Column(name="first_name", type="string", length=255)
      */
     private $firstName;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="last name should not be blank")
      * @ORM\Column(name="last_name", type="string", length=255)
      */
     private $lastName;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="birthday", type="datetime")
+     * @Assert\NotBlank(message="birthday should not be blank")
+     * @ORM\Column(name="birthday", type="date")
      */
     private $birthday;
 
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="country should not be blank")
      * @ORM\Column(name="country", type="string", length=255)
      */
     private $country;
@@ -58,31 +65,34 @@ class Ticket
 
     /**
      * @var int
-     *
      * @ORM\Column(name="price", type="integer")
      */
     private $price;
 
     /**
-     * @var Command
+     * @var string
      *
+     * @ORM\Column(name="type", type="string")
+     */
+    private $type;
+    /**
+     * @var Command
      * @ORM\ManyToOne(targetEntity="AppBundle\Domain\Entity\Command")
      */
     private $command;
     /**
      * @var \DateTime
-     *
+     * @CustomAssert\IsHoliday()
      * @ORM\Column(name="entry_at", type="datetime")
      */
     private $entryAt;
 
     /**
      * @var \DateTime
-     *
+     * @CustomAssert\IsClosed()
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
-
 
     /**
      * Get id
@@ -145,8 +155,6 @@ class Ticket
     /**
      * Set birthday
      *
-     * @param \DateTime $birthday
-     *
      * @return Ticket
      */
     public function setBirthday($birthday)
@@ -158,8 +166,6 @@ class Ticket
 
     /**
      * Get birthday
-     *
-     * @return \DateTime
      */
     public function getBirthday()
     {
@@ -241,8 +247,6 @@ class Ticket
     /**
      * Set entryAt
      *
-     * @param \DateTime $entryAt
-     *
      * @return Ticket
      */
     public function setEntryAt($entryAt)
@@ -254,8 +258,6 @@ class Ticket
 
     /**
      * Get entryAt
-     *
-     * @return \DateTime
      */
     public function getEntryAt()
     {
@@ -266,10 +268,9 @@ class Ticket
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     *
      * @return Ticket
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
 
@@ -278,8 +279,6 @@ class Ticket
 
     /**
      * Get createdAt
-     *
-     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -308,5 +307,21 @@ class Ticket
     public function getCommand()
     {
         return $this->command;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType(string $type)
+    {
+        $this->type = $type;
     }
 }
