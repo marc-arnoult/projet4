@@ -33,15 +33,6 @@ class CommandManager
         $tickets = $this->serializer->deserialize($data, 'array<AppBundle\\Domain\\Entity\\Ticket>', 'json');
 
         foreach ($tickets as $index => $ticket) {
-            $ticketRemaining = Ticket::TICKET_LIMIT - $this->doctrine->getRepository('AppBundle:Ticket')->getTicketByDay($ticket->getEntryAt());
-
-            if (count($tickets) > $ticketRemaining) {
-                return [
-                    'content' => "Il ne reste plus assez de ticket $ticketRemaining",
-                    'status_code' => JsonResponse::HTTP_BAD_REQUEST
-                ];
-            }
-
             $ticket->setCreatedAt(new \DateTime('NOW'));
             $ticket->setCommand($command);
             $command->setType($ticket->getType());
