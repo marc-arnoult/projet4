@@ -24,8 +24,6 @@ class HomeAction
      */
     public function __invoke(Request $request)
     {
-        $date = new \DateTime('NOW');
-        dump($date->format('d/m'));
         return $this->responder->__invoke();
     }
 }

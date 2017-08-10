@@ -33,7 +33,7 @@ class CommandManager
         $tickets = $this->serializer->deserialize($data, 'array<AppBundle\\Domain\\Entity\\Ticket>', 'json');
 
         foreach ($tickets as $index => $ticket) {
-            $ticket->setCreatedAt(new \DateTime('NOW', new \DateTimeZone("Europe/Paris")));
+            $ticket->setCreatedAt(new \DateTime('NOW'));
             $ticket->setCommand($command);
 
             $errors = $this->validator->getValidator()->validate($ticket);

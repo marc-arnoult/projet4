@@ -94,7 +94,7 @@ class Ticket
     public function __construct()
     {
         if (empty($this->createdAt)) {
-            $this->createdAt = new \DateTime('NOW', new \DateTimeZone("Europe/Paris"));
+            $this->createdAt = new \DateTime('NOW');
         }
     }
 
