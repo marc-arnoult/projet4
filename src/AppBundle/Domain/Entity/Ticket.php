@@ -3,6 +3,7 @@
 namespace AppBundle\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Ticket
@@ -26,20 +27,21 @@ class Ticket
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="should not be blank")
      * @ORM\Column(name="first_name", type="string", length=255)
      */
     private $firstName;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="last name should not be blank")
      * @ORM\Column(name="last_name", type="string", length=255)
      */
     private $lastName;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\NotBlank(message="birthday should not be blank")
      * @ORM\Column(name="birthday", type="date")
      */
     private $birthday;
@@ -47,6 +49,7 @@ class Ticket
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="country should not be blank")
      * @ORM\Column(name="country", type="string", length=255)
      */
     private $country;
@@ -60,27 +63,29 @@ class Ticket
 
     /**
      * @var int
-     *
      * @ORM\Column(name="price", type="integer")
      */
     private $price;
 
     /**
-     * @var Command
+     * @var string
      *
+     * @ORM\Column(name="type", type="string")
+     */
+    private $type;
+    /**
+     * @var Command
      * @ORM\ManyToOne(targetEntity="AppBundle\Domain\Entity\Command")
      */
     private $command;
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="entry_at", type="datetime")
      */
     private $entryAt;
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
@@ -88,7 +93,9 @@ class Ticket
 
     public function __construct()
     {
-        $this->createdAt = new \DateTime('NOW', new \DateTimeZone("Europe/Paris"));
+        if (empty($this->createdAt)) {
+            $this->createdAt = new \DateTime('NOW', new \DateTimeZone("Europe/Paris"));
+        }
     }
 
     /**
@@ -305,5 +312,21 @@ class Ticket
     public function getCommand()
     {
         return $this->command;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType(string $type)
+    {
+        $this->type = $type;
     }
 }

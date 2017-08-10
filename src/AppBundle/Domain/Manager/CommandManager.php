@@ -3,47 +3,54 @@
 namespace AppBundle\Domain\Manager;
 
 use AppBundle\Domain\Entity\Command;
-use AppBundle\Domain\Entity\Ticket;
 use Doctrine\ORM\EntityManagerInterface;
+use JMS\Serializer\SerializerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Validator\ValidatorBuilderInterface;
 
 class CommandManager
 {
     private $doctrine;
+    private $validator;
+    private $serializer;
 
-    public function __construct(EntityManagerInterface $doctrine)
+    public function __construct(EntityManagerInterface $doctrine, ValidatorBuilderInterface $validator,  SerializerInterface $serializer)
     {
         $this->doctrine = $doctrine;
+        $this->validator = $validator;
+        $this->serializer = $serializer;
     }
 
     public function createCommand($data)
     {
         $command = new Command();
-        $tickets = [];
-
         $command->setCreatedAt(new \DateTime('NOW'));
         $command->setEmail('marc.arnoult@hotmail.fr');
+        $command->setType('Journées');
 
-        foreach (json_decode($data) as $item) {
-            $command->setType($item->type);
+        $this->doctrine->persist($command);
 
-            $ticket = new Ticket();
-            $ticket->setFirstName($item->firstName);
-            $ticket->setLastName($item->lastName);
-            $ticket->setCountry($item->country);
-            $ticket->setEntryAt(new \DateTime($item->entryAt));
-            $ticket->setBirthday(new \DateTime($item->birthday));
-            $ticket->setPrice(12);
-            $ticket->setReduction($item->reduction);
+        $tickets = $this->serializer->deserialize($data, 'array<AppBundle\\Domain\\Entity\\Ticket>', 'json');
+
+        foreach ($tickets as $index => $ticket) {
+            $ticket->setCreatedAt(new \DateTime('NOW', new \DateTimeZone("Europe/Paris")));
             $ticket->setCommand($command);
-            array_push($tickets, $ticket);
+
+            $errors = $this->validator->getValidator()->validate($ticket);
+            if (count($errors) != 0) {
+                $messages = [];
+                foreach ($errors as $error) {
+                    $messages[$error->getPropertyPath()] = $error->getMessage();
+                    $messages['index'] = $index;
+                }
+                return ['content' => $messages, 'status_code' => JsonResponse::HTTP_BAD_REQUEST];
+            }
 
             $this->doctrine->persist($ticket);
         }
 
-        $this->doctrine->persist($command);
         $this->doctrine->flush();
 
-        return JsonResponse::HTTP_CREATED;
+        return ['content' => 'created', 'status_code' => JsonResponse::HTTP_CREATED];
     }
 }

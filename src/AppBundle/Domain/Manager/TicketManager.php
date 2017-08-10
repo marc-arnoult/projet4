@@ -5,41 +5,49 @@ namespace AppBundle\Domain\Manager;
 
 
 use AppBundle\Domain\Entity\Ticket;
+use AppBundle\Domain\Filter\DateFilterInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use JMS\Serializer\SerializerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+/**
+ * Class TicketManager
+ * @package AppBundle\Domain\Manager
+ */
 class TicketManager
 {
     private $doctrine;
     private $request;
-    private $serializer;
+    private $dateFilter;
 
     public function __construct(
         EntityManagerInterface $doctrine,
         RequestStack $request,
-        SerializerInterface $serializer)
+        DateFilterInterface $dateFilter
+    )
     {
         $this->doctrine = $doctrine;
         $this->request = $request;
-        $this->serializer = $serializer;
+        $this->dateFilter = $dateFilter;
     }
 
     public function getTickets()
     {
         $repository = $this->doctrine->getRepository('AppBundle:Ticket');
+        $date = $this->request->getCurrentRequest()->get('day');
 
-        if ($date = $this->request->getCurrentRequest()->get('day')) {
+        if (!empty($date) && $this->dateFilter->isValid($date)) {
             $day = new \DateTime($date);
             $ticketSold = $repository->getTicketByDay($day->format('Y-m-d'));
 
-            $data = ['ticket_remaining' => (Ticket::TICKET_LIMIT - $ticketSold)];
+            $data = [
+                'content' => (Ticket::TICKET_LIMIT - $ticketSold),
+                'status_code' => JsonResponse::HTTP_OK,
+            ];
 
-            return $this->serializer->serialize($data, 'json');
+            return $data;
         }
 
-        $data = $repository->findAll();
-
-        return $this->serializer->serialize($data, 'json');
+        return ['content' => 'You should fill the day parameter', 'status_code' => JsonResponse::HTTP_BAD_REQUEST];
     }
 }

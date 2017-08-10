@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\AppBundle\Entity;
+namespace Test\AppBundle\Domain\Entity;
 
 
 use AppBundle\Domain\Entity\Command;

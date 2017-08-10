@@ -7,7 +7,7 @@ namespace AppBundle\Responder;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\EngineInterface;
 
-class HomeResponder
+class HomeResponder extends AbstractResponder
 {
     private $twig;
 

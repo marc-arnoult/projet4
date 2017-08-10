@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\AppBundle\EventListener;
+namespace Test\AppBundle\Domain\EventListener;
 
 use AppBundle\Domain\EventListener\LocaleListener;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;

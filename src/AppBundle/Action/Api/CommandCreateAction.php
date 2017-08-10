@@ -6,7 +6,6 @@ namespace AppBundle\Action\Api;
 use AppBundle\Domain\Manager\CommandManager;
 use AppBundle\Responder\Api\CommandResponder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 

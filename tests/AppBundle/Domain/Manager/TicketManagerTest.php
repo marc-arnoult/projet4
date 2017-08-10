@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\AppBundle\Manager;
+namespace Test\AppBundle\Domain\Manager;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +16,7 @@ class TicketManagerTest extends WebTestCase
         $requestStack->push(new Request());
 
         $manager = $kernel->getContainer()->get('AppBundle\Domain\Manager\TicketManager');
-        $this->assertJson($manager->getTickets());
+        $this->assertNotEmpty($manager->getTickets());
     }
 
     public function testGetTicketsWithParam()
@@ -33,7 +33,6 @@ class TicketManagerTest extends WebTestCase
         $manager = $kernel->getContainer()->get('AppBundle\Domain\Manager\TicketManager');
 
         $data = $manager->getTickets();
-        $this->assertJson($data);
-        $this->assertEquals(990, json_decode($data, true)['ticket_remaining']);
+        $this->assertEquals(990, $data['content']);
     }
 }

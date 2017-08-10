@@ -18,10 +18,8 @@ class LoadTicketsData implements FixtureInterface
     {
         $command = new Command();
         $command->setCreatedAt(new \DateTime('NOW', new \DateTimeZone("Europe/Paris")));
-        $command->setType('Journée');
         $command->setEmail('marc.arnoult@hotmail.fr');
 
-        $manager->persist($command);
 
         for ($i = 0; $i < 10; $i++) {
             $ticket = new Ticket();
@@ -33,8 +31,12 @@ class LoadTicketsData implements FixtureInterface
             $ticket->setCountry('France');
             $ticket->setBirthday(new \DateTime('1991-09-01'));
             $ticket->setCommand($command);
+            $ticket->setType("Journées");
+
+            $command->setType($ticket->getType());
             $manager->persist($ticket);
         }
+        $manager->persist($command);
 
         $manager->flush();
     }

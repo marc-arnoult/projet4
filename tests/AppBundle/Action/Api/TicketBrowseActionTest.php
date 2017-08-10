@@ -6,12 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class TicketBrowseActionTest extends WebTestCase
 {
-    public function testReturnJson()
+    public function testBadRequest()
     {
         $client = self::createClient();
         $client->request('GET', '/api/ticket');
 
-        $this->assertTrue($client->getResponse()->isSuccessful());
+        $this->assertEquals(400, $client->getResponse()->getStatusCode());
         $this->assertJson($client->getResponse()->getContent());
     }
 }

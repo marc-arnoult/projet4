@@ -3,10 +3,10 @@
 
 namespace AppBundle\Responder\Api;
 
+use AppBundle\Responder\AbstractResponder;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class TicketResponder
+class TicketResponder extends AbstractResponder
 {
     /**
      * @param $data
@@ -14,6 +14,6 @@ class TicketResponder
      */
     public function __invoke($data)
     {
-        return new JsonResponse($data, 200, [], true);
+        return new JsonResponse(json_encode($data['content']), $data['status_code'], [], true);
     }
 }
