@@ -34,7 +34,9 @@ class CommandManager
 
         foreach ($tickets as $index => $ticket) {
             $ticketRemaining = Ticket::TICKET_LIMIT - $this->doctrine->getRepository('AppBundle:Ticket')->getTicketByDay($ticket->getEntryAt());
-
+            /**
+             * * @codeCoverageIgnore
+             */
             if (count($tickets) > $ticketRemaining) {
                 return [
                     'content' => "Il ne reste plus assez de ticket $ticketRemaining",
