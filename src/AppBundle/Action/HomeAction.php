@@ -12,14 +12,11 @@ use Symfony\Component\Validator\Constraints\DateTime;
 
 class HomeAction
 {
-
     private $responder;
-    private $manager;
 
-    public function __construct(HomeResponder $responder, EntityManagerInterface $manager)
+    public function __construct(HomeResponder $responder)
     {
         $this->responder = $responder;
-        $this->manager = $manager;
     }
 
     /**
