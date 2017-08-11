@@ -17,19 +17,25 @@ class CommandCreateActionTest extends WebTestCase
             '[{
               "first_name": "marc",
               "last_name": "Do lugar",
-              "birthday": "2017-08-09",
+              "birthday": "1991-08-09",
               "country": "France",
               "reduction": false,
-              "price": 10,
+              "type": "Journée",
+              "entry_at": "2017-08-12"
+            },{
+              "first_name": "marc",
+              "last_name": "marc",
+              "birthday": "2010-08-09",
+              "country": "France",
+              "reduction": false,
               "type": "Journée",
               "entry_at": "2017-08-20"
             },{
               "first_name": "marc",
-              "last_name": "Do lugar",
-              "birthday": "2017-08-09",
+              "last_name": "marc",
+              "birthday": "1990-08-09",
               "country": "France",
               "reduction": false,
-              "price": 10,
               "type": "Journée",
               "entry_at": "2017-08-20"
             }]'
@@ -52,7 +58,6 @@ class CommandCreateActionTest extends WebTestCase
               "birthday": "2017-08-09",
               "country": "France",
               "reduction": false,
-              "price": 10,
               "type": "Journée",
               "entry_at": "2017-08-20"
             },{
@@ -61,7 +66,6 @@ class CommandCreateActionTest extends WebTestCase
               "birthday": "2017-08-09",
               "country": "France",
               "reduction": false,
-              "price": 10,
               "type": "Journée",
               "entry_at": "2017-08-20"
             }]'

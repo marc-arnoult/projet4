@@ -13,7 +13,7 @@ class DateFilter implements DateFilterInterface
      * @param string $value
      * @return bool
      */
-    public function isValid($value)
+    public function isValid($value) : bool
     {
         if (!strtotime($value)) {
             return false;

@@ -22,6 +22,12 @@ class Command
     private $id;
 
     /**
+     * @var int
+     * @ORM\Column(name="price", type="integer")
+     */
+    private $price;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
@@ -122,6 +128,22 @@ class Command
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param int $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
     }
 
     /**

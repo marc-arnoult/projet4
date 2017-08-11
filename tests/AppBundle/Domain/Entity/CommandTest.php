@@ -14,6 +14,7 @@ class CommandTest extends WebTestCase
         $command = new Command();
         $command->setEmail('marc.arnoult@hotmail.fr');
         $command->setType('Journée');
+        $command->setPrice(12);
 
         $date = new \DateTime('NOW');
         $command->setCreatedAt($date);
@@ -21,6 +22,7 @@ class CommandTest extends WebTestCase
         $this->assertEquals('marc.arnoult@hotmail.fr', $command->getEmail());
         $this->assertEquals('Journée', $command->getType());
         $this->assertEquals($date, $command->getCreatedAt());
+        $this->assertEquals(12, $command->getPrice());
         $this->assertEquals(null, $command->getId());
     }
 }

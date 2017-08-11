@@ -22,7 +22,6 @@ class TicketTest extends WebTestCase
         $ticket->setCountry('France');
         $ticket->setFirstName('Marc');
         $ticket->setLastName('Arnoult');
-        $ticket->setPrice(12);
         $ticket->setEntryAt($entry);
         $ticket->setReduction(false);
         $ticket->setCreatedAt($now);
@@ -35,7 +34,6 @@ class TicketTest extends WebTestCase
         $this->assertEquals('France', $ticket->getCountry());
         $this->assertEquals('Marc', $ticket->getFirstName());
         $this->assertEquals('Arnoult', $ticket->getLastName());
-        $this->assertEquals(12, $ticket->getPrice());
         $this->assertEquals($entry, $ticket->getEntryAt());
         $this->assertEquals("Journées", $ticket->getType());
         $this->assertEquals(false, $ticket->getReduction());
