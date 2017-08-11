@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-        <h1 class="title is-1 has-text-centered">
-            {{ 'Ticketing' | trans | upper }}
-        </h1>
+    <div id="app">
+        <citation></citation>
+        <div class="container">
+            <h1 class="title is-1 has-text-centered">
+                {{ 'Ticketing' | trans | upper }}
+            </h1>
+        </div>
     </div>
-    <citation-generator></citation-generator>
-    <ticketing></ticketing>
 {% endblock %}

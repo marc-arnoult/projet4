@@ -7,7 +7,7 @@ Encore
     .setPublicPath('/build')
     .enableSassLoader()
     .addStyleEntry('app', './web/assets/css/main.sass')
-    .addEntry('main', './web/assets/js/main.js')
+    .addEntry('main', './front/main.js')
     .cleanupOutputBeforeBuild()
     .addPlugin(new ExtractCss("app.css"))
     .addLoader({

@@ -6,8 +6,10 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('assets/font-awesome-4.7.0 3/css/font-awesome.min.css') }}">
             <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+            <link rel="stylesheet" href="{{ asset('build/main.css') }}">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     </head>
     <body>
         <header class="container is-fluid">
@@ -27,37 +29,29 @@
         <footer class="footer">
             <div class="container-fluid">
                 <div class="columns">
-                    <div class="column has-text-left">
+                    <div class="column is-2 has-text-centered">
                         <a href="#" class="button is-link">{{ 'Legals mentions' | trans }}</a>
                         <a href="#" class="button is-link">CGV</a>
                     </div>
-                    <div class="column has-text-centered">
+                    <div class="column is-8 has-text-centered">
                         <p>Copyright</p>
                     </div>
-                    <div class="column has-text-right">
-                        <div class="columns">
-                            <div class="column">
-                                <a href="#">
-                                    <span class="icon is-medium">
-                                        <i class="fa fa-twitter"></i>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="column">
-                                <a href="#">
-                                    <span class="icon is-medium">
-                                        <i class="fa fa-facebook"></i>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="column">
-                                <a href="#">
-                                    <span class="icon is-medium">
-                                        <i class="fa fa-google-plus"></i>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
+                    <div class="column is-2 has-text-centered">
+                        <a href="#">
+                            <span class="icon is-medium">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                        <a href="#">
+                            <span class="icon is-medium">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                        <a href="#">
+                            <span class="icon is-medium">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
