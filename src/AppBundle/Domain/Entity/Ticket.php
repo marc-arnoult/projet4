@@ -64,12 +64,6 @@ class Ticket
     private $reduction;
 
     /**
-     * @var int
-     * @ORM\Column(name="price", type="integer")
-     */
-    private $price;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="type", type="string")
@@ -218,30 +212,6 @@ class Ticket
     public function getReduction()
     {
         return $this->reduction;
-    }
-
-    /**
-     * Set price
-     *
-     * @param integer $price
-     *
-     * @return Ticket
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return int
-     */
-    public function getPrice()
-    {
-        return $this->price;
     }
 
     /**

@@ -25,7 +25,6 @@ class IsHalfDayTest extends WebTestCase
         $ticket->setCountry('France');
         $ticket->setFirstName('Marc');
         $ticket->setLastName('Arnoult');
-        $ticket->setPrice(12);
         $ticket->setEntryAt($entry);
         $ticket->setReduction(false);
         $ticket->setCreatedAt($now);

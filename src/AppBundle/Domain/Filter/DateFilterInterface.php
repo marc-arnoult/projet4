@@ -9,5 +9,5 @@ namespace AppBundle\Domain\Filter;
  */
 interface DateFilterInterface
 {
-    public function isValid($value);
+    public function isValid($value) : bool;
 }
