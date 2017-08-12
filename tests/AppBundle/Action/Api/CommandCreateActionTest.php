@@ -21,7 +21,7 @@ class CommandCreateActionTest extends WebTestCase
               "country": "France",
               "reduction": false,
               "type": "Journée",
-              "entry_at": "2017-08-12"
+              "entry_at": "2018-08-12"
             },{
               "first_name": "marc",
               "last_name": "marc",
@@ -29,7 +29,7 @@ class CommandCreateActionTest extends WebTestCase
               "country": "France",
               "reduction": false,
               "type": "Journée",
-              "entry_at": "2017-08-20"
+              "entry_at": "2018-08-20"
             },{
               "first_name": "marc",
               "last_name": "marc",
@@ -37,7 +37,7 @@ class CommandCreateActionTest extends WebTestCase
               "country": "France",
               "reduction": false,
               "type": "Journée",
-              "entry_at": "2017-08-20"
+              "entry_at": "2018-08-20"
             }]'
         );
 
