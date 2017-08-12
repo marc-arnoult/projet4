@@ -2,7 +2,8 @@
 
 {% block body %}
     <div id="app">
-        <citation></citation>
+        <Citation></Citation>
+        <Reservation language="{{ app.request.locale }}"></Reservation>
         <div class="container">
             <h1 class="title is-1 has-text-centered">
                 {{ 'Ticketing' | trans | upper }}

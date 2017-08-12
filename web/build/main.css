@@ -1,9 +1,77 @@
 
-#citation-generator blockquote {
-    font-size: 1.3rem;
+blockquote[data-v-a5c50558] {
+  font-size: 1.3rem;
 }
-#citation-generator em {
-    padding-top: 12px;
-    font-weight: bolder;
-    font-size: 1.2rem;
+em[data-v-a5c50558] {
+  padding-top: 12px;
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+@keyframes spinAround {
+from {
+    transform: rotate(0deg);
+}
+to {
+    transform: rotate(359deg);
+}
+}
+#datepicker .input {
+  width: 290px;
+  margin-bottom: 20px;
+}
+#datepicker .vdp-datepicker__calendar {
+  margin: auto;
+  font-size: 1.28rem;
+  font-family: "Open sans";
+  width: 400px;
+  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.18), 0 5px 20px rgba(0, 0, 0, 0.16);
+}
+#datepicker .vdp-datepicker__calendar header {
+  font-weight: 600;
+  height: 50px;
+  background-color: #0097a7;
+  padding-top: 5px;
+  color: #fff;
+}
+#datepicker .vdp-datepicker__calendar header span:hover {
+  background-color: #019eb2;
+}
+#datepicker .vdp-datepicker__calendar header span {
+  transition: .3s;
+}
+#datepicker .vdp-datepicker__calendar header span.prev::after {
+  border-right-color: #fff;
+}
+#datepicker .vdp-datepicker__calendar header span.next::after {
+  border-left-color: #fff;
+}
+#datepicker .vdp-datepicker__calendar .cell {
+  border-radius: 60%;
+  height: 54px;
+  padding-top: 4px;
+  transition: .3s;
+}
+#datepicker .vdp-datepicker__calendar .cell:hover {
+  border-color: #0097a7;
+}
+#datepicker .vdp-datepicker__calendar .cell.selected {
+  background-color: #0097a7;
+  color: #fff;
+}
+#datepicker .vdp-datepicker__calendar .cell.month {
+  height: 70px;
+  padding-top: 12px;
+}
+#datepicker .ticket-remaining {
+  display: block;
+  margin: 0 auto 16px;
+}
+@media screen and (max-width: 550px) {
+#datepicker .vdp-datepicker__calendar {
+    width: 310px;
+}
+#datepicker .vdp-datepicker__calendar .cell {
+    padding-top: 1px;
+    height: 46px;
+}
 }
