@@ -18,12 +18,17 @@ to {
     transform: rotate(359deg);
 }
 }
+#datepicker .column:nth-child(2) > form > div:nth-child(1) {
+  margin-top: 23px;
+}
+#datepicker .column:nth-child(2) > form > div:nth-child(n+2) {
+  margin-top: 60px;
+}
 #datepicker .input {
-  width: 290px;
+  width: 380px;
   margin-bottom: 20px;
 }
 #datepicker .vdp-datepicker__calendar {
-  margin: auto;
   font-size: 1.28rem;
   font-family: "Open sans";
   width: 520px;
@@ -55,7 +60,7 @@ to {
 #datepicker .vdp-datepicker__calendar .cell {
   border-radius: 65%;
   height: 72px;
-  padding-top: 12px;
+  padding-top: 13px;
   transition: .3s;
 }
 #datepicker .vdp-datepicker__calendar .cell:hover {
@@ -74,12 +79,19 @@ to {
   margin: 0 auto 16px;
 }
 @media screen and (max-width: 550px) {
+#datepicker .input {
+    width: 100%;
+}
 #datepicker .vdp-datepicker__calendar {
-    width: 310px;
-    height: 320px;
+    width: 100%;
+    height: 300px;
 }
 #datepicker .vdp-datepicker__calendar .cell {
-    padding-top: 1px;
-    height: 44px;
+    padding: 0;
+    border-radius: 2%;
+    height: 38px;
+}
+#datepicker .input {
+    width: 100%;
 }
 }

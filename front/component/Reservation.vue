@@ -21,6 +21,9 @@
     import store from '../store/ReservationStore'
 
     export default {
+        props: {
+            language: {default: 'fr'}
+        },
         router: new VueRouter({
             routes: [
                 {

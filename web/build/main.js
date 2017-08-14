@@ -292,6 +292,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = {
+    email: '',
+    type: '',
+    language: '',
     ticketRemaining: '',
     numberOfTicket: 0,
     stepOne: false,
@@ -1898,12 +1901,14 @@ module.exports = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__("./node_modules/moment/moment.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__("./node_modules/axios/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__store_ReservationStore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment_ferie_fr__ = __webpack_require__("./node_modules/moment-ferie-fr/moment-ferie-fr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment_ferie_fr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment_ferie_fr__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios__ = __webpack_require__("./node_modules/axios/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__store_ReservationStore__);
 //
 //
 //
@@ -1945,6 +1950,30 @@ module.exports = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -1961,11 +1990,17 @@ var state = {
     }
 };
 
+var lists = __WEBPACK_IMPORTED_MODULE_1_moment___default()().getFerieList();
+
+lists.forEach(function (list) {
+    state.disabled.dates.push(new Date(list.date));
+});
+
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function data() {
         return {
-            store: __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore___default.a,
-            language: 'fr',
+            language: this.$parent.language,
+            store: __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default.a,
             date: '',
             state: state,
             format: 'DD/MM/YYYY'
@@ -1999,7 +2034,8 @@ var state = {
             var _this = this;
 
             var day = __WEBPACK_IMPORTED_MODULE_1_moment___default()(date).format('YYYY-MM-DD');
-            __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get('/api/ticket', {
+
+            __WEBPACK_IMPORTED_MODULE_4_axios___default.a.get('/api/ticket', {
                 params: { day: day }
             }).then(function (res) {
                 return _this.store.ticketRemaining = res.data;
@@ -2041,6 +2077,9 @@ var state = {
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+    props: {
+        language: { default: 'fr' }
+    },
     router: new __WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]({
         routes: [{
             path: '/',
@@ -19250,6 +19289,187 @@ function isSlowBuffer (obj) {
 
 /***/ }),
 
+/***/ "./node_modules/moment-ferie-fr/moment-ferie-fr.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// https://github.com/damienlabat/moment-ferie-fr
+(function () {
+
+  "use strict";
+
+  var initialize = function (moment) {
+
+    // Source: http://techneilogy.blogspot.fr/2012/02/couple-of-years-ago-i-posted-source.html
+    moment.fn.easterDay = moment.fn.paques = function (Y) {
+      if (Y === undefined) {
+        Y = this.year();
+      }
+      var a = Y % 19;
+      var b = Math.floor(Y / 100);
+      var c = Y % 100;
+      var d = Math.floor(b / 4);
+      var e = b % 4;
+      var f = Math.floor((b + 8) / 25);
+      var g = Math.floor((b - f + 1) / 3);
+      var h = (19 * a + b - d - g + 15) % 30;
+      var i = Math.floor(c / 4);
+      var k = c % 4;
+      var l = (32 + 2 * e + 2 * i - h - k) % 7;
+      var m = Math.floor((a + 11 * h + 22 * l) / 451);
+      var n0 = (h + l + 7 * m + 114);
+      var n = Math.floor(n0 / 31) - 1;
+      var p = n0 % 31 + 1;
+      var date = new Date(Y, n, p);
+      return moment(date);
+    };
+
+    moment.fn.lundiDePaques = function (Y) {
+      if (Y === undefined) {
+        Y = this.year();
+      }
+      return moment.fn.paques(Y).add(1, "days");
+    };
+
+    moment.fn.ascension = function (Y) {
+      if (Y === undefined) {
+        Y = this.year();
+      }
+      return moment.fn.paques(Y).add(39, "days");
+    };
+
+    moment.fn.pentecote = function (Y) {
+      if (Y === undefined) {
+        Y = this.year();
+      }
+      return moment.fn.paques(Y).add(50, "days");
+    };
+
+    moment.fn.jourDeLAn = function (Y) {
+      if (Y === undefined) {
+        Y = this.year();
+      }
+      return moment("1-1-" + Y, "DD-MM-YYYY");
+    };
+
+    moment.fn.feteDuTravail = function (Y) {
+      if (Y === undefined) {
+        Y = this.year();
+      }
+      return moment("1-5-" + Y, "DD-MM-YYYY");
+    };
+
+    moment.fn.victoireDeAllies = function (Y) {
+      if (Y === undefined) {
+        Y = this.year();
+      }
+      return moment("8-5-" + Y, "DD-MM-YYYY");
+    };
+
+    moment.fn.feteNationale = function (Y) {
+      if (Y === undefined) {
+        Y = this.year();
+      }
+      return moment("14-7-" + Y, "DD-MM-YYYY");
+    };
+
+    moment.fn.assomption = function (Y) {
+      if (Y === undefined) {
+        Y = this.year();
+      }
+      return moment("15-8-" + Y, "DD-MM-YYYY");
+    };
+
+    moment.fn.toussaint = function (Y) {
+      if (Y === undefined) {
+        Y = this.year();
+      }
+      return moment("1-11-" + Y, "DD-MM-YYYY");
+    };
+
+    moment.fn.armistice = function (Y) {
+      if (Y === undefined) {
+        Y = this.year();
+      }
+      return moment("11-11-" + Y, "DD-MM-YYYY");
+    };
+
+    moment.fn.noel = function (Y) {
+      if (Y === undefined) {
+        Y = this.year();
+      }
+      return moment("25-12-" + Y, "DD-MM-YYYY");
+    };
+
+    var listeFerie = {
+      "Jour de l'an": moment.fn.jourDeLAn,
+      "Fête du travail": moment.fn.feteDuTravail,
+      "Victoire des alliés": moment.fn.victoireDeAllies,
+      "Fête Nationale": moment.fn.feteNationale,
+      "Assomption": moment.fn.assomption,
+      "Toussaint": moment.fn.toussaint,
+      "Armistice": moment.fn.armistice,
+      "Noël": moment.fn.noel,
+      "Pâques": moment.fn.paques,
+      "Lundi de Pâques": moment.fn.lundiDePaques,
+      "Ascension": moment.fn.ascension,
+      "Pentecôte": moment.fn.pentecote
+    };
+
+    moment.fn.getFerieList = function (Y) {
+      if (Y === undefined) {
+        Y = this.year();
+      }
+
+      var res = [];
+      for (var key in listeFerie) {
+        if (listeFerie.hasOwnProperty(key)) {
+          res.push({name: key, date: listeFerie[key](Y) });
+        }
+      }
+      return res;
+    };
+
+    moment.fn.getFerie = function () {
+      for (var key in listeFerie) {
+        if (listeFerie.hasOwnProperty(key)) {
+          if (this.isSame(listeFerie[key].call(this), 'days')) {
+            return key;
+          }
+        }
+      }
+      return null;
+    };
+
+    moment.fn.isFerie = function () {
+      return (this.getFerie() !== null);
+    };
+
+    moment.fn.isWeekEnd = function () {
+      return (this.day() === 0 || this.day() === 6);
+    };
+
+    moment.fn.isWorkingDay = function () {
+      return (!this.isWeekEnd() && !this.isFerie());
+    };
+
+    return moment;
+  };
+
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__("./node_modules/moment/moment.js")], __WEBPACK_AMD_DEFINE_RESULT__ = function (moment) {
+      return this.moment = initialize(moment);
+    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else if (typeof module !== "undefined") {
+    module.exports = initialize(require("moment"));
+  } else if (typeof window !== "undefined" && window.moment) {
+    this.moment = initialize(this.moment);
+  }
+
+}).call(this);
+
+/***/ }),
+
 /***/ "./node_modules/moment/locale recursive ^\\.\\/.*$":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -35547,9 +35767,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "id": "datepicker"
     }
   }, [_c('div', {
-    staticClass: "columns"
+    staticClass: "columns is-centered"
   }, [_c('div', {
-    staticClass: "column has-text-centered"
+    staticClass: "column"
   }, [_c('h3', {
     staticClass: "title is-5"
   }, [_vm._v("Date :")]), _vm._v(" "), _c('input', {
@@ -35574,8 +35794,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("Ticket restant : "), _c('strong', [_vm._v(_vm._s(_vm.store.ticketRemaining))])]), _vm._v(" "), _c('Datepicker', {
     attrs: {
       "disabled": _vm.state.disabled,
-      "language": _vm.language,
-      "inline": true
+      "inline": true,
+      "language": this.language
     },
     model: {
       value: (_vm.state.date),
@@ -35588,15 +35808,39 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "column"
   }, [_c('form', {
     staticClass: "form"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "field"
   }, [_c('div', {
-    staticClass: "control"
+    staticClass: "field"
   }, [_c('label', {
     attrs: {
       "for": ""
     }
-  }), _vm._v(" "), _c('input', {
+  }, [_vm._v("Email")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "control has-icons-left"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.store.email),
+      expression: "store.email"
+    }],
+    staticClass: "input",
+    attrs: {
+      "type": "email"
+    },
+    domProps: {
+      "value": (_vm.store.email)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.store.email = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _vm._m(1)])]), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('label', [_vm._v("Nombre de tickets")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -35618,24 +35862,76 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         _vm.store.numberOfTicket = $event.target.value
       }
     }
-  })])])])])])])
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('label', [_vm._v("Type")]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('div', {
+    staticClass: "control"
+  }, [_c('div', {
+    staticClass: "select"
+  }, [_c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.store.type),
+      expression: "store.type"
+    }],
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.store.type = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": "Journée"
+    }
+  }, [_vm._v("Journées")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "Demi-journée"
+    }
+  }, [_vm._v("Demi-journées")])])])])]), _vm._v(" "), _vm._m(3)])])])])
 }
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', {
+    staticClass: "icon tooltip tooltip-right is-hidden-mobile",
+    attrs: {
+      "data-tooltip": "email d'envoi des billets"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-info-circle",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })])
+},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', {
+    staticClass: "icon is-small is-left"
+  }, [_c('i', {
+    staticClass: "fa fa-envelope"
+  })])
+},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', {
+    staticClass: "icon tooltip tooltip-right is-hidden-mobile",
+    attrs: {
+      "data-tooltip": "billet demi-journée valable à partir de 14h"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-info-circle",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })])
+},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "field"
-  }, [_c('div', {
-    staticClass: "control"
-  }, [_c('label', {
-    attrs: {
-      "for": ""
-    }
-  }), _vm._v(" "), _c('input', {
-    staticClass: "input",
-    attrs: {
-      "type": "text",
-      "value": "test"
-    }
-  })])])
+  }, [_c('button', {
+    staticClass: "button is-blue is-medium"
+  }, [_vm._v("Reservation")])])
 }]
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
