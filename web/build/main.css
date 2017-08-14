@@ -7,6 +7,9 @@ em[data-v-a5c50558] {
   font-weight: bolder;
   font-size: 1.2rem;
 }
+#reservation[data-v-3d8168ef] {
+  margin-bottom: 40px;
+}
 @keyframes spinAround {
 from {
     transform: rotate(0deg);
@@ -23,7 +26,8 @@ to {
   margin: auto;
   font-size: 1.28rem;
   font-family: "Open sans";
-  width: 400px;
+  width: 520px;
+  height: 490px;
   box-shadow: 0 14px 45px rgba(0, 0, 0, 0.18), 0 5px 20px rgba(0, 0, 0, 0.16);
 }
 #datepicker .vdp-datepicker__calendar header {
@@ -39,6 +43,9 @@ to {
 #datepicker .vdp-datepicker__calendar header span {
   transition: .3s;
 }
+#datepicker .vdp-datepicker__calendar header span:hover {
+  cursor: pointer;
+}
 #datepicker .vdp-datepicker__calendar header span.prev::after {
   border-right-color: #fff;
 }
@@ -46,9 +53,9 @@ to {
   border-left-color: #fff;
 }
 #datepicker .vdp-datepicker__calendar .cell {
-  border-radius: 60%;
-  height: 54px;
-  padding-top: 4px;
+  border-radius: 65%;
+  height: 72px;
+  padding-top: 12px;
   transition: .3s;
 }
 #datepicker .vdp-datepicker__calendar .cell:hover {
@@ -69,9 +76,10 @@ to {
 @media screen and (max-width: 550px) {
 #datepicker .vdp-datepicker__calendar {
     width: 310px;
+    height: 320px;
 }
 #datepicker .vdp-datepicker__calendar .cell {
     padding-top: 1px;
-    height: 46px;
+    height: 44px;
 }
 }

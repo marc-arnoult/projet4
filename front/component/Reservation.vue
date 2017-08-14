@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" id="reservation">
         <ul class="step" id="step">
             <li class="step-item is-active">
                 <a href="#steps"></a>
@@ -11,19 +11,27 @@
                 <a href="#steps"></a>
             </li>
         </ul>
-        <Datepicker :language="language"></Datepicker>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
     import Datepicker from './Datepicker.vue'
+    import VueRouter from 'vue-router'
 
     export default {
-        props: {
-            language: {default: 'fr'}
-        },
-        components: {
-            Datepicker
-        }
+        router: new VueRouter({
+            routes: [
+                {
+                    path: '/',
+                    component: Datepicker,
+                }
+            ]
+        })
     }
 </script>
+
+<style scoped lang="sass">
+    #reservation
+        margin-bottom: 40px
+</style>

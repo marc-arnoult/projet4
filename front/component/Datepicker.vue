@@ -6,10 +6,10 @@
                         class="input"
                         type="text"
                         :value="date"
-                        @blur="setDate('date', $event)"
+                        @blur="setDateEnter('date', $event)"
                         @keyup.enter="setDateEnter('date', $event)"
                 >
-                <span class="ticket-remaining">Ticket restant : {{ ticketRemaining }}</span>
+                <span class="ticket-remaining">Ticket restant : <strong>{{ ticketRemaining }}</strong></span>
                 <Datepicker
                         :disabled="state.disabled"
                         v-model="state.date"
@@ -19,7 +19,9 @@
                 </Datepicker>
             </div>
             <div class="column">
-                Hello world
+                <form>
+
+                </form>
             </div>
         </div>
     </div>
@@ -30,8 +32,6 @@
     import moment from 'moment'
     import _ from 'lodash'
     import axios from 'axios'
-
-    let currentYear = parseInt(moment().format('YYYY'));
 
     let state = {
         date: new Date(moment()),
@@ -46,11 +46,9 @@
     };
 
     export default {
-        props: {
-            language: parent.language
-        },
         data() {
             return {
+                language: 'fr',
                 ticketRemaining: '',
                 date: '',
                 state: state,
@@ -61,8 +59,8 @@
             Datepicker
         },
         mounted() {
-            this.date = moment(this.state.date).format('DD/MM/YYYY');
-            this.getTickerRemaining(this.date);
+            this.date = moment().format('DD/MM/YYYY');
+            this.getTickerRemaining(moment().format('YYYY-MM-DD'));
         },
         watch: {
           state: {
@@ -74,10 +72,6 @@
           }
         },
         methods: {
-            setDate: _.debounce(function(date, event) {
-                this.date = event.target.value;
-                this.state.date = new Date(moment(event.target.value, 'DD/MM/YYYY'));
-            }, 900),
             setDateEnter(date, event) {
                 this.date = event.target.value;
                 this.state.date = new Date(moment(event.target.value, 'DD/MM/YYYY'));
@@ -85,9 +79,7 @@
             getTickerRemaining(date) {
                 let day = moment(date).format('YYYY-MM-DD');
                 axios.get('/api/ticket', {
-                    params: {
-                        day
-                    }
+                    params: { day }
                 }).then(res => this.ticketRemaining = res.data);
             }
         },
@@ -105,7 +97,8 @@
         margin: auto
         font-size: 1.28rem
         font-family: $family-sans-serif
-        width: 400px
+        width: 520px
+        height: 490px
         box-shadow: $box-shadow
 
     #datepicker .vdp-datepicker__calendar header
@@ -120,6 +113,8 @@
 
     #datepicker .vdp-datepicker__calendar header span
         transition: .3s
+        &:hover
+            cursor: pointer
 
     #datepicker .vdp-datepicker__calendar header span.prev::after
         border-right-color: #fff
@@ -128,9 +123,9 @@
         border-left-color: #fff
 
     #datepicker .vdp-datepicker__calendar .cell
-        border-radius: 60%
-        height: 54px
-        padding-top: 4px
+        border-radius: 65%
+        height: 72px
+        padding-top: 12px
         transition: .3s
 
     #datepicker .vdp-datepicker__calendar .cell:hover
@@ -150,9 +145,10 @@
     @media screen and (max-width: 550px)
         #datepicker .vdp-datepicker__calendar
             width: 310px
+            height: 320px
 
         #datepicker .vdp-datepicker__calendar .cell
             padding-top: 1px
-            height: 46px
+            height: 44px
 
 </style>
