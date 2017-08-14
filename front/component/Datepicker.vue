@@ -2,6 +2,7 @@
     <div class="container" id="datepicker">
         <div class="columns">
             <div class="column has-text-centered">
+                <h3 class="title is-5">Date :</h3>
                 <input
                         class="input"
                         type="text"
@@ -9,7 +10,7 @@
                         @blur="setDateEnter('date', $event)"
                         @keyup.enter="setDateEnter('date', $event)"
                 >
-                <span class="ticket-remaining">Ticket restant : <strong>{{ ticketRemaining }}</strong></span>
+                <span class="ticket-remaining">Ticket restant : <strong>{{ store.ticketRemaining }}</strong></span>
                 <Datepicker
                         :disabled="state.disabled"
                         v-model="state.date"
@@ -19,8 +20,19 @@
                 </Datepicker>
             </div>
             <div class="column">
-                <form>
-
+                <form class="form">
+                    <div class="field">
+                        <div class="control">
+                            <label for=""></label>
+                            <input type="text" value="test" class="input">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <label for=""></label>
+                            <input type="number" class="input" v-model="store.numberOfTicket" min="0" :max="store.ticketRemaining">
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -32,6 +44,8 @@
     import moment from 'moment'
     import _ from 'lodash'
     import axios from 'axios'
+    import store from '../store/ReservationStore'
+
 
     let state = {
         date: new Date(moment()),
@@ -48,8 +62,8 @@
     export default {
         data() {
             return {
+                store: store,
                 language: 'fr',
-                ticketRemaining: '',
                 date: '',
                 state: state,
                 format: 'DD/MM/YYYY'
@@ -80,7 +94,7 @@
                 let day = moment(date).format('YYYY-MM-DD');
                 axios.get('/api/ticket', {
                     params: { day }
-                }).then(res => this.ticketRemaining = res.data);
+                }).then(res => this.store.ticketRemaining = res.data);
             }
         },
     }

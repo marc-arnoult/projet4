@@ -18,6 +18,7 @@
 <script>
     import Datepicker from './Datepicker.vue'
     import VueRouter from 'vue-router'
+    import store from '../store/ReservationStore'
 
     export default {
         router: new VueRouter({

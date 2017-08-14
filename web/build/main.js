@@ -258,11 +258,16 @@ var _vueRouter = __webpack_require__("./node_modules/vue-router/dist/vue-router.
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
+var _ReservationStore = __webpack_require__("./front/store/ReservationStore.js");
+
+var _ReservationStore2 = _interopRequireDefault(_ReservationStore);
+
 function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : { default: obj };
 }
 
 _vue2.default.use(_vueRouter2.default);
+Window.store = _ReservationStore2.default;
 
 new _vue2.default({
     el: '#app',
@@ -274,6 +279,24 @@ new _vue2.default({
         console.log('Vue Enabled');
     }
 });
+
+/***/ }),
+
+/***/ "./front/store/ReservationStore.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    ticketRemaining: '',
+    numberOfTicket: 0,
+    stepOne: false,
+    stepTwo: false
+};
 
 /***/ }),
 
@@ -1879,6 +1902,8 @@ module.exports = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__("./node_modules/axios/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__store_ReservationStore__);
 //
 //
 //
@@ -1908,6 +1933,19 @@ module.exports = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -1925,8 +1963,8 @@ var state = {
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function data() {
         return {
+            store: __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore___default.a,
             language: 'fr',
-            ticketRemaining: '',
             date: '',
             state: state,
             format: 'DD/MM/YYYY'
@@ -1963,7 +2001,7 @@ var state = {
             __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get('/api/ticket', {
                 params: { day: day }
             }).then(function (res) {
-                return _this.ticketRemaining = res.data;
+                return _this.store.ticketRemaining = res.data;
             });
         }
     }
@@ -1977,6 +2015,8 @@ var state = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Datepicker_vue__ = __webpack_require__("./front/component/Datepicker.vue");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__("./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__store_ReservationStore__);
 //
 //
 //
@@ -1994,6 +2034,7 @@ var state = {
 //
 //
 //
+
 
 
 
@@ -2006,21 +2047,6 @@ var state = {
         }]
     })
 });
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js?{\"minimize\":false,\"sourceMap\":false,\"importLoaders\":0}!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a7b1072e\",\"scoped\":false,\"hasInlineConfig\":false}!./node_modules/resolve-url-loader/index.js?{\"sourceMap\":false}!./node_modules/sass-loader/lib/loader.js?{\"indentedSyntax\":true,\"sourceMap\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./front/component/Datepicker.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")();
-// imports
-
-
-// module
-exports.push([module.i, "\n@keyframes spinAround {\nfrom {\n    transform: rotate(0deg);\n}\nto {\n    transform: rotate(359deg);\n}\n}\n#datepicker .input {\n  width: 290px;\n  margin-bottom: 20px;\n}\n#datepicker .vdp-datepicker__calendar {\n  margin: auto;\n  font-size: 1.28rem;\n  font-family: \"Open sans\";\n  width: 520px;\n  height: 490px;\n  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.18), 0 5px 20px rgba(0, 0, 0, 0.16);\n}\n#datepicker .vdp-datepicker__calendar header {\n  font-weight: 600;\n  height: 50px;\n  background-color: #0097a7;\n  padding-top: 5px;\n  color: #fff;\n}\n#datepicker .vdp-datepicker__calendar header span:hover {\n  background-color: #019eb2;\n}\n#datepicker .vdp-datepicker__calendar header span {\n  transition: .3s;\n}\n#datepicker .vdp-datepicker__calendar header span:hover {\n  cursor: pointer;\n}\n#datepicker .vdp-datepicker__calendar header span.prev::after {\n  border-right-color: #fff;\n}\n#datepicker .vdp-datepicker__calendar header span.next::after {\n  border-left-color: #fff;\n}\n#datepicker .vdp-datepicker__calendar .cell {\n  border-radius: 65%;\n  height: 72px;\n  padding-top: 12px;\n  transition: .3s;\n}\n#datepicker .vdp-datepicker__calendar .cell:hover {\n  border-color: #0097a7;\n}\n#datepicker .vdp-datepicker__calendar .cell.selected {\n  background-color: #0097a7;\n  color: #fff;\n}\n#datepicker .vdp-datepicker__calendar .cell.month {\n  height: 70px;\n  padding-top: 12px;\n}\n#datepicker .ticket-remaining {\n  display: block;\n  margin: 0 auto 16px;\n}\n@media screen and (max-width: 550px) {\n#datepicker .vdp-datepicker__calendar {\n    width: 310px;\n    height: 320px;\n}\n#datepicker .vdp-datepicker__calendar .cell {\n    padding-top: 1px;\n    height: 44px;\n}\n}", ""]);
-
-// exports
-
 
 /***/ }),
 
@@ -35523,7 +35549,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "columns"
   }, [_c('div', {
     staticClass: "column has-text-centered"
-  }, [_c('input', {
+  }, [_c('h3', {
+    staticClass: "title is-5"
+  }, [_vm._v("Date :")]), _vm._v(" "), _c('input', {
     staticClass: "input",
     attrs: {
       "type": "text"
@@ -35542,7 +35570,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }), _vm._v(" "), _c('span', {
     staticClass: "ticket-remaining"
-  }, [_vm._v("Ticket restant : "), _c('strong', [_vm._v(_vm._s(_vm.ticketRemaining))])]), _vm._v(" "), _c('Datepicker', {
+  }, [_vm._v("Ticket restant : "), _c('strong', [_vm._v(_vm._s(_vm.store.ticketRemaining))])]), _vm._v(" "), _c('Datepicker', {
     attrs: {
       "disabled": _vm.state.disabled,
       "language": _vm.language,
@@ -35555,12 +35583,58 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       },
       expression: "state.date"
     }
-  })], 1), _vm._v(" "), _vm._m(0)])])
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "column"
+  }, [_c('form', {
+    staticClass: "form"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('div', {
+    staticClass: "control"
+  }, [_c('label', {
+    attrs: {
+      "for": ""
+    }
+  }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.store.numberOfTicket),
+      expression: "store.numberOfTicket"
+    }],
+    staticClass: "input",
+    attrs: {
+      "type": "number",
+      "min": "0",
+      "max": _vm.store.ticketRemaining
+    },
+    domProps: {
+      "value": (_vm.store.numberOfTicket)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.store.numberOfTicket = $event.target.value
+      }
+    }
+  })])])])])])])
 }
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "column"
-  }, [_c('form')])
+    staticClass: "field"
+  }, [_c('div', {
+    staticClass: "control"
+  }, [_c('label', {
+    attrs: {
+      "for": ""
+    }
+  }), _vm._v(" "), _c('input', {
+    staticClass: "input",
+    attrs: {
+      "type": "text",
+      "value": "test"
+    }
+  })])])
 }]
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
