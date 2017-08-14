@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="app">
-        <citation></citation>
+    <div id="app" class="section">
+        <Citation></Citation>
         <div class="container">
             <h1 class="title is-1 has-text-centered">
                 {{ 'Ticketing' | trans | upper }}
             </h1>
         </div>
+        <Reservation language="{{ app.request.locale }}"></Reservation>
     </div>
 {% endblock %}

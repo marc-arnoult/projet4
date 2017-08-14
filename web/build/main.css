@@ -1,9 +1,97 @@
 
-#citation-generator blockquote {
-    font-size: 1.3rem;
+blockquote[data-v-a5c50558] {
+  font-size: 1.3rem;
 }
-#citation-generator em {
-    padding-top: 12px;
-    font-weight: bolder;
-    font-size: 1.2rem;
+em[data-v-a5c50558] {
+  padding-top: 12px;
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+#reservation[data-v-3d8168ef] {
+  margin-bottom: 40px;
+}
+@keyframes spinAround {
+from {
+    transform: rotate(0deg);
+}
+to {
+    transform: rotate(359deg);
+}
+}
+#datepicker .column:nth-child(2) > form > div:nth-child(1) {
+  margin-top: 23px;
+}
+#datepicker .column:nth-child(2) > form > div:nth-child(n+2) {
+  margin-top: 60px;
+}
+#datepicker .input {
+  width: 380px;
+  margin-bottom: 20px;
+}
+#datepicker .vdp-datepicker__calendar {
+  font-size: 1.28rem;
+  font-family: "Open sans";
+  width: 520px;
+  height: 490px;
+  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.18), 0 5px 20px rgba(0, 0, 0, 0.16);
+}
+#datepicker .vdp-datepicker__calendar header {
+  font-weight: 600;
+  height: 50px;
+  background-color: #0097a7;
+  padding-top: 5px;
+  color: #fff;
+}
+#datepicker .vdp-datepicker__calendar header span:hover {
+  background-color: #019eb2;
+}
+#datepicker .vdp-datepicker__calendar header span {
+  transition: .3s;
+}
+#datepicker .vdp-datepicker__calendar header span:hover {
+  cursor: pointer;
+}
+#datepicker .vdp-datepicker__calendar header span.prev::after {
+  border-right-color: #fff;
+}
+#datepicker .vdp-datepicker__calendar header span.next::after {
+  border-left-color: #fff;
+}
+#datepicker .vdp-datepicker__calendar .cell {
+  border-radius: 65%;
+  height: 72px;
+  padding-top: 13px;
+  transition: .3s;
+}
+#datepicker .vdp-datepicker__calendar .cell:hover {
+  border-color: #0097a7;
+}
+#datepicker .vdp-datepicker__calendar .cell.selected {
+  background-color: #0097a7;
+  color: #fff;
+}
+#datepicker .vdp-datepicker__calendar .cell.month {
+  height: 70px;
+  padding-top: 12px;
+}
+#datepicker .ticket-remaining {
+  display: block;
+  margin: 0 auto 16px;
+}
+@media screen and (max-width: 550px) {
+#datepicker .input {
+    width: 100%;
+}
+#datepicker .vdp-datepicker__calendar {
+    width: 100%;
+    height: 300px;
+}
+#datepicker .vdp-datepicker__calendar .cell {
+    padding: 0;
+    border-radius: 2%;
+    height: 38px;
+}
+#datepicker .input {
+    width: 100%;
+}
 }

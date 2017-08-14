@@ -1,10 +1,18 @@
+
 import Vue from 'vue';
-import citation from './component/citation-generator.vue';
+import Citation from './component/Citation.vue';
+import Reservation from './component/Reservation.vue';
+import VueRouter from 'vue-router'
+import store from './store/ReservationStore';
+
+Vue.use(VueRouter);
+Window.store = store;
 
 new Vue({
     el: '#app',
     components: {
-        citation
+        Citation,
+        Reservation
     },
     created() {
         console.log('Vue Enabled')
