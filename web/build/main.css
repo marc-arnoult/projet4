@@ -24,8 +24,8 @@ to {
 #datepicker .column:nth-child(2) > form > div:nth-child(n+2) {
   margin-top: 60px;
 }
-#datepicker .input {
-  width: 380px;
+#datepicker .control {
+  width: 370px;
   margin-bottom: 20px;
 }
 #datepicker .vdp-datepicker__calendar {

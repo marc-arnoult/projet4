@@ -1978,6 +1978,17 @@ module.exports = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2039,12 +2050,21 @@ lists.forEach(list => {
                 params: { day }
             }).then(res => this.store.ticketRemaining = res.data);
         },
+        testEmail(value) {
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+                return true;
+            } else {
+                return false;
+            }
+        },
         isValidMail(event) {
             let email = event.target.value;
 
-            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+            if (this.testEmail(email)) {
                 event.target.classList.remove('is-danger');
                 event.target.classList.add('is-success');
+
+                this.store.email = email;
             } else {
                 event.target.classList.remove('is-success');
                 event.target.classList.add('is-danger');
@@ -35793,7 +35813,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "column"
   }, [_c('h3', {
     staticClass: "title is-5"
-  }, [_vm._v("Date :")]), _vm._v(" "), _c('input', {
+  }, [_vm._v("Date :")]), _vm._v(" "), _c('div', {
+    staticClass: "control"
+  }, [_c('input', {
     staticClass: "input",
     attrs: {
       "type": "text"
@@ -35812,7 +35834,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }), _vm._v(" "), _c('span', {
     staticClass: "ticket-remaining"
-  }, [_vm._v("Ticket restant : "), _c('strong', [_vm._v(_vm._s(_vm.store.ticketRemaining))])]), _vm._v(" "), _c('Datepicker', {
+  }, [_vm._v("Ticket restant : "), _c('strong', [_vm._v(_vm._s(_vm.store.ticketRemaining))])])]), _vm._v(" "), _c('Datepicker', {
     attrs: {
       "disabled": _vm.state.disabled,
       "inline": true,
@@ -35836,7 +35858,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "for": ""
     }
   }, [_vm._v("Email")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "control has-icons-left"
+    staticClass: "control has-icons-left has-icons-right"
   }, [_c('input', {
     directives: [{
       name: "model",
@@ -35860,7 +35882,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         _vm.store.email = $event.target.value
       }
     }
-  }), _vm._v(" "), _vm._m(1)])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _vm._m(1), _vm._v(" "), (!_vm.testEmail(_vm.store.email)) ? _c('span', {
+    staticClass: "icon is-small is-right"
+  }, [_c('i', {
+    staticClass: "fa fa-warning"
+  })]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "field"
   }, [_c('label', [_vm._v("Nombre de tickets")]), _vm._v(" "), _c('div', {
     staticClass: "control"

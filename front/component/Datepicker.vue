@@ -3,14 +3,16 @@
         <div class="columns is-centered">
             <div class="column">
                 <h3 class="title is-5">Date :</h3>
-                <input
-                        class="input"
-                        type="text"
-                        :value="date"
-                        @blur="setDateEnter($event)"
-                        @keyup.enter="setDateEnter($event)"
-                >
-                <span class="ticket-remaining">Ticket restant : <strong>{{ store.ticketRemaining }}</strong></span>
+                <div class="control">
+                    <input
+                            class="input"
+                            type="text"
+                            :value="date"
+                            @blur="setDateEnter($event)"
+                            @keyup.enter="setDateEnter($event)"
+                    >
+                    <span class="ticket-remaining">Ticket restant : <strong>{{ store.ticketRemaining }}</strong></span>
+                </div>
                 <Datepicker
                         :disabled="state.disabled"
                         v-model="state.date"
@@ -26,10 +28,18 @@
                         <span class="icon tooltip tooltip-right is-hidden-mobile" data-tooltip="email d'envoi des billets">
                             <i class="fa fa-info-circle" aria-hidden="true"></i>
                         </span>
-                        <div class="control has-icons-left">
-                            <input type="email" class="input" v-model="store.email" @blur="isValidMail($event)">
+                        <div class="control has-icons-left has-icons-right">
+                            <input
+                                    type="email"
+                                    class="input"
+                                    v-model="store.email"
+                                    @blur="isValidMail($event)"
+                            >
                             <span class="icon is-small is-left">
                                 <i class="fa fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right" v-if="!testEmail(store.email)">
+                                <i class="fa fa-warning"></i>
                             </span>
                         </div>
                     </div>
@@ -42,7 +52,8 @@
                                     @blur="isValidNumber($event)"
                                     v-model="store.numberOfTicket"
                                     min="0"
-                                    :max="store.ticketRemaining">
+                                    :max="store.ticketRemaining"
+                            >
                         </div>
                     </div>
                     <div class="field">
@@ -133,12 +144,21 @@
                     params: { day }
                 }).then(res => this.store.ticketRemaining = res.data);
             },
+            testEmail(value) {
+                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+                    return true;
+                } else {
+                    return false
+                }
+            },
             isValidMail(event) {
                 let email = event.target.value;
 
-                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                if (this.testEmail(email)) {
                     event.target.classList.remove('is-danger');
                     event.target.classList.add('is-success');
+
+                    this.store.email = email;
                 } else {
                     event.target.classList.remove('is-success');
                     event.target.classList.add('is-danger');
@@ -168,8 +188,8 @@
         .column:nth-child(2) > form > div:nth-child(n+2)
             margin-top: 60px
 
-        .input
-            width: 380px
+        .control
+            width: 370px
             margin-bottom: 20px
 
         .vdp-datepicker__calendar
