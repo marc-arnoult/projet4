@@ -7,8 +7,8 @@
                         class="input"
                         type="text"
                         :value="date"
-                        @blur="setDateEnter('date', $event)"
-                        @keyup.enter="setDateEnter('date', $event)"
+                        @blur="setDateEnter($event)"
+                        @keyup.enter="setDateEnter($event)"
                 >
                 <span class="ticket-remaining">Ticket restant : <strong>{{ store.ticketRemaining }}</strong></span>
                 <Datepicker
@@ -27,7 +27,7 @@
                             <i class="fa fa-info-circle" aria-hidden="true"></i>
                         </span>
                         <div class="control has-icons-left">
-                            <input type="email" class="input" v-model="store.email">
+                            <input type="email" class="input" v-model="store.email" @blur="isValidMail($event)">
                             <span class="icon is-small is-left">
                                 <i class="fa fa-envelope"></i>
                             </span>
@@ -36,7 +36,13 @@
                     <div class="field">
                         <label>Nombre de tickets</label>
                         <div class="control">
-                            <input type="number" class="input" v-model="store.numberOfTicket" min="0" :max="store.ticketRemaining">
+                            <input
+                                    type="number"
+                                    class="input"
+                                    @blur="isValidNumber($event)"
+                                    v-model="store.numberOfTicket"
+                                    min="0"
+                                    :max="store.ticketRemaining">
                         </div>
                     </div>
                     <div class="field">
@@ -54,7 +60,7 @@
                         </div>
                     </div>
                     <div class="field">
-                        <button class="button is-blue is-medium">Reservation</button>
+                        <router-link to="#" class="button is-blue is-medium">Reservation</router-link>
                     </div>
                 </form>
             </div>
@@ -116,7 +122,7 @@
             }
         },
         methods: {
-            setDateEnter(date, event) {
+            setDateEnter(event) {
                 this.date = event.target.value;
                 this.state.date = new Date(moment(event.target.value, 'DD/MM/YYYY'));
             },
@@ -126,6 +132,28 @@
                 axios.get('/api/ticket', {
                     params: { day }
                 }).then(res => this.store.ticketRemaining = res.data);
+            },
+            isValidMail(event) {
+                let email = event.target.value;
+
+                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                    event.target.classList.remove('is-danger');
+                    event.target.classList.add('is-success');
+                } else {
+                    event.target.classList.remove('is-success');
+                    event.target.classList.add('is-danger');
+                }
+            },
+            isValidNumber(event) {
+                let number = event.target.value;
+
+                if (number > store.ticketRemaining) {
+                    event.target.classList.remove('is-success');
+                    event.target.classList.add('is-danger');
+                } else {
+                    event.target.classList.remove('is-danger');
+                    event.target.classList.add('is-success');
+                }
             }
         },
     }
