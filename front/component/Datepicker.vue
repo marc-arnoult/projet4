@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="field">
-                        <router-link to="#" class="button is-blue is-medium">Reservation</router-link>
+                        <router-link to="/bar" class="button is-blue is-medium">Reservation</router-link>
                     </div>
                 </form>
             </div>

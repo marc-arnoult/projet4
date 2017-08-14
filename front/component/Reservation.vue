@@ -25,6 +25,7 @@
             language: {default: 'fr'}
         },
         router: new VueRouter({
+            mode: 'history',
             routes: [
                 {
                     path: '/',
