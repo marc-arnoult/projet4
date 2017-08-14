@@ -1973,6 +1973,12 @@ module.exports = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2026,7 +2032,7 @@ lists.forEach(function (list) {
         }
     },
     methods: {
-        setDateEnter: function setDateEnter(date, event) {
+        setDateEnter: function setDateEnter(event) {
             this.date = event.target.value;
             this.state.date = new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()(event.target.value, 'DD/MM/YYYY'));
         },
@@ -2040,6 +2046,28 @@ lists.forEach(function (list) {
             }).then(function (res) {
                 return _this.store.ticketRemaining = res.data;
             });
+        },
+        isValidMail: function isValidMail(event) {
+            var email = event.target.value;
+
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                event.target.classList.remove('is-danger');
+                event.target.classList.add('is-success');
+            } else {
+                event.target.classList.remove('is-success');
+                event.target.classList.add('is-danger');
+            }
+        },
+        isValidNumber: function isValidNumber(event) {
+            var number = event.target.value;
+
+            if (number > __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default.a.ticketRemaining) {
+                event.target.classList.remove('is-success');
+                event.target.classList.add('is-danger');
+            } else {
+                event.target.classList.remove('is-danger');
+                event.target.classList.add('is-success');
+            }
         }
     }
 });
@@ -35782,11 +35810,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     },
     on: {
       "blur": function($event) {
-        _vm.setDateEnter('date', $event)
+        _vm.setDateEnter($event)
       },
       "keyup": function($event) {
         if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13)) { return null; }
-        _vm.setDateEnter('date', $event)
+        _vm.setDateEnter($event)
       }
     }
   }), _vm._v(" "), _c('span', {
@@ -35831,6 +35859,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "value": (_vm.store.email)
     },
     on: {
+      "blur": function($event) {
+        _vm.isValidMail($event)
+      },
       "input": function($event) {
         if ($event.target.composing) { return; }
         _vm.store.email = $event.target.value
@@ -35857,6 +35888,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "value": (_vm.store.numberOfTicket)
     },
     on: {
+      "blur": function($event) {
+        _vm.isValidNumber($event)
+      },
       "input": function($event) {
         if ($event.target.composing) { return; }
         _vm.store.numberOfTicket = $event.target.value
@@ -35894,7 +35928,14 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "value": "Demi-journée"
     }
-  }, [_vm._v("Demi-journées")])])])])]), _vm._v(" "), _vm._m(3)])])])])
+  }, [_vm._v("Demi-journées")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('router-link', {
+    staticClass: "button is-blue is-medium",
+    attrs: {
+      "to": "#"
+    }
+  }, [_vm._v("Reservation")])], 1)])])])])
 }
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('span', {
@@ -35926,12 +35967,6 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
       "aria-hidden": "true"
     }
   })])
-},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "field"
-  }, [_c('button', {
-    staticClass: "button is-blue is-medium"
-  }, [_vm._v("Reservation")])])
 }]
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
