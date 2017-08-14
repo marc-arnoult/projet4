@@ -51,6 +51,7 @@
         date: new Date(moment()),
         disabled: {
             to: new Date(moment().subtract(1, 'days')),
+            days: [1],
             dates: [
                 new Date(moment(this.date).format('YYYY'), 4, 1),
                 new Date(moment(this.date).format('YYYY'), 10, 1),

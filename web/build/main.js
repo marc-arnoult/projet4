@@ -1956,6 +1956,7 @@ var state = {
     date: new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()()),
     disabled: {
         to: new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()().subtract(1, 'days')),
+        days: [1],
         dates: [new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()(this.date).format('YYYY'), 4, 1), new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()(this.date).format('YYYY'), 10, 1), new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()(this.date).format('YYYY'), 11, 25)]
     }
 };
