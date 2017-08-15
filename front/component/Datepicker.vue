@@ -120,7 +120,11 @@
             Datepicker
         },
         mounted() {
-            this.date = moment().format('DD/MM/YYYY');
+            if (moment().format('d') == 2) {
+                this.date = "Vous ne pouvez pas reserver pour aujourd'hui"
+            } else {
+                this.date = moment().format('DD/MM/YYYY')
+            }
             this.getTickerRemaining(moment().format('YYYY-MM-DD'));
         },
         watch: {

@@ -2026,7 +2026,11 @@ lists.forEach(list => {
         Datepicker: __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker___default.a
     },
     mounted() {
-        this.date = __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DD/MM/YYYY');
+        if (__WEBPACK_IMPORTED_MODULE_1_moment___default()().format('d') == 2) {
+            this.date = "Vous ne pouvez pas reserver pour aujourd'hui";
+        } else {
+            this.date = __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DD/MM/YYYY');
+        }
         this.getTickerRemaining(__WEBPACK_IMPORTED_MODULE_1_moment___default()().format('YYYY-MM-DD'));
     },
     watch: {
