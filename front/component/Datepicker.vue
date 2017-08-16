@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="field">
-                        <router-link to="/bar" class="button is-blue is-medium">Reservation</router-link>
+                        <router-link to="/command" class="button is-blue is-medium">Reservation</router-link>
                     </div>
                 </form>
             </div>
@@ -149,11 +149,7 @@
                 }).then(res => this.store.ticketRemaining = res.data);
             },
             testEmail(value) {
-                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
-                    return true;
-                } else {
-                    return false
-                }
+                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
             },
             isValidMail(event) {
                 let email = event.target.value;

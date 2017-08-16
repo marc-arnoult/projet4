@@ -1,15 +1,15 @@
 <template>
     <div class="container" id="reservation">
         <ul class="step" id="step">
-            <li class="step-item is-active">
+            <router-link to="/" class="step-item">
                 <a href="#steps"></a>
-            </li>
-            <li class="step-item">
+            </router-link>
+            <router-link to="/aaa" class="step-item">
                 <a href="#steps"></a>
-            </li>
-            <li class="step-item">
+            </router-link>
+            <router-link to="/aaaaa" class="step-item">
                 <a href="#steps"></a>
-            </li>
+            </router-link>
         </ul>
         <router-view></router-view>
     </div>
@@ -17,6 +17,7 @@
 
 <script>
     import Datepicker from './Datepicker.vue'
+    import Command from './Command.vue'
     import VueRouter from 'vue-router'
     import store from '../store/ReservationStore'
 
@@ -25,11 +26,21 @@
             language: {default: 'fr'}
         },
         router: new VueRouter({
-            mode: 'history',
             routes: [
                 {
                     path: '/',
                     component: Datepicker,
+                },
+                {
+                    path: '/command',
+                    component: Command,
+                    beforeEnter: (to, from, next) => {
+                        if (store.email !== '' && store.numberOfTicket !== 0 && store.type !== '') {
+                            next()
+                        } else {
+                            alert('Merci de remplir tout les champs')
+                        }
+                    }
                 }
             ]
         })

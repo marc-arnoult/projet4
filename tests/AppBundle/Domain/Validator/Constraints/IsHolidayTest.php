@@ -64,7 +64,7 @@ class IsHolidayTest extends WebTestCase
 
         $validator = $kernel->getContainer()->get('validator');
 
-        $this->ticket->setCreatedAt(new \DateTime('2017-08-15'));
+        $this->ticket->setCreatedAt(new \DateTime('2017-08-20'));
         $this->ticket->setEntryAt(new \DateTime('2017-11-01'));
 
         $errors = $validator->validate($this->ticket);

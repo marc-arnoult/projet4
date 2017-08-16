@@ -127,6 +127,56 @@ if (false) {(function () {
 
 /***/ }),
 
+/***/ "./front/component/Command.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_node_modules_vue_loader_lib_selector_type_script_index_0_Command_vue__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./front/component/Command.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_9a0bab24_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Command_vue__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-9a0bab24\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./front/component/Command.vue");
+var disposed = false
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_node_modules_vue_loader_lib_selector_type_script_index_0_Command_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_9a0bab24_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Command_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "front/component/Command.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Command.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9a0bab24", Component.options)
+  } else {
+    hotAPI.reload("data-v-9a0bab24", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
 /***/ "./front/component/Datepicker.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -236,6 +286,55 @@ if (false) {(function () {
 
 /***/ }),
 
+/***/ "./front/component/Ticket.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4b421439_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Ticket_vue__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-4b421439\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./front/component/Ticket.vue");
+var disposed = false
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+var __vue_script__ = null
+/* template */
+
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4b421439_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Ticket_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "front/component/Ticket.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Ticket.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4b421439", Component.options)
+  } else {
+    hotAPI.reload("data-v-4b421439", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
 /***/ "./front/main.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -294,11 +393,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     email: '',
     type: '',
-    language: '',
     ticketRemaining: '',
-    numberOfTicket: 0,
-    stepOne: false,
-    stepTwo: false
+    numberOfTicket: 0
 };
 
 /***/ }),
@@ -1892,6 +1988,37 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./front/component/Command.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Ticket_vue__ = __webpack_require__("./front/component/Ticket.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__store_ReservationStore__);
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    data() {
+        return {
+            store: __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore___default.a
+        };
+    },
+    components: {
+        Ticket: __WEBPACK_IMPORTED_MODULE_0__Ticket_vue__["a" /* default */]
+    }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./front/component/Datepicker.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2055,11 +2182,8 @@ lists.forEach(list => {
             }).then(res => this.store.ticketRemaining = res.data);
         },
         testEmail(value) {
-            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
-                return true;
-            } else {
-                return false;
-            }
+            return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)
+            );
         },
         isValidMail(event) {
             let email = event.target.value;
@@ -2095,9 +2219,10 @@ lists.forEach(list => {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Datepicker_vue__ = __webpack_require__("./front/component/Datepicker.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__("./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__store_ReservationStore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Command_vue__ = __webpack_require__("./front/component/Command.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__("./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__store_ReservationStore__);
 //
 //
 //
@@ -2115,6 +2240,7 @@ lists.forEach(list => {
 //
 //
 //
+
 
 
 
@@ -2124,11 +2250,20 @@ lists.forEach(list => {
     props: {
         language: { default: 'fr' }
     },
-    router: new __WEBPACK_IMPORTED_MODULE_1_vue_router__["default"]({
-        mode: 'history',
+    router: new __WEBPACK_IMPORTED_MODULE_2_vue_router__["default"]({
         routes: [{
             path: '/',
             component: __WEBPACK_IMPORTED_MODULE_0__Datepicker_vue__["a" /* default */]
+        }, {
+            path: '/command',
+            component: __WEBPACK_IMPORTED_MODULE_1__Command_vue__["a" /* default */],
+            beforeEnter: (to, from, next) => {
+                if (__WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a.email !== '' && __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a.numberOfTicket !== 0 && __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a.type !== '') {
+                    next();
+                } else {
+                    alert('Merci de remplir tout les champs');
+                }
+            }
         }]
     })
 });
@@ -35733,34 +35868,41 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "id": "reservation"
     }
-  }, [_vm._m(0), _vm._v(" "), _c('router-view')], 1)
-}
-var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', {
+  }, [_c('ul', {
     staticClass: "step",
     attrs: {
       "id": "step"
     }
-  }, [_c('li', {
-    staticClass: "step-item is-active"
+  }, [_c('router-link', {
+    staticClass: "step-item",
+    attrs: {
+      "to": "/"
+    }
   }, [_c('a', {
     attrs: {
       "href": "#steps"
     }
-  })]), _vm._v(" "), _c('li', {
-    staticClass: "step-item"
+  })]), _vm._v(" "), _c('router-link', {
+    staticClass: "step-item",
+    attrs: {
+      "to": "/aaa"
+    }
   }, [_c('a', {
     attrs: {
       "href": "#steps"
     }
-  })]), _vm._v(" "), _c('li', {
-    staticClass: "step-item"
+  })]), _vm._v(" "), _c('router-link', {
+    staticClass: "step-item",
+    attrs: {
+      "to": "/aaaaa"
+    }
   }, [_c('a', {
     attrs: {
       "href": "#steps"
     }
-  })])])
-}]
+  })])], 1), _vm._v(" "), _c('router-view')], 1)
+}
+var staticRenderFns = []
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -35768,6 +35910,58 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-3d8168ef", esExports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-4b421439\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./front/component/Ticket.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+}
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('form', [_c('h2', [_vm._v("Hey")]), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('div', {
+    staticClass: "control"
+  }, [_c('input', {
+    attrs: {
+      "type": "text"
+    }
+  })])])])])
+}]
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-4b421439", esExports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-9a0bab24\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./front/component/Command.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_vm._v("\n    Hello world\n    "), _vm._l((parseInt(_vm.store.numberOfTicket)), function(ticket) {
+    return _c('Ticket')
+  })], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-9a0bab24", esExports)
   }
 }
 
@@ -35956,7 +36150,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_c('router-link', {
     staticClass: "button is-blue is-medium",
     attrs: {
-      "to": "/bar"
+      "to": "/command"
     }
   }, [_vm._v("Reservation")])], 1)])])])])
 }

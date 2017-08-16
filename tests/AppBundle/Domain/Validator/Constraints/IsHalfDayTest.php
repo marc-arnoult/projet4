@@ -15,7 +15,7 @@ class IsHalfDayTest extends WebTestCase
     {
         $now = new \DateTime('NOW');
         $birthday = new \DateTime('1991-09-01');
-        $entry = new \DateTime('2017-09-01');
+        $entry = new \DateTime('2017-09-02');
 
         $command = new Command();
         $ticket = new Ticket();
