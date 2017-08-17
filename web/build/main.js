@@ -2251,6 +2251,7 @@ lists.forEach(list => {
         language: { default: 'fr' }
     },
     router: new __WEBPACK_IMPORTED_MODULE_2_vue_router__["default"]({
+        linkActiveClass: 'is-active',
         routes: [{
             path: '/',
             component: __WEBPACK_IMPORTED_MODULE_0__Datepicker_vue__["a" /* default */]
@@ -35876,31 +35877,22 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_c('router-link', {
     staticClass: "step-item",
     attrs: {
-      "to": "/"
+      "to": "/",
+      "tag": "li"
     }
-  }, [_c('a', {
-    attrs: {
-      "href": "#steps"
-    }
-  })]), _vm._v(" "), _c('router-link', {
+  }, [_c('a', [_vm._v("/foo")])]), _vm._v(" "), _c('router-link', {
     staticClass: "step-item",
     attrs: {
-      "to": "/aaa"
+      "to": "/aaa",
+      "tag": "li"
     }
-  }, [_c('a', {
-    attrs: {
-      "href": "#steps"
-    }
-  })]), _vm._v(" "), _c('router-link', {
+  }, [_c('a', [_vm._v("/foo")])]), _vm._v(" "), _c('router-link', {
     staticClass: "step-item",
     attrs: {
-      "to": "/aaaaa"
+      "to": "/aaaaa",
+      "tag": "li"
     }
-  }, [_c('a', {
-    attrs: {
-      "href": "#steps"
-    }
-  })])], 1), _vm._v(" "), _c('router-view')], 1)
+  }, [_c('a', [_vm._v("/foo")])])], 1), _vm._v(" "), _c('router-view')], 1)
 }
 var staticRenderFns = []
 render._withStripped = true

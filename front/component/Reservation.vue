@@ -1,15 +1,15 @@
 <template>
     <div class="container" id="reservation">
         <ul class="step" id="step">
-            <router-link to="/" class="step-item">
-                <a href="#steps"></a>
-            </router-link>
-            <router-link to="/aaa" class="step-item">
-                <a href="#steps"></a>
-            </router-link>
-            <router-link to="/aaaaa" class="step-item">
-                <a href="#steps"></a>
-            </router-link>
+                <router-link to="/" tag="li" class="step-item">
+                    <a>/foo</a>
+                </router-link>
+                <router-link to="/aaa" tag="li" class="step-item">
+                    <a>/foo</a>
+                </router-link>
+                <router-link to="/aaaaa" tag="li" class="step-item">
+                    <a>/foo</a>
+                </router-link>
         </ul>
         <router-view></router-view>
     </div>
@@ -26,6 +26,7 @@
             language: {default: 'fr'}
         },
         router: new VueRouter({
+            linkActiveClass: 'is-active',
             routes: [
                 {
                     path: '/',
@@ -43,7 +44,7 @@
                     }
                 }
             ]
-        })
+        }),
     }
 </script>
 
