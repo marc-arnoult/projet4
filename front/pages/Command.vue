@@ -1,7 +1,6 @@
 <template>
     <div>
-        Hello world
-        <Ticket v-for="ticket in parseInt(store.numberOfTicket)" :key="ticket.id"></Ticket>
+        <Ticket v-for="(ticket, index) in parseInt(store.numberOfTicket)" :index="index" :key="index"></Ticket>
     </div>
 </template>
 

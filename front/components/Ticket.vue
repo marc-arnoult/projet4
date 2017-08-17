@@ -1,12 +1,21 @@
 <template>
     <div>
-        <form>
-            <h2>Hey</h2>
-            <div class="field">
-                <div class="control">
-                    <input type="text">
-                </div>
+        <div class="field">
+            <div class="control">
+                <input type="text" class="input">
+                <input type="text" class="input">
             </div>
-        </form>
+        </div>
     </div>
 </template>
+
+<script>
+    export default {
+        props: {
+            index: {
+                type: Number,
+                required: false
+            }
+        }
+    }
+</script>

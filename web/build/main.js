@@ -186,11 +186,12 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_09983ecc_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Ticket_vue__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-09983ecc\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./front/components/Ticket.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_node_modules_vue_loader_lib_selector_type_script_index_0_Ticket_vue__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./front/components/Ticket.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_09983ecc_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Ticket_vue__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-09983ecc\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./front/components/Ticket.vue");
 var disposed = false
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = null
+
 /* template */
 
 /* styles */
@@ -200,8 +201,8 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __vue_script__,
-  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_09983ecc_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Ticket_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_node_modules_vue_loader_lib_selector_type_script_index_0_Ticket_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_09983ecc_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Ticket_vue__["a" /* default */],
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
@@ -2046,6 +2047,33 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./front/components/Ticket.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    props: {
+        index: {
+            type: Number,
+            required: false
+        }
+    }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./front/pages/Command.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2053,7 +2081,6 @@ module.exports = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Ticket_vue__ = __webpack_require__("./front/components/Ticket.vue");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__store_ReservationStore__);
-//
 //
 //
 //
@@ -2269,63 +2296,6 @@ lists.forEach(list => {
         }
     }
 });
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/lib/css-base.js":
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function() {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		var result = [];
-		for(var i = 0; i < this.length; i++) {
-			var item = this[i];
-			if(item[2]) {
-				result.push("@media " + item[2] + "{" + item[1] + "}");
-			} else {
-				result.push(item[1]);
-			}
-		}
-		return result.join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
 
 /***/ }),
 
@@ -35868,15 +35838,21 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   return _vm._m(0)
 }
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('form', [_c('h2', [_vm._v("Hey")]), _vm._v(" "), _c('div', {
+  return _c('div', [_c('div', {
     staticClass: "field"
   }, [_c('div', {
     staticClass: "control"
   }, [_c('input', {
+    staticClass: "input",
     attrs: {
       "type": "text"
     }
-  })])])])])
+  }), _vm._v(" "), _c('input', {
+    staticClass: "input",
+    attrs: {
+      "type": "text"
+    }
+  })])])])
 }]
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
@@ -36125,11 +36101,14 @@ if (false) {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._v("\n    Hello world\n    "), _vm._l((parseInt(_vm.store.numberOfTicket)), function(ticket) {
+  return _c('div', _vm._l((parseInt(_vm.store.numberOfTicket)), function(ticket, index) {
     return _c('Ticket', {
-      key: ticket.id
+      key: index,
+      attrs: {
+        "index": index
+      }
     })
-  })], 2)
+  }))
 }
 var staticRenderFns = []
 render._withStripped = true
