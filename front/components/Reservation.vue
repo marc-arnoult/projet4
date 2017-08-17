@@ -1,23 +1,25 @@
 <template>
     <div class="container" id="reservation">
         <ul class="step" id="step">
-                <router-link to="/" tag="li" class="step-item">
-                    <a>/foo</a>
+                <router-link to="/" tag="li" class="step-item" exact>
+                    <a>Reservation</a>
                 </router-link>
-                <router-link to="/aaa" tag="li" class="step-item">
-                    <a>/foo</a>
+                <router-link to="/command" tag="li" class="step-item" exact>
+                    <a>Commande</a>
                 </router-link>
-                <router-link to="/aaaaa" tag="li" class="step-item">
-                    <a>/foo</a>
+                <router-link to="/aaaaa" tag="li" class="step-item" exact>
+                    <a>paiement</a>
                 </router-link>
         </ul>
-        <router-view></router-view>
+        <transition name="fade">
+            <router-view></router-view>
+        </transition>
     </div>
 </template>
 
 <script>
-    import Datepicker from './Datepicker.vue'
-    import Command from './Command.vue'
+    import Datepicker from '../pages/Datepicker.vue'
+    import Command from '../pages/Command.vue'
     import VueRouter from 'vue-router'
     import store from '../store/ReservationStore'
 
@@ -30,6 +32,7 @@
             routes: [
                 {
                     path: '/',
+                    name: 'first-step',
                     component: Datepicker,
                 },
                 {
@@ -39,7 +42,7 @@
                         if (store.email !== '' && store.numberOfTicket !== 0 && store.type !== '') {
                             next()
                         } else {
-                            alert('Merci de remplir tout les champs')
+
                         }
                     }
                 }
@@ -48,7 +51,18 @@
     }
 </script>
 
-<style scoped lang="sass">
+<style lang="sass">
     #reservation
         margin-bottom: 40px
+
+    .fade-enter-active, .fade-leave-active
+        transition-property: opacity
+        transition-duration: .28s
+
+    .fade-enter-active
+        transition-delay: .28s
+
+    .fade-enter, .fade-leave-active
+        opacity: 0
+
 </style>

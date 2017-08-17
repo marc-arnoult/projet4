@@ -120,7 +120,7 @@
             Datepicker
         },
         mounted() {
-            if (moment().format('d') == 2) {
+            if (moment().format('d') === 2) {
                 this.date = "Vous ne pouvez pas reserver pour aujourd'hui"
             } else {
                 this.date = moment().format('DD/MM/YYYY')
@@ -165,9 +165,9 @@
                 }
             },
             isValidNumber(event) {
-                let number = event.target.value;
+                let number = parseInt(event.target.value);
 
-                if (number > store.ticketRemaining) {
+                if (number > store.ticketRemaining || number === 0) {
                     event.target.classList.remove('is-success');
                     event.target.classList.add('is-danger');
                 } else {
@@ -180,7 +180,8 @@
 </script>
 
 <style lang="sass">
-    @import "../../web/assets/css/bulma/sass/utilities/_all"
+    @import "../../web/assets/css/bulma/sass/utilities/all"
+
     #datepicker
         .column:nth-child(2) > form > div:nth-child(1)
             margin-top: 23px

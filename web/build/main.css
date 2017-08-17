@@ -1,14 +1,26 @@
 
-blockquote[data-v-a5c50558] {
+blockquote[data-v-27cdb575] {
   font-size: 1.3rem;
 }
-em[data-v-a5c50558] {
+em[data-v-27cdb575] {
   padding-top: 12px;
   font-weight: bolder;
   font-size: 1.2rem;
 }
-#reservation[data-v-3d8168ef] {
+#reservation {
   margin-bottom: 40px;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition-property: opacity;
+  transition-duration: .28s;
+}
+.fade-enter-active {
+  transition-delay: .28s;
+}
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 @keyframes spinAround {
 from {

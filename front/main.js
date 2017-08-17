@@ -1,7 +1,7 @@
 
 import Vue from 'vue';
-import Citation from './component/Citation.vue';
-import Reservation from './component/Reservation.vue';
+import Citation from './components/Citation.vue';
+import Reservation from './components/Reservation.vue';
 import VueRouter from 'vue-router'
 import store from './store/ReservationStore';
 
