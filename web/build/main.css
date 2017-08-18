@@ -107,3 +107,10 @@ to {
     width: 100%;
 }
 }
+.ticket[data-v-09983ecc] {
+  margin-bottom: 80px;
+}
+.ticket-title[data-v-09983ecc] {
+  display: flex;
+  justify-content: space-between;
+}
