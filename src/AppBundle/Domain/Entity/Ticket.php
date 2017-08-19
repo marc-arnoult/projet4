@@ -80,6 +80,10 @@ class Ticket
      */
     private $price;
 
+    /**
+     * @var Command
+     * @ORM\ManyToOne(targetEntity="AppBundle\Domain\Entity\Command", inversedBy="tickets", cascade={"persist"})
+     */
     private $command;
     /**
      * @var \DateTime

@@ -14,7 +14,7 @@ class HomeAction
 {
     private $responder;
 
-    public function __construct(HomeResponder $responder)
+    public function __construct(HomeResponder $responder, EntityManagerInterface $manager)
     {
         $this->responder = $responder;
     }
