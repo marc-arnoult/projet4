@@ -44,7 +44,7 @@
                         if (store.email !== '' && store.numberOfTicket !== 0 && store.type !== '') {
                             next()
                         } else {
-
+                            window.location.href = from.path
                         }
                     }
                 }

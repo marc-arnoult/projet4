@@ -2733,7 +2733,9 @@ lists.forEach(list => {
             beforeEnter: (to, from, next) => {
                 if (__WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a.email !== '' && __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a.numberOfTicket !== 0 && __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a.type !== '') {
                     next();
-                } else {}
+                } else {
+                    window.location.href = from.path;
+                }
             }
         }]
     })
