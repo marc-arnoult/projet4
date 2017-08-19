@@ -3,40 +3,55 @@
 namespace AppBundle\Domain\Service;
 
 
+use AppBundle\Domain\Entity\Ticket;
+
 class PriceCalculator implements PriceCalculatorInterface
 {
-    const CHILD = 8;
-    const ADULT = 16;
+    const FREE   = 0;
+    const CHILD  = 8;
+    const ADULT  = 16;
+    const PROMO  = 10;
     const SENIOR = 12;
-    const PROMO = 10;
 
-    public function calculate($tickets) : int
+    /**
+     * Calculate the price of the ticket from is age ( return nothing the object is passed by reference ).
+     *
+     * @param Ticket $ticket
+     * @return void
+     */
+    public function calculatePrice(Ticket $ticket) : void
     {
-        $price = 0;
+        $age = $this->calculateAge($ticket->getBirthday());
 
-        foreach ($tickets as $ticket) {
-            $age = (int) $ticket->getBirthday()->diff(new \DateTime('now'))->y;
-
-            if ($ticket->getReduction()) {
-                $price += PriceCalculator::PROMO;
-                break;
-            }
-
+        if ($ticket->getReduction()) {
+            $ticket->setPrice(PriceCalculator::PROMO);
+        } else {
             switch ($age) {
                 case ($age < 4):
-                    $price += 0;
+                    $ticket->setPrice(PriceCalculator::FREE);
                     break;
                 case ($age >= 4 && $age < 12):
-                    $price += PriceCalculator::CHILD;
+                    $ticket->setPrice(PriceCalculator::CHILD);
                     break;
                 case ($age >= 60):
-                    $price += PriceCalculator::SENIOR;
+                    $ticket->setPrice(PriceCalculator::SENIOR);
                     break;
                 default:
-                    $price += PriceCalculator::ADULT;
+                    $ticket->setPrice(PriceCalculator::ADULT);
                     break;
             }
         }
-        return $price;
+    }
+
+
+    /**
+     * Calculate the age from the birthday.
+     *
+     * @param \DateTime $birthday
+     * @return int
+     */
+    public function calculateAge(\DateTime $birthday) : int
+    {
+        return (int) $birthday->diff(new \DateTime('NOW'))->y;
     }
 }

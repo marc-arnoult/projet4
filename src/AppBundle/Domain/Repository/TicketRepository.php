@@ -1,6 +1,9 @@
 <?php
 
 namespace AppBundle\Domain\Repository;
+use AppBundle\Domain\Entity\{
+    Ticket
+};
 
 /**
  * TicketRepository
@@ -10,9 +13,9 @@ namespace AppBundle\Domain\Repository;
  */
 class TicketRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getTicketByDay($date)
+    public function getTicketsRemaining($date)
     {
-        return $this->createQueryBuilder('t')
+        return Ticket::TICKET_LIMIT - $this->createQueryBuilder('t')
             ->select('COUNT(t)')
             ->where("t.entryAt LIKE :day")
             ->setParameter(':day', "$date%")
