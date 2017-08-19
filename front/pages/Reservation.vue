@@ -8,18 +8,20 @@
                     <a>Commande</a>
                 </router-link>
                 <router-link to="/aaaaa" tag="li" class="step-item" exact>
-                    <a>paiement</a>
+                    <a>Paiement</a>
                 </router-link>
         </ul>
         <transition name="fade">
-            <router-view></router-view>
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
         </transition>
     </div>
 </template>
 
 <script>
-    import Datepicker from '../pages/Datepicker.vue'
-    import Command from '../pages/Command.vue'
+    import Datepicker from './Datepicker.vue'
+    import Command from './Command.vue'
     import VueRouter from 'vue-router'
     import store from '../store/ReservationStore'
 

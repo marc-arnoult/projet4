@@ -2,12 +2,12 @@
     <div class="container" id="datepicker">
         <div class="columns is-centered">
             <div class="column">
-                <h3 class="title is-5">Date :</h3>
+                <h3 class="title is-5">Date* :</h3>
                 <div class="control">
                     <input
-                            class="input"
+                            class="input is-medium"
                             type="text"
-                            :value="date"
+                            :value="store.entry_at"
                             @blur="setDateEnter($event)"
                             @keyup.enter="setDateEnter($event)"
                     >
@@ -24,46 +24,42 @@
             <div class="column">
                 <form class="form">
                     <div class="field">
-                        <label for="">Email</label>
+                        <label for="">Email*</label>
                         <span class="icon tooltip tooltip-right is-hidden-mobile" data-tooltip="email d'envoi des billets">
                             <i class="fa fa-info-circle" aria-hidden="true"></i>
                         </span>
-                        <div class="control has-icons-left has-icons-right">
+                        <div class="control">
                             <input
                                     type="email"
-                                    class="input"
+                                    class="input is-medium"
                                     v-model="store.email"
                                     @blur="isValidMail($event)"
+                                    required
                             >
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-envelope"></i>
-                            </span>
-                            <span class="icon is-small is-right" v-if="!testEmail(store.email)">
-                                <i class="fa fa-warning"></i>
-                            </span>
                         </div>
                     </div>
                     <div class="field">
-                        <label>Nombre de tickets</label>
+                        <label>Nombre de tickets*</label>
                         <div class="control">
                             <input
                                     type="number"
-                                    class="input"
+                                    class="input is-medium"
                                     @blur="isValidNumber($event)"
                                     v-model="store.numberOfTicket"
                                     min="0"
                                     :max="store.ticketRemaining"
+                                    required
                             >
                         </div>
                     </div>
                     <div class="field">
-                        <label>Type</label>
+                        <label>Type*</label>
                         <span class="icon tooltip tooltip-right is-hidden-mobile" data-tooltip="billet demi-journée valable à partir de 14h">
                             <i class="fa fa-info-circle" aria-hidden="true"></i>
                         </span>
                         <div class="control">
-                            <div class="select">
-                                <select v-model="store.type">
+                            <div class="select is-medium">
+                                <select v-model="store.type" required>
                                     <option value="Journée">Journées</option>
                                     <option value="Demi-journée">Demi-journées</option>
                                 </select>
@@ -71,7 +67,7 @@
                         </div>
                     </div>
                     <div class="field">
-                        <router-link to="/command" class="button is-blue is-medium">Reservation</router-link>
+                        <router-link tag="button" to="/command" class="button is-success is-medium" :disabled="disabled">Reservation</router-link>
                     </div>
                 </form>
             </div>
@@ -109,9 +105,9 @@
     export default {
         data() {
             return {
+                disabled: true,
                 language: this.$parent.language,
                 store: store,
-                date: '',
                 state: state,
                 format: 'DD/MM/YYYY'
             }
@@ -119,26 +115,9 @@
         components: {
             Datepicker
         },
-        mounted() {
-            if (moment().format('d') === 2) {
-                this.date = "Vous ne pouvez pas reserver pour aujourd'hui"
-            } else {
-                this.date = moment().format('DD/MM/YYYY')
-            }
-            this.getTickerRemaining(moment().format('YYYY-MM-DD'));
-        },
-        watch: {
-            state: {
-                handler(val) {
-                    this.date = moment(val.date).format('DD/MM/YYYY');
-                    this.getTickerRemaining(val.date);
-                },
-              deep: true
-            }
-        },
         methods: {
             setDateEnter(event) {
-                this.date = event.target.value;
+                this.store.entry_at = event.target.value;
                 this.state.date = new Date(moment(event.target.value, 'DD/MM/YYYY'));
             },
             getTickerRemaining(date) {
@@ -176,6 +155,32 @@
                 }
             }
         },
+        mounted() {
+            if (moment().format('d') === 2) {
+                this.store.entry_at = "Vous ne pouvez pas reserver pour aujourd'hui"
+            } else {
+                this.store.entry_at = moment().format('DD/MM/YYYY')
+            }
+            this.getTickerRemaining(moment().format('YYYY-MM-DD'));
+        },
+        watch: {
+            state: {
+                handler(val) {
+                    this.store.entry_at = moment(val.date).format('DD/MM/YYYY');
+                    this.getTickerRemaining(val.date);
+                },
+                deep: true
+            }
+        },
+        updated: _.debounce(function () {
+            for (let key in this.store) {
+                if (this.store[key] === '') {
+                    this.disabled = true;
+                    return;
+                }
+                this.disabled = false;
+            }
+        }, 500)
     }
 </script>
 

@@ -127,61 +127,6 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ "./front/components/Reservation.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_node_modules_vue_loader_lib_selector_type_script_index_0_Reservation_vue__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./front/components/Reservation.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c3559da4_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Reservation_vue__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-c3559da4\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./front/components/Reservation.vue");
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__("./node_modules/extract-text-webpack-plugin/dist/loader.js?{\"omit\":1,\"remove\":true}!./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js?{\"minimize\":false,\"sourceMap\":false,\"importLoaders\":0}!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c3559da4\",\"scoped\":false,\"hasInlineConfig\":false}!./node_modules/resolve-url-loader/index.js?{\"sourceMap\":false}!./node_modules/sass-loader/lib/loader.js?{\"indentedSyntax\":true,\"sourceMap\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./front/components/Reservation.vue")
-}
-var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
-/* script */
-
-/* template */
-
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_node_modules_vue_loader_lib_selector_type_script_index_0_Reservation_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_c3559da4_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Reservation_vue__["a" /* default */],
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "front/components/Reservation.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Reservation.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c3559da4", Component.options)
-  } else {
-    hotAPI.reload("data-v-c3559da4", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-/* harmony default export */ __webpack_exports__["default"] = (Component.exports);
-
-
-/***/ }),
-
 /***/ "./front/components/Ticket.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -250,7 +195,7 @@ var _Citation = __webpack_require__("./front/components/Citation.vue");
 
 var _Citation2 = _interopRequireDefault(_Citation);
 
-var _Reservation = __webpack_require__("./front/components/Reservation.vue");
+var _Reservation = __webpack_require__("./front/pages/Reservation.vue");
 
 var _Reservation2 = _interopRequireDefault(_Reservation);
 
@@ -287,22 +232,26 @@ new _vue2.default({
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_node_modules_vue_loader_lib_selector_type_script_index_0_Command_vue__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./front/pages/Command.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6361b135_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Command_vue__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6361b135\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./front/pages/Command.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6361b135_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_Command_vue__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6361b135\",\"hasScoped\":true}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./front/pages/Command.vue");
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/extract-text-webpack-plugin/dist/loader.js?{\"omit\":1,\"remove\":true}!./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js?{\"minimize\":false,\"sourceMap\":false,\"importLoaders\":0}!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6361b135\",\"scoped\":true,\"hasInlineConfig\":false}!./node_modules/resolve-url-loader/index.js?{\"sourceMap\":false}!./node_modules/sass-loader/lib/loader.js?{\"indentedSyntax\":true,\"sourceMap\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./front/pages/Command.vue")
+}
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
 
 /* template */
 
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-6361b135"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_node_modules_vue_loader_lib_selector_type_script_index_0_Command_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6361b135_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Command_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_6361b135_hasScoped_true_node_modules_vue_loader_lib_selector_type_template_index_0_Command_vue__["a" /* default */],
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
@@ -386,6 +335,61 @@ if (false) {(function () {
 
 /***/ }),
 
+/***/ "./front/pages/Reservation.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_node_modules_vue_loader_lib_selector_type_script_index_0_Reservation_vue__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./front/pages/Reservation.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_64ab9794_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Reservation_vue__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-64ab9794\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./front/pages/Reservation.vue");
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/extract-text-webpack-plugin/dist/loader.js?{\"omit\":1,\"remove\":true}!./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js?{\"minimize\":false,\"sourceMap\":false,\"importLoaders\":0}!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-64ab9794\",\"scoped\":false,\"hasInlineConfig\":false}!./node_modules/resolve-url-loader/index.js?{\"sourceMap\":false}!./node_modules/sass-loader/lib/loader.js?{\"indentedSyntax\":true,\"sourceMap\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./front/pages/Reservation.vue")
+}
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_node_modules_vue_loader_lib_selector_type_script_index_0_Reservation_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_64ab9794_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Reservation_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "front/pages/Reservation.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Reservation.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-64ab9794", Component.options)
+  } else {
+    hotAPI.reload("data-v-64ab9794", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["default"] = (Component.exports);
+
+
+/***/ }),
+
 /***/ "./front/store/ReservationStore.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -398,6 +402,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     email: '',
     type: '',
+    entry_at: '',
     ticketRemaining: '',
     numberOfTicket: 0
 };
@@ -1993,68 +1998,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./front/components/Reservation.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_Datepicker_vue__ = __webpack_require__("./front/pages/Datepicker.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_Command_vue__ = __webpack_require__("./front/pages/Command.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__("./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__store_ReservationStore__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-    props: {
-        language: { default: 'fr' }
-    },
-    router: new __WEBPACK_IMPORTED_MODULE_2_vue_router__["default"]({
-        linkActiveClass: 'is-active',
-        routes: [{
-            path: '/',
-            name: 'first-step',
-            component: __WEBPACK_IMPORTED_MODULE_0__pages_Datepicker_vue__["a" /* default */]
-        }, {
-            path: '/command',
-            component: __WEBPACK_IMPORTED_MODULE_1__pages_Command_vue__["a" /* default */],
-            beforeEnter: (to, from, next) => {
-                if (__WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a.email !== '' && __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a.numberOfTicket !== 0 && __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a.type !== '') {
-                    next();
-                } else {}
-            }
-        }]
-    })
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./front/components/Ticket.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__store_ReservationStore__);
 //
 //
 //
@@ -2109,6 +2062,280 @@ module.exports = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     props: {
@@ -2116,7 +2343,61 @@ module.exports = {
             type: Number,
             required: false
         }
-    }
+    },
+    data() {
+        return {
+            ticket: {
+                first_name: '',
+                last_name: '',
+                birthday: '',
+                country: '',
+                reduction: false,
+                entry_at: __WEBPACK_IMPORTED_MODULE_2__store_ReservationStore___default.a.entry_at,
+                type: __WEBPACK_IMPORTED_MODULE_2__store_ReservationStore___default.a.type,
+                price: 16
+            }
+        };
+    },
+    methods: {
+        calculatePrice() {
+            let now = __WEBPACK_IMPORTED_MODULE_0_moment___default()();
+            let age = parseInt(now.diff(this.ticket.birthday, 'years'));
+
+            switch (true) {
+                case age < 4:
+                    this.ticket.price = 0;
+                    break;
+
+                case this.ticket.reduction === true:
+                    this.ticket.price = 10;
+                    break;
+
+                case age >= 4 && age < 12:
+                    this.ticket.price = 8;
+                    break;
+
+                case age >= 60:
+                    this.ticket.price = 12;
+                    break;
+
+                default:
+                    this.ticket.price = 16;
+                    break;
+            }
+            this.$emit('setPrice');
+        }
+    },
+    watch: {
+        ticket: {
+            handler: __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.debounce(function () {
+                this.calculatePrice();
+            }, 200),
+            deep: true
+        }
+    },
+    updated: __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.debounce(function () {
+        this.$parent.isCompleted();
+    }, 200)
 });
 
 /***/ }),
@@ -2134,6 +2415,25 @@ module.exports = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2141,11 +2441,41 @@ module.exports = {
 /* harmony default export */ __webpack_exports__["a"] = ({
     data() {
         return {
-            store: __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore___default.a
+            disabled: true,
+            totalPrice: 0,
+            store: __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore___default.a,
+            tickets: []
         };
     },
     components: {
         Ticket: __WEBPACK_IMPORTED_MODULE_0__components_Ticket_vue__["a" /* default */]
+    },
+    methods: {
+        priceTotal() {
+            let total = 0;
+
+            this.$children.forEach(child => {
+                total += parseInt(child._data.ticket.price);
+            });
+
+            this.totalPrice = total;
+        },
+        isCompleted() {
+            this.$children.forEach(child => {
+                let ticket = child._data.ticket;
+
+                for (let key in ticket) {
+                    if (ticket[key] === '') {
+                        this.disabled = true;
+                        return;
+                    }
+                    this.disabled = false;
+                }
+            });
+        }
+    },
+    mounted() {
+        this.priceTotal();
     }
 });
 
@@ -2167,10 +2497,6 @@ module.exports = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__store_ReservationStore__);
-//
-//
-//
-//
 //
 //
 //
@@ -2274,9 +2600,9 @@ lists.forEach(list => {
 /* harmony default export */ __webpack_exports__["a"] = ({
     data() {
         return {
+            disabled: true,
             language: this.$parent.language,
             store: __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default.a,
-            date: '',
             state: state,
             format: 'DD/MM/YYYY'
         };
@@ -2284,26 +2610,9 @@ lists.forEach(list => {
     components: {
         Datepicker: __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker___default.a
     },
-    mounted() {
-        if (__WEBPACK_IMPORTED_MODULE_1_moment___default()().format('d') === 2) {
-            this.date = "Vous ne pouvez pas reserver pour aujourd'hui";
-        } else {
-            this.date = __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DD/MM/YYYY');
-        }
-        this.getTickerRemaining(__WEBPACK_IMPORTED_MODULE_1_moment___default()().format('YYYY-MM-DD'));
-    },
-    watch: {
-        state: {
-            handler(val) {
-                this.date = __WEBPACK_IMPORTED_MODULE_1_moment___default()(val.date).format('DD/MM/YYYY');
-                this.getTickerRemaining(val.date);
-            },
-            deep: true
-        }
-    },
     methods: {
         setDateEnter(event) {
-            this.date = event.target.value;
+            this.store.entry_at = event.target.value;
             this.state.date = new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()(event.target.value, 'DD/MM/YYYY'));
         },
         getTickerRemaining(date) {
@@ -2341,7 +2650,93 @@ lists.forEach(list => {
                 event.target.classList.add('is-success');
             }
         }
-    }
+    },
+    mounted() {
+        if (__WEBPACK_IMPORTED_MODULE_1_moment___default()().format('d') === 2) {
+            this.store.entry_at = "Vous ne pouvez pas reserver pour aujourd'hui";
+        } else {
+            this.store.entry_at = __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DD/MM/YYYY');
+        }
+        this.getTickerRemaining(__WEBPACK_IMPORTED_MODULE_1_moment___default()().format('YYYY-MM-DD'));
+    },
+    watch: {
+        state: {
+            handler(val) {
+                this.store.entry_at = __WEBPACK_IMPORTED_MODULE_1_moment___default()(val.date).format('DD/MM/YYYY');
+                this.getTickerRemaining(val.date);
+            },
+            deep: true
+        }
+    },
+    updated: __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.debounce(function () {
+        for (let key in this.store) {
+            if (this.store[key] === '') {
+                this.disabled = true;
+                return;
+            }
+            this.disabled = false;
+        }
+    }, 500)
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./front/pages/Reservation.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Datepicker_vue__ = __webpack_require__("./front/pages/Datepicker.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Command_vue__ = __webpack_require__("./front/pages/Command.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__("./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__store_ReservationStore__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    props: {
+        language: { default: 'fr' }
+    },
+    router: new __WEBPACK_IMPORTED_MODULE_2_vue_router__["default"]({
+        linkActiveClass: 'is-active',
+        routes: [{
+            path: '/',
+            name: 'first-step',
+            component: __WEBPACK_IMPORTED_MODULE_0__Datepicker_vue__["a" /* default */]
+        }, {
+            path: '/command',
+            component: __WEBPACK_IMPORTED_MODULE_1__Command_vue__["a" /* default */],
+            beforeEnter: (to, from, next) => {
+                if (__WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a.email !== '' && __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a.numberOfTicket !== 0 && __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a.type !== '') {
+                    next();
+                } else {}
+            }
+        }]
+    })
 });
 
 /***/ }),
@@ -2424,7 +2819,14 @@ module.exports = function() {
 
 /***/ }),
 
-/***/ "./node_modules/extract-text-webpack-plugin/dist/loader.js?{\"omit\":1,\"remove\":true}!./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js?{\"minimize\":false,\"sourceMap\":false,\"importLoaders\":0}!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c3559da4\",\"scoped\":false,\"hasInlineConfig\":false}!./node_modules/resolve-url-loader/index.js?{\"sourceMap\":false}!./node_modules/sass-loader/lib/loader.js?{\"indentedSyntax\":true,\"sourceMap\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./front/components/Reservation.vue":
+/***/ "./node_modules/extract-text-webpack-plugin/dist/loader.js?{\"omit\":1,\"remove\":true}!./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js?{\"minimize\":false,\"sourceMap\":false,\"importLoaders\":0}!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6361b135\",\"scoped\":true,\"hasInlineConfig\":false}!./node_modules/resolve-url-loader/index.js?{\"sourceMap\":false}!./node_modules/sass-loader/lib/loader.js?{\"indentedSyntax\":true,\"sourceMap\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./front/pages/Command.vue":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./node_modules/extract-text-webpack-plugin/dist/loader.js?{\"omit\":1,\"remove\":true}!./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js?{\"minimize\":false,\"sourceMap\":false,\"importLoaders\":0}!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-64ab9794\",\"scoped\":false,\"hasInlineConfig\":false}!./node_modules/resolve-url-loader/index.js?{\"sourceMap\":false}!./node_modules/sass-loader/lib/loader.js?{\"indentedSyntax\":true,\"sourceMap\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./front/pages/Reservation.vue":
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -35950,10 +36352,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "ticket"
   }, [_c('div', {
     staticClass: "ticket-title"
-  }, [_c('span', [_vm._v("Ticket " + _vm._s(_vm.index))]), _vm._v(" "), _c('span', [_vm._v("Prix")])]), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)])
-}
-var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }, [_c('span', [_vm._v("Ticket " + _vm._s(_vm.index + 1))]), _vm._v(" "), _c('span', {
+    staticClass: "is-hidden-mobile"
+  }, [_vm._v("Prix")])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "columns"
+  }, [_c('div', {
+    staticClass: "column is-two-thirds"
+  }, [_c('div', {
     staticClass: "field is-horizontal"
   }, [_c('div', {
     staticClass: "field-body"
@@ -35964,83 +36369,1205 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
     attrs: {
       "for": "nom"
     }
-  }, [_vm._v("Nom")]), _vm._v(" "), _c('p', {
-    staticClass: "control is-expanded has-icons-left"
+  }, [_vm._v("Nom*")]), _vm._v(" "), _c('p', {
+    staticClass: "control is-expanded "
   }, [_c('input', {
-    staticClass: "input",
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.ticket.first_name),
+      expression: "ticket.first_name"
+    }],
+    staticClass: "input is-medium",
     attrs: {
       "type": "text",
-      "placeholder": "Name",
-      "name": "nom"
+      "name": "nom",
+      "required": ""
+    },
+    domProps: {
+      "value": (_vm.ticket.first_name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.ticket.first_name = $event.target.value
+      }
     }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "icon is-small is-left"
-  }, [_c('i', {
-    staticClass: "fa fa-user"
-  })])])]), _vm._v(" "), _c('div', {
+  })])]), _vm._v(" "), _c('div', {
     staticClass: "field"
   }, [_c('label', {
     staticClass: "label has-text-left",
     attrs: {
       "for": "prenom"
     }
-  }, [_vm._v("Prenom")]), _vm._v(" "), _c('p', {
-    staticClass: "control is-expanded has-icons-left"
+  }, [_vm._v("Prenom*")]), _vm._v(" "), _c('p', {
+    staticClass: "control is-expanded "
   }, [_c('input', {
-    staticClass: "input",
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.ticket.last_name),
+      expression: "ticket.last_name"
+    }],
+    staticClass: "input is-medium",
     attrs: {
       "type": "text",
-      "placeholder": "Prenom"
+      "name": "prenom",
+      "required": ""
+    },
+    domProps: {
+      "value": (_vm.ticket.last_name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.ticket.last_name = $event.target.value
+      }
     }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "icon is-small is-left"
-  }, [_c('i', {
-    staticClass: "fa fa-user"
-  })])])])])])
-},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  })])])])]), _vm._v(" "), _c('div', {
     staticClass: "field is-horizontal"
   }, [_c('div', {
     staticClass: "field-body"
   }, [_c('div', {
     staticClass: "field"
+  }, [_vm._m(0), _vm._v(" "), _c('p', {
+    staticClass: "control is-expanded "
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.ticket.birthday),
+      expression: "ticket.birthday"
+    }],
+    staticClass: "input is-medium",
+    attrs: {
+      "type": "date",
+      "name": "birthday",
+      "required": ""
+    },
+    domProps: {
+      "value": (_vm.ticket.birthday)
+    },
+    on: {
+      "blur": _vm.calculatePrice,
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.ticket.birthday = $event.target.value
+      }
+    }
+  })])])])]), _vm._v(" "), _c('div', {
+    staticClass: "field is-horizontal"
+  }, [_c('div', {
+    staticClass: "field-body"
+  }, [_c('div', {
+    staticClass: "field",
+    attrs: {
+      "id": "country"
+    }
   }, [_c('label', {
     staticClass: "label has-text-left",
     attrs: {
-      "for": ""
+      "for": "country"
     }
-  }, [_vm._v("Label")]), _vm._v(" "), _c('p', {
-    staticClass: "control is-expanded has-icons-left"
-  }, [_c('input', {
-    staticClass: "input",
+  }, [_vm._v("Nationalité*")]), _vm._v(" "), _c('div', {
+    staticClass: "control is-expanded"
+  }, [_c('div', {
+    staticClass: "select is-medium"
+  }, [_c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.ticket.country),
+      expression: "ticket.country"
+    }],
     attrs: {
-      "type": "text",
-      "placeholder": "Name"
+      "required": ""
+    },
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.ticket.country = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
     }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "icon is-small is-left"
-  }, [_c('i', {
-    staticClass: "fa fa-user"
-  })])])]), _vm._v(" "), _c('div', {
+  }, [_c('option', {
+    attrs: {
+      "value": "AF"
+    }
+  }, [_vm._v("Afghanistan")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "AX"
+    }
+  }, [_vm._v("Åland Islands")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "AL"
+    }
+  }, [_vm._v("Albania")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "DZ"
+    }
+  }, [_vm._v("Algeria")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "AS"
+    }
+  }, [_vm._v("American Samoa")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "AD"
+    }
+  }, [_vm._v("Andorra")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "AO"
+    }
+  }, [_vm._v("Angola")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "AI"
+    }
+  }, [_vm._v("Anguilla")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "AQ"
+    }
+  }, [_vm._v("Antarctica")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "AG"
+    }
+  }, [_vm._v("Antigua and Barbuda")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "AR"
+    }
+  }, [_vm._v("Argentina")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "AM"
+    }
+  }, [_vm._v("Armenia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "AW"
+    }
+  }, [_vm._v("Aruba")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "AU"
+    }
+  }, [_vm._v("Australia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "AT"
+    }
+  }, [_vm._v("Austria")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "AZ"
+    }
+  }, [_vm._v("Azerbaijan")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BS"
+    }
+  }, [_vm._v("Bahamas")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BH"
+    }
+  }, [_vm._v("Bahrain")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BD"
+    }
+  }, [_vm._v("Bangladesh")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BB"
+    }
+  }, [_vm._v("Barbados")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BY"
+    }
+  }, [_vm._v("Belarus")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BE"
+    }
+  }, [_vm._v("Belgium")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BZ"
+    }
+  }, [_vm._v("Belize")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BJ"
+    }
+  }, [_vm._v("Benin")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BM"
+    }
+  }, [_vm._v("Bermuda")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BT"
+    }
+  }, [_vm._v("Bhutan")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BO"
+    }
+  }, [_vm._v("Bolivia, Plurinational State of")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BQ"
+    }
+  }, [_vm._v("Bonaire, Sint Eustatius and Saba")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BA"
+    }
+  }, [_vm._v("Bosnia and Herzegovina")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BW"
+    }
+  }, [_vm._v("Botswana")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BV"
+    }
+  }, [_vm._v("Bouvet Island")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BR"
+    }
+  }, [_vm._v("Brazil")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "IO"
+    }
+  }, [_vm._v("British Indian Ocean Territory")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BN"
+    }
+  }, [_vm._v("Brunei Darussalam")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BG"
+    }
+  }, [_vm._v("Bulgaria")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BF"
+    }
+  }, [_vm._v("Burkina Faso")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BI"
+    }
+  }, [_vm._v("Burundi")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "KH"
+    }
+  }, [_vm._v("Cambodia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CM"
+    }
+  }, [_vm._v("Cameroon")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CA"
+    }
+  }, [_vm._v("Canada")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CV"
+    }
+  }, [_vm._v("Cape Verde")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "KY"
+    }
+  }, [_vm._v("Cayman Islands")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CF"
+    }
+  }, [_vm._v("Central African Republic")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TD"
+    }
+  }, [_vm._v("Chad")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CL"
+    }
+  }, [_vm._v("Chile")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CN"
+    }
+  }, [_vm._v("China")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CX"
+    }
+  }, [_vm._v("Christmas Island")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CC"
+    }
+  }, [_vm._v("Cocos (Keeling) Islands")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CO"
+    }
+  }, [_vm._v("Colombia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "KM"
+    }
+  }, [_vm._v("Comoros")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CG"
+    }
+  }, [_vm._v("Congo")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CD"
+    }
+  }, [_vm._v("Congo, the Democratic Republic of the")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CK"
+    }
+  }, [_vm._v("Cook Islands")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CR"
+    }
+  }, [_vm._v("Costa Rica")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CI"
+    }
+  }, [_vm._v("Côte d'Ivoire")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "HR"
+    }
+  }, [_vm._v("Croatia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CU"
+    }
+  }, [_vm._v("Cuba")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CW"
+    }
+  }, [_vm._v("Curaçao")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CY"
+    }
+  }, [_vm._v("Cyprus")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CZ"
+    }
+  }, [_vm._v("Czech Republic")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "DK"
+    }
+  }, [_vm._v("Denmark")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "DJ"
+    }
+  }, [_vm._v("Djibouti")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "DM"
+    }
+  }, [_vm._v("Dominica")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "DO"
+    }
+  }, [_vm._v("Dominican Republic")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "EC"
+    }
+  }, [_vm._v("Ecuador")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "EG"
+    }
+  }, [_vm._v("Egypt")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SV"
+    }
+  }, [_vm._v("El Salvador")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GQ"
+    }
+  }, [_vm._v("Equatorial Guinea")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "ER"
+    }
+  }, [_vm._v("Eritrea")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "EE"
+    }
+  }, [_vm._v("Estonia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "ET"
+    }
+  }, [_vm._v("Ethiopia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "FK"
+    }
+  }, [_vm._v("Falkland Islands (Malvinas)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "FO"
+    }
+  }, [_vm._v("Faroe Islands")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "FJ"
+    }
+  }, [_vm._v("Fiji")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "FI"
+    }
+  }, [_vm._v("Finland")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "FR"
+    }
+  }, [_vm._v("France")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GF"
+    }
+  }, [_vm._v("French Guiana")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "PF"
+    }
+  }, [_vm._v("French Polynesia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TF"
+    }
+  }, [_vm._v("French Southern Territories")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GA"
+    }
+  }, [_vm._v("Gabon")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GM"
+    }
+  }, [_vm._v("Gambia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GE"
+    }
+  }, [_vm._v("Georgia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "DE"
+    }
+  }, [_vm._v("Germany")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GH"
+    }
+  }, [_vm._v("Ghana")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GI"
+    }
+  }, [_vm._v("Gibraltar")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GR"
+    }
+  }, [_vm._v("Greece")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GL"
+    }
+  }, [_vm._v("Greenland")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GD"
+    }
+  }, [_vm._v("Grenada")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GP"
+    }
+  }, [_vm._v("Guadeloupe")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GU"
+    }
+  }, [_vm._v("Guam")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GT"
+    }
+  }, [_vm._v("Guatemala")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GG"
+    }
+  }, [_vm._v("Guernsey")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GN"
+    }
+  }, [_vm._v("Guinea")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GW"
+    }
+  }, [_vm._v("Guinea-Bissau")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GY"
+    }
+  }, [_vm._v("Guyana")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "HT"
+    }
+  }, [_vm._v("Haiti")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "HM"
+    }
+  }, [_vm._v("Heard Island and McDonald Islands")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "VA"
+    }
+  }, [_vm._v("Holy See (Vatican City State)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "HN"
+    }
+  }, [_vm._v("Honduras")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "HK"
+    }
+  }, [_vm._v("Hong Kong")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "HU"
+    }
+  }, [_vm._v("Hungary")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "IS"
+    }
+  }, [_vm._v("Iceland")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "IN"
+    }
+  }, [_vm._v("India")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "ID"
+    }
+  }, [_vm._v("Indonesia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "IR"
+    }
+  }, [_vm._v("Iran, Islamic Republic of")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "IQ"
+    }
+  }, [_vm._v("Iraq")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "IE"
+    }
+  }, [_vm._v("Ireland")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "IM"
+    }
+  }, [_vm._v("Isle of Man")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "IL"
+    }
+  }, [_vm._v("Israel")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "IT"
+    }
+  }, [_vm._v("Italy")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "JM"
+    }
+  }, [_vm._v("Jamaica")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "JP"
+    }
+  }, [_vm._v("Japan")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "JE"
+    }
+  }, [_vm._v("Jersey")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "JO"
+    }
+  }, [_vm._v("Jordan")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "KZ"
+    }
+  }, [_vm._v("Kazakhstan")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "KE"
+    }
+  }, [_vm._v("Kenya")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "KI"
+    }
+  }, [_vm._v("Kiribati")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "KP"
+    }
+  }, [_vm._v("Korea, Democratic People's Republic of")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "KR"
+    }
+  }, [_vm._v("Korea, Republic of")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "KW"
+    }
+  }, [_vm._v("Kuwait")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "KG"
+    }
+  }, [_vm._v("Kyrgyzstan")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "LA"
+    }
+  }, [_vm._v("Lao People's Democratic Republic")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "LV"
+    }
+  }, [_vm._v("Latvia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "LB"
+    }
+  }, [_vm._v("Lebanon")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "LS"
+    }
+  }, [_vm._v("Lesotho")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "LR"
+    }
+  }, [_vm._v("Liberia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "LY"
+    }
+  }, [_vm._v("Libya")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "LI"
+    }
+  }, [_vm._v("Liechtenstein")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "LT"
+    }
+  }, [_vm._v("Lithuania")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "LU"
+    }
+  }, [_vm._v("Luxembourg")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MO"
+    }
+  }, [_vm._v("Macao")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MK"
+    }
+  }, [_vm._v("Macedonia, the former Yugoslav Republic of")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MG"
+    }
+  }, [_vm._v("Madagascar")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MW"
+    }
+  }, [_vm._v("Malawi")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MY"
+    }
+  }, [_vm._v("Malaysia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MV"
+    }
+  }, [_vm._v("Maldives")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "ML"
+    }
+  }, [_vm._v("Mali")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MT"
+    }
+  }, [_vm._v("Malta")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MH"
+    }
+  }, [_vm._v("Marshall Islands")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MQ"
+    }
+  }, [_vm._v("Martinique")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MR"
+    }
+  }, [_vm._v("Mauritania")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MU"
+    }
+  }, [_vm._v("Mauritius")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "YT"
+    }
+  }, [_vm._v("Mayotte")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MX"
+    }
+  }, [_vm._v("Mexico")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "FM"
+    }
+  }, [_vm._v("Micronesia, Federated States of")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MD"
+    }
+  }, [_vm._v("Moldova, Republic of")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MC"
+    }
+  }, [_vm._v("Monaco")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MN"
+    }
+  }, [_vm._v("Mongolia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "ME"
+    }
+  }, [_vm._v("Montenegro")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MS"
+    }
+  }, [_vm._v("Montserrat")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MA"
+    }
+  }, [_vm._v("Morocco")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MZ"
+    }
+  }, [_vm._v("Mozambique")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MM"
+    }
+  }, [_vm._v("Myanmar")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "NA"
+    }
+  }, [_vm._v("Namibia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "NR"
+    }
+  }, [_vm._v("Nauru")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "NP"
+    }
+  }, [_vm._v("Nepal")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "NL"
+    }
+  }, [_vm._v("Netherlands")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "NC"
+    }
+  }, [_vm._v("New Caledonia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "NZ"
+    }
+  }, [_vm._v("New Zealand")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "NI"
+    }
+  }, [_vm._v("Nicaragua")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "NE"
+    }
+  }, [_vm._v("Niger")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "NG"
+    }
+  }, [_vm._v("Nigeria")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "NU"
+    }
+  }, [_vm._v("Niue")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "NF"
+    }
+  }, [_vm._v("Norfolk Island")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MP"
+    }
+  }, [_vm._v("Northern Mariana Islands")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "NO"
+    }
+  }, [_vm._v("Norway")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "OM"
+    }
+  }, [_vm._v("Oman")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "PK"
+    }
+  }, [_vm._v("Pakistan")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "PW"
+    }
+  }, [_vm._v("Palau")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "PS"
+    }
+  }, [_vm._v("Palestinian Territory, Occupied")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "PA"
+    }
+  }, [_vm._v("Panama")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "PG"
+    }
+  }, [_vm._v("Papua New Guinea")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "PY"
+    }
+  }, [_vm._v("Paraguay")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "PE"
+    }
+  }, [_vm._v("Peru")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "PH"
+    }
+  }, [_vm._v("Philippines")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "PN"
+    }
+  }, [_vm._v("Pitcairn")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "PL"
+    }
+  }, [_vm._v("Poland")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "PT"
+    }
+  }, [_vm._v("Portugal")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "PR"
+    }
+  }, [_vm._v("Puerto Rico")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "QA"
+    }
+  }, [_vm._v("Qatar")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "RE"
+    }
+  }, [_vm._v("Réunion")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "RO"
+    }
+  }, [_vm._v("Romania")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "RU"
+    }
+  }, [_vm._v("Russian Federation")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "RW"
+    }
+  }, [_vm._v("Rwanda")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "BL"
+    }
+  }, [_vm._v("Saint Barthélemy")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SH"
+    }
+  }, [_vm._v("Saint Helena, Ascension and Tristan da Cunha")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "KN"
+    }
+  }, [_vm._v("Saint Kitts and Nevis")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "LC"
+    }
+  }, [_vm._v("Saint Lucia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "MF"
+    }
+  }, [_vm._v("Saint Martin (French part)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "PM"
+    }
+  }, [_vm._v("Saint Pierre and Miquelon")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "VC"
+    }
+  }, [_vm._v("Saint Vincent and the Grenadines")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "WS"
+    }
+  }, [_vm._v("Samoa")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SM"
+    }
+  }, [_vm._v("San Marino")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "ST"
+    }
+  }, [_vm._v("Sao Tome and Principe")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SA"
+    }
+  }, [_vm._v("Saudi Arabia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SN"
+    }
+  }, [_vm._v("Senegal")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "RS"
+    }
+  }, [_vm._v("Serbia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SC"
+    }
+  }, [_vm._v("Seychelles")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SL"
+    }
+  }, [_vm._v("Sierra Leone")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SG"
+    }
+  }, [_vm._v("Singapore")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SX"
+    }
+  }, [_vm._v("Sint Maarten (Dutch part)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SK"
+    }
+  }, [_vm._v("Slovakia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SI"
+    }
+  }, [_vm._v("Slovenia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SB"
+    }
+  }, [_vm._v("Solomon Islands")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SO"
+    }
+  }, [_vm._v("Somalia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "ZA"
+    }
+  }, [_vm._v("South Africa")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GS"
+    }
+  }, [_vm._v("South Georgia and the South Sandwich Islands")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SS"
+    }
+  }, [_vm._v("South Sudan")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "ES"
+    }
+  }, [_vm._v("Spain")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "LK"
+    }
+  }, [_vm._v("Sri Lanka")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SD"
+    }
+  }, [_vm._v("Sudan")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SR"
+    }
+  }, [_vm._v("Suriname")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SJ"
+    }
+  }, [_vm._v("Svalbard and Jan Mayen")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SZ"
+    }
+  }, [_vm._v("Swaziland")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SE"
+    }
+  }, [_vm._v("Sweden")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "CH"
+    }
+  }, [_vm._v("Switzerland")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "SY"
+    }
+  }, [_vm._v("Syrian Arab Republic")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TW"
+    }
+  }, [_vm._v("Taiwan, Province of China")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TJ"
+    }
+  }, [_vm._v("Tajikistan")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TZ"
+    }
+  }, [_vm._v("Tanzania, United Republic of")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TH"
+    }
+  }, [_vm._v("Thailand")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TL"
+    }
+  }, [_vm._v("Timor-Leste")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TG"
+    }
+  }, [_vm._v("Togo")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TK"
+    }
+  }, [_vm._v("Tokelau")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TO"
+    }
+  }, [_vm._v("Tonga")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TT"
+    }
+  }, [_vm._v("Trinidad and Tobago")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TN"
+    }
+  }, [_vm._v("Tunisia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TR"
+    }
+  }, [_vm._v("Turkey")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TM"
+    }
+  }, [_vm._v("Turkmenistan")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TC"
+    }
+  }, [_vm._v("Turks and Caicos Islands")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TV"
+    }
+  }, [_vm._v("Tuvalu")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "UG"
+    }
+  }, [_vm._v("Uganda")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "UA"
+    }
+  }, [_vm._v("Ukraine")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "AE"
+    }
+  }, [_vm._v("United Arab Emirates")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GB"
+    }
+  }, [_vm._v("United Kingdom")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "US"
+    }
+  }, [_vm._v("United States")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "UM"
+    }
+  }, [_vm._v("United States Minor Outlying Islands")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "UY"
+    }
+  }, [_vm._v("Uruguay")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "UZ"
+    }
+  }, [_vm._v("Uzbekistan")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "VU"
+    }
+  }, [_vm._v("Vanuatu")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "VE"
+    }
+  }, [_vm._v("Venezuela, Bolivarian Republic of")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "VN"
+    }
+  }, [_vm._v("Viet Nam")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "VG"
+    }
+  }, [_vm._v("Virgin Islands, British")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "VI"
+    }
+  }, [_vm._v("Virgin Islands, U.S.")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "WF"
+    }
+  }, [_vm._v("Wallis and Futuna")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "EH"
+    }
+  }, [_vm._v("Western Sahara")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "YE"
+    }
+  }, [_vm._v("Yemen")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "ZM"
+    }
+  }, [_vm._v("Zambia")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "ZW"
+    }
+  }, [_vm._v("Zimbabwe")])])])])]), _vm._v(" "), _c('div', {
     staticClass: "field"
-  }, [_c('label', {
-    staticClass: "label has-text-left",
-    attrs: {
-      "for": ""
-    }
-  }, [_vm._v("Label")]), _vm._v(" "), _c('p', {
-    staticClass: "control is-expanded has-icons-left"
+  }, [_vm._m(1), _vm._v(" "), _c('p', {
+    staticClass: "control is-expanded"
   }, [_c('input', {
-    staticClass: "input",
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.ticket.reduction),
+      expression: "ticket.reduction"
+    }],
+    staticClass: "checkbox",
     attrs: {
-      "type": "text",
-      "placeholder": "Name"
+      "type": "checkbox"
+    },
+    domProps: {
+      "checked": Array.isArray(_vm.ticket.reduction) ? _vm._i(_vm.ticket.reduction, null) > -1 : (_vm.ticket.reduction)
+    },
+    on: {
+      "__c": function($event) {
+        var $$a = _vm.ticket.reduction,
+          $$el = $event.target,
+          $$c = $$el.checked ? (true) : (false);
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.ticket.reduction = $$a.concat($$v))
+          } else {
+            $$i > -1 && (_vm.ticket.reduction = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+          }
+        } else {
+          _vm.ticket.reduction = $$c
+        }
+      }
     }
   }), _vm._v(" "), _c('span', {
-    staticClass: "icon is-small is-left"
+    staticClass: "help"
+  }, [_vm._v("Ex: Militaire, Etudiant")])])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "column"
+  }, [_c('div', {
+    staticClass: "has-text-right"
+  }, [_vm._v("\n                " + _vm._s(_vm.ticket.price) + " euros\n            ")])])])])
+}
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('label', {
+    staticClass: "label has-text-left",
+    attrs: {
+      "for": "birthday"
+    }
+  }, [_vm._v("\n                            Date de naissance*\n                            "), _c('span', {
+    staticClass: "icon tooltip tooltip-right is-hidden-mobile",
+    attrs: {
+      "data-tooltip": "Le prix du billet sera calculé en fonction de l'age"
+    }
   }, [_c('i', {
-    staticClass: "fa fa-user"
-  })])])])])])
+    staticClass: "fa fa-info-circle",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })])])
+},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('label', {
+    staticClass: "label has-text-left",
+    attrs: {
+      "for": "promo"
+    }
+  }, [_vm._v("\n                            Réduction\n                            "), _c('span', {
+    staticClass: "icon tooltip tooltip-right is-hidden-mobile",
+    attrs: {
+      "data-tooltip": "Il vous sera demandez une pièce justificative à l'entrée"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-info-circle",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })])])
 }]
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
@@ -36070,15 +37597,15 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "column"
   }, [_c('h3', {
     staticClass: "title is-5"
-  }, [_vm._v("Date :")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Date* :")]), _vm._v(" "), _c('div', {
     staticClass: "control"
   }, [_c('input', {
-    staticClass: "input",
+    staticClass: "input is-medium",
     attrs: {
       "type": "text"
     },
     domProps: {
-      "value": _vm.date
+      "value": _vm.store.entry_at
     },
     on: {
       "blur": function($event) {
@@ -36114,8 +37641,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "for": ""
     }
-  }, [_vm._v("Email")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "control has-icons-left has-icons-right"
+  }, [_vm._v("Email*")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "control"
   }, [_c('input', {
     directives: [{
       name: "model",
@@ -36123,9 +37650,10 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       value: (_vm.store.email),
       expression: "store.email"
     }],
-    staticClass: "input",
+    staticClass: "input is-medium",
     attrs: {
-      "type": "email"
+      "type": "email",
+      "required": ""
     },
     domProps: {
       "value": (_vm.store.email)
@@ -36139,13 +37667,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         _vm.store.email = $event.target.value
       }
     }
-  }), _vm._v(" "), _vm._m(1), _vm._v(" "), (!_vm.testEmail(_vm.store.email)) ? _c('span', {
-    staticClass: "icon is-small is-right"
-  }, [_c('i', {
-    staticClass: "fa fa-warning"
-  })]) : _vm._e()])]), _vm._v(" "), _c('div', {
+  })])]), _vm._v(" "), _c('div', {
     staticClass: "field"
-  }, [_c('label', [_vm._v("Nombre de tickets")]), _vm._v(" "), _c('div', {
+  }, [_c('label', [_vm._v("Nombre de tickets*")]), _vm._v(" "), _c('div', {
     staticClass: "control"
   }, [_c('input', {
     directives: [{
@@ -36154,11 +37678,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       value: (_vm.store.numberOfTicket),
       expression: "store.numberOfTicket"
     }],
-    staticClass: "input",
+    staticClass: "input is-medium",
     attrs: {
       "type": "number",
       "min": "0",
-      "max": _vm.store.ticketRemaining
+      "max": _vm.store.ticketRemaining,
+      "required": ""
     },
     domProps: {
       "value": (_vm.store.numberOfTicket)
@@ -36174,10 +37699,10 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   })])]), _vm._v(" "), _c('div', {
     staticClass: "field"
-  }, [_c('label', [_vm._v("Type")]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('div', {
+  }, [_c('label', [_vm._v("Type*")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
     staticClass: "control"
   }, [_c('div', {
-    staticClass: "select"
+    staticClass: "select is-medium"
   }, [_c('select', {
     directives: [{
       name: "model",
@@ -36185,6 +37710,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       value: (_vm.store.type),
       expression: "store.type"
     }],
+    attrs: {
+      "required": ""
+    },
     on: {
       "change": function($event) {
         var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
@@ -36207,9 +37735,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("Demi-journées")])])])])]), _vm._v(" "), _c('div', {
     staticClass: "field"
   }, [_c('router-link', {
-    staticClass: "button is-blue is-medium",
+    staticClass: "button is-success is-medium",
     attrs: {
-      "to": "/command"
+      "tag": "button",
+      "to": "/command",
+      "disabled": _vm.disabled
     }
   }, [_vm._v("Reservation")])], 1)])])])])
 }
@@ -36224,12 +37754,6 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
     attrs: {
       "aria-hidden": "true"
     }
-  })])
-},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
-    staticClass: "icon is-small is-left"
-  }, [_c('i', {
-    staticClass: "fa fa-envelope"
   })])
 },function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('span', {
@@ -36284,21 +37808,47 @@ if (false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6361b135\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./front/pages/Command.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6361b135\",\"hasScoped\":true}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./front/pages/Command.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', _vm._l((parseInt(_vm.store.numberOfTicket)), function(ticket, index) {
+  return _c('div', [_vm._l((parseInt(_vm.store.numberOfTicket)), function(ticket, index) {
     return _c('Ticket', {
       key: index,
       attrs: {
         "index": index
+      },
+      on: {
+        "setPrice": _vm.priceTotal
       }
     })
-  }))
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    attrs: {
+      "id": "total-price"
+    }
+  }, [_vm._m(0), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.totalPrice) + " euros")])]), _vm._v(" "), _c('div', {
+    staticClass: "has-text-right"
+  }, [_c('button', {
+    staticClass: "button is-success is-medium",
+    attrs: {
+      "disabled": _vm.disabled
+    }
+  }, [_vm._v("Commander")])])], 2)
 }
-var staticRenderFns = []
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_vm._v("\n            Prix total\n            "), _c('span', {
+    staticClass: "icon tooltip tooltip-bottom",
+    attrs: {
+      "data-tooltip": "Ce prix est une estimation"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-info-circle",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })])])
+}]
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -36311,7 +37861,7 @@ if (false) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-c3559da4\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./front/components/Reservation.vue":
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-64ab9794\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./front/pages/Reservation.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36347,11 +37897,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "tag": "li",
       "exact": ""
     }
-  }, [_c('a', [_vm._v("paiement")])])], 1), _vm._v(" "), _c('transition', {
+  }, [_c('a', [_vm._v("Paiement")])])], 1), _vm._v(" "), _c('transition', {
     attrs: {
       "name": "fade"
     }
-  }, [_c('router-view')], 1)], 1)
+  }, [_c('keep-alive', [_c('router-view')], 1)], 1)], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -36360,7 +37910,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-c3559da4", esExports)
+     require("vue-hot-reload-api").rerender("data-v-64ab9794", esExports)
   }
 }
 

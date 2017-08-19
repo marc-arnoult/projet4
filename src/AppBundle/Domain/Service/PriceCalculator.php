@@ -17,7 +17,6 @@ class PriceCalculator implements PriceCalculatorInterface
         foreach ($tickets as $ticket) {
             $age = (int) $ticket->getBirthday()->diff(new \DateTime('now'))->y;
 
-            // TODO: Mettre la promo pour les ticket standard et senior
             if ($ticket->getReduction()) {
                 $price += PriceCalculator::PROMO;
                 break;

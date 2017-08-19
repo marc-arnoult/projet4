@@ -107,10 +107,21 @@ to {
     width: 100%;
 }
 }
+#total-price[data-v-6361b135] {
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
 .ticket[data-v-09983ecc] {
   margin-bottom: 80px;
 }
 .ticket-title[data-v-09983ecc] {
   display: flex;
   justify-content: space-between;
+}
+@media screen and (min-width: 720px) {
+#country[data-v-09983ecc] {
+    width: 10%;
+}
 }
