@@ -26,6 +26,7 @@ class TicketTest extends WebTestCase
         $ticket->setReduction(false);
         $ticket->setCreatedAt($now);
         $ticket->setType('Journées');
+        $ticket->setPrice(16);
 
         $this->assertInstanceOf(Command::class, $ticket->getCommand());
         $this->assertEquals(1000, Ticket::TICKET_LIMIT);
@@ -33,6 +34,7 @@ class TicketTest extends WebTestCase
         $this->assertEquals($birthday, $ticket->getBirthday());
         $this->assertEquals('France', $ticket->getCountry());
         $this->assertEquals('Marc', $ticket->getFirstName());
+        $this->assertEquals(16, $ticket->getPrice());
         $this->assertEquals('Arnoult', $ticket->getLastName());
         $this->assertEquals($entry, $ticket->getEntryAt());
         $this->assertEquals("Journées", $ticket->getType());

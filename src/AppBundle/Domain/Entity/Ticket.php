@@ -73,6 +73,13 @@ class Ticket
      * @var Command
      * @ORM\ManyToOne(targetEntity="AppBundle\Domain\Entity\Command")
      */
+
+    /**
+     * @var int
+     * @ORM\Column(name="price", type="integer")
+     */
+    private $price;
+
     private $command;
     /**
      * @var \DateTime
@@ -293,5 +300,21 @@ class Ticket
     public function setType(string $type)
     {
         $this->type = $type;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrice(): int
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param int $price
+     */
+    public function setPrice(int $price)
+    {
+        $this->price = $price;
     }
 }

@@ -35,6 +35,7 @@ class LoadTicketsData implements FixtureInterface
             $ticket->setBirthday(new \DateTime('1991-09-01'));
             $ticket->setCommand($command);
             $ticket->setType("Journée");
+            $ticket->setPrice(16);
             array_push($tickets, $ticket);
             $command->setType($ticket->getType());
             $manager->persist($ticket);
