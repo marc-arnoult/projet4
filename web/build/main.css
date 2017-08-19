@@ -1,14 +1,26 @@
 
-blockquote[data-v-a5c50558] {
+blockquote[data-v-27cdb575] {
   font-size: 1.3rem;
 }
-em[data-v-a5c50558] {
+em[data-v-27cdb575] {
   padding-top: 12px;
   font-weight: bolder;
   font-size: 1.2rem;
 }
-#reservation[data-v-3d8168ef] {
+#reservation {
   margin-bottom: 40px;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition-property: opacity;
+  transition-duration: .28s;
+}
+.fade-enter-active {
+  transition-delay: .28s;
+}
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 @keyframes spinAround {
 from {
@@ -93,5 +105,23 @@ to {
 }
 #datepicker .input {
     width: 100%;
+}
+}
+#total-price[data-v-6361b135] {
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.ticket[data-v-09983ecc] {
+  margin-bottom: 80px;
+}
+.ticket-title[data-v-09983ecc] {
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (min-width: 720px) {
+#country[data-v-09983ecc] {
+    width: 10%;
 }
 }

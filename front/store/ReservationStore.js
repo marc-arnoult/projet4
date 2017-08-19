@@ -1,9 +1,7 @@
 export default {
     email: '',
     type: '',
-    language: '',
+    entry_at: '',
     ticketRemaining: '',
     numberOfTicket: 0,
-    stepOne: false,
-    stepTwo: false
 }
