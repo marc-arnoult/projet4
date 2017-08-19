@@ -31,19 +31,16 @@ class TicketManager
         $this->dateFilter = $dateFilter;
     }
 
-    public function getTickets()
+    public function getTicketsRemaining()
     {
         $repository = $this->doctrine->getRepository('AppBundle:Ticket');
         $date = $this->request->getCurrentRequest()->get('day');
 
-        if (!empty($date) && $this->dateFilter->isValid($date)) {
+        if ($this->dateFilter->isValid($date)) {
             $day = new \DateTime($date);
-            $ticketSold = $repository->getTicketByDay($day->format('Y-m-d'));
+            $remaining = $repository->getTicketsRemaining($day->format('Y-m-d'));
 
-            $data = [
-                'content' => (Ticket::TICKET_LIMIT - $ticketSold),
-                'status_code' => JsonResponse::HTTP_OK,
-            ];
+            $data = ['content' => $remaining, 'status_code' => JsonResponse::HTTP_OK];
 
             return $data;
         }

@@ -33,21 +33,19 @@ class CommandManager
 
     public function createCommand($data)
     {
+        $totalPrice = 0;
         $tickets = $this->serializer->deserialize($data, 'array<AppBundle\\Domain\\Entity\\Ticket>', 'json');
 
         $command = new Command();
         $command->setCreatedAt(new \DateTime('NOW'));
         $command->setEmail('marc.arnoult@hotmail.fr');
 
-        $price = $this->calculator->calculate($tickets);
-
-        $command->setPrice($price);
-
         foreach ($tickets as $index => $ticket) {
-            $ticket->setCreatedAt(new \DateTime('NOW'));
+            $ticket->setCreatedAt($command->getCreatedAt());
             $ticket->setCommand($command);
-
             $command->setType($ticket->getType());
+
+            $this->calculator->calculatePrice($ticket);
 
             $errors = $this->validator->getValidator()->validate($ticket);
 
@@ -60,10 +58,12 @@ class CommandManager
                 return ['content' => $messages, 'status_code' => JsonResponse::HTTP_BAD_REQUEST];
             }
 
+            $totalPrice += $ticket->getPrice();
+
             $this->doctrine->persist($ticket);
         }
 
-        $this->doctrine->persist($command);
+        $command->setPrice($totalPrice);
         $this->doctrine->flush();
 
         return ['content' => 'created', 'status_code' => JsonResponse::HTTP_CREATED];

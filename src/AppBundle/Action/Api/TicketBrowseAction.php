@@ -32,7 +32,7 @@ class TicketBrowseAction
      */
     public function __invoke()
     {
-        $data = $this->manager->getTickets();
+        $data = $this->manager->getTicketsRemaining();
         return $this->responder->__invoke($data);
     }
 }

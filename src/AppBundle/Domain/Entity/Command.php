@@ -2,6 +2,7 @@
 
 namespace AppBundle\Domain\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,11 +43,21 @@ class Command
     private $type;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Domain\Entity\Ticket", mappedBy="command", cascade={"persist"})
+     */
+    private $tickets;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
+
+    public function __construct()
+    {
+        $this->tickets = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -149,5 +160,23 @@ class Command
     /**
      * @return mixed
      */
+    public function getTickets()
+    {
+        return $this->tickets;
+    }
+
+    /**
+     * @param Ticket $ticket
+     * @internal param mixed $tickets
+     */
+    public function addTicket(Ticket $ticket)
+    {
+        $this->tickets->add($ticket);
+    }
+
+    public function removeTicket(Ticket $ticket)
+    {
+        $this->tickets->removeElement($ticket);
+    }
 
 }

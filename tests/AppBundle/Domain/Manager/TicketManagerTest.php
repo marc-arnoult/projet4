@@ -20,7 +20,7 @@ class TicketManagerTest extends WebTestCase
 
         $manager = $kernel->getContainer()->get('AppBundle\Domain\Manager\TicketManager');
 
-        $data = $manager->getTickets();
+        $data = $manager->getTicketsRemaining();
         $this->assertEquals(990, $data['content']);
     }
 }

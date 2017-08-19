@@ -15,7 +15,7 @@ class DateFilter implements DateFilterInterface
      */
     public function isValid($value) : bool
     {
-        if (!strtotime($value)) {
+        if (!strtotime($value) || empty($value)) {
             return false;
         }
 
