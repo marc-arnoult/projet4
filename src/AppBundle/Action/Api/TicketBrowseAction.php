@@ -7,6 +7,7 @@ use AppBundle\Domain\Manager\TicketManager;
 use AppBundle\Responder\Api\TicketResponder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class TicketBrowseAction
 {
@@ -30,9 +31,11 @@ class TicketBrowseAction
      * @Method("GET")
      * @Route("api/ticket")
      */
-    public function __invoke()
+    public function __invoke(Request $request)
     {
-        $data = $this->manager->getTicketsRemaining();
+        $day = $request->query->get('day');
+        $data = $this->manager->getTicketsRemaining($day);
+
         return $this->responder->__invoke($data);
     }
 }

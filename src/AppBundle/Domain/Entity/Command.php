@@ -2,7 +2,10 @@
 
 namespace AppBundle\Domain\Entity;
 
+use AppBundle\Domain\Validator\Constraints\IsClosed;
+use AppBundle\Domain\Validator\Constraints\IsHoliday;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,33 +27,44 @@ class Command
 
     /**
      * @var int
-     * @ORM\Column(name="price", type="integer")
+     * @ORM\Column(name="price", type="integer", nullable=true)
      */
     private $price;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @var boolean
+     * @ORM\Column(name="payment", type="boolean", nullable=true)
      */
-    private $email;
-
+    private $payment = false;
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255)
+     * @Assert\NotNull()
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     *  )
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
-    private $type;
+    private $email;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Domain\Entity\Ticket", mappedBy="command", cascade={"persist"})
      */
     private $tickets;
 
+
+    /**
+     * @var \DateTime;
+     * @ORM\Column(name="entry_at", type="datetime", nullable=false)
+     * @IsClosed()
+     */
+    private $entryAt;
+
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="created_at", type="datetime")
+     * @Assert\NotNull()
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
 
@@ -177,6 +191,38 @@ class Command
     public function removeTicket(Ticket $ticket)
     {
         $this->tickets->removeElement($ticket);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPayment()
+    {
+        return $this->payment;
+    }
+
+    /**
+     * @param mixed $payment
+     */
+    public function setPayment($payment)
+    {
+        $this->payment = $payment;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEntryAt()
+    {
+        return $this->entryAt;
+    }
+
+    /**
+     * @param mixed $entryAt
+     */
+    public function setEntryAt($entryAt)
+    {
+        $this->entryAt = $entryAt;
     }
 
 }

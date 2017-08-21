@@ -2,6 +2,7 @@
 
 namespace Test\AppBundle\Domain\Manager;
 
+use AppBundle\Domain\Manager\TicketManager;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -13,14 +14,11 @@ class TicketManagerTest extends WebTestCase
         $kernel->boot();
 
         $request = new Request();
-        $request->query->set('day', '2017-09-09');
+        $request->query->set('day', '2017-08-20');
+        $day = $request->query->get('day');
 
-        $requestStack = $kernel->getContainer()->get('request_stack');
-        $requestStack->push($request);
-
-        $manager = $kernel->getContainer()->get('AppBundle\Domain\Manager\TicketManager');
-
-        $data = $manager->getTicketsRemaining();
+        $manager = $kernel->getContainer()->get(TicketManager::class);
+        $data = $manager->getTicketsRemaining($day);
         $this->assertEquals(990, $data['content']);
     }
 }

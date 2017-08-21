@@ -19,17 +19,19 @@ class IsClosedValidator extends ConstraintValidator
     {
         $now = new \DateTime('NOW');
 
-        if (date('D', $value->getTimeStamp()) === 'Sun' || $value->getTimeStamp() < $now->getTimestamp()) {
-            $this->context->buildViolation($constraint->message)
-                ->addViolation();
+        if (
+            date('D', $value->getTimeStamp()) === 'Sun' ||
+            date('D', $value->getTimeStamp()) === 'Tue' ||
+            $value->getTimeStamp() < $now->getTimestamp()
+        ) {
+            $this->context->buildViolation($constraint->message)->addViolation();
         }
 
         $holidays = $this->getHolidays();
 
         foreach ($holidays as $holiday) {
             if(date('d/m', $holiday) === date('d/m', $value->getTimeStamp())) {
-                $this->context->buildViolation($constraint->message)
-                    ->addViolation();
+                $this->context->buildViolation($constraint->message)->addViolation();
             }
         }
     }

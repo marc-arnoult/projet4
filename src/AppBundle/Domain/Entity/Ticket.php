@@ -29,22 +29,22 @@ class Ticket
     /**
      * @var string
      *
-     * @Assert\NotBlank(message="should not be blank")
-     * @ORM\Column(name="first_name", type="string", length=255)
+     * @Assert\NotNull()
+     * @ORM\Column(name="first_name", type="string", length=255, nullable=false)
      */
     private $firstName;
 
     /**
      * @var string
-     * @Assert\NotBlank(message="last name should not be blank")
-     * @ORM\Column(name="last_name", type="string", length=255)
+     * @Assert\NotNull()
+     * @ORM\Column(name="last_name", type="string", length=255, nullable=false)
      */
     private $lastName;
 
     /**
      * @var \DateTime
-     * @Assert\NotBlank(message="birthday should not be blank")
-     * @ORM\Column(name="birthday", type="date")
+     * @Assert\NotNull()
+     * @ORM\Column(name="birthday", type="date", nullable=false)
      */
     private $birthday;
 
@@ -52,49 +52,42 @@ class Ticket
      * @var string
      *
      * @Assert\NotBlank(message="country should not be blank")
-     * @ORM\Column(name="country", type="string", length=255)
+     * @ORM\Column(name="country", type="string", length=255, nullable=false)
      */
     private $country;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="reduction", type="boolean")
+     * @ORM\Column(name="reduction", type="boolean", nullable=false)
      */
     private $reduction;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string")
-     */
-    private $type;
-    /**
-     * @var Command
-     * @ORM\ManyToOne(targetEntity="AppBundle\Domain\Entity\Command")
-     */
-
-    /**
      * @var int
-     * @ORM\Column(name="price", type="integer")
+     * @Assert\NotNull()
+     * @ORM\Column(name="price", type="integer", nullable=false)
      */
     private $price;
 
     /**
      * @var Command
      * @ORM\ManyToOne(targetEntity="AppBundle\Domain\Entity\Command", inversedBy="tickets", cascade={"persist"})
+     * @Assert\NotNull()
+     * @ORM\JoinColumn(referencedColumnName="id", nullable=false)
      */
     private $command;
+
     /**
      * @var \DateTime
-     * @CustomAssert\IsHoliday()
      * @ORM\Column(name="entry_at", type="datetime")
+     * @CustomAssert\IsClosed
      */
     private $entryAt;
 
     /**
      * @var \DateTime
-     * @CustomAssert\IsClosed()
+     * @Assert\NotNull()
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
@@ -226,26 +219,6 @@ class Ticket
     }
 
     /**
-     * Set entryAt
-     *
-     * @return Ticket
-     */
-    public function setEntryAt($entryAt)
-    {
-        $this->entryAt = $entryAt;
-
-        return $this;
-    }
-
-    /**
-     * Get entryAt
-     */
-    public function getEntryAt()
-    {
-        return $this->entryAt;
-    }
-
-    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -291,22 +264,6 @@ class Ticket
     }
 
     /**
-     * @return string
-     */
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param string $type
-     */
-    public function setType(string $type)
-    {
-        $this->type = $type;
-    }
-
-    /**
      * @return int
      */
     public function getPrice(): int
@@ -320,5 +277,21 @@ class Ticket
     public function setPrice(int $price)
     {
         $this->price = $price;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEntryAt()
+    {
+        return $this->entryAt;
+    }
+
+    /**
+     * @param mixed $entryAt
+     */
+    public function setEntryAt($entryAt)
+    {
+        $this->entryAt = $entryAt;
     }
 }
