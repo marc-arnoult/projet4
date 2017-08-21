@@ -18,7 +18,7 @@ class TicketManagerTest extends WebTestCase
         $day = $request->query->get('day');
 
         $manager = $kernel->getContainer()->get(TicketManager::class);
-        $data = $manager->getTicketsRemaining($day);
-        $this->assertEquals(990, $data['content']);
+        $payload = $manager->getTicketsRemaining($day);
+        $this->assertEquals(990, $payload->get('content'));
     }
 }
