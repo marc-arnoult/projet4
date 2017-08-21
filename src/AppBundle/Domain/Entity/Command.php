@@ -16,6 +16,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Command
 {
+    const DAY = "Journée";
+    const HALF_DAY = "Demi-journée";
     /**
      * @var int
      *

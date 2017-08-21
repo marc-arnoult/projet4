@@ -4,6 +4,7 @@ namespace AppBundle\Domain\Manager;
 
 use AppBundle\Domain\Entity\Command;
 use AppBundle\Domain\Entity\Ticket;
+use AppBundle\Domain\Payload\PayloadFactory;
 use AppBundle\Domain\Service\PriceCalculatorInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use JMS\Serializer\SerializerInterface;
@@ -15,16 +16,19 @@ class CommandManager
     private $doctrine;
     private $validator;
     private $calculator;
+    private $payload;
 
     public function __construct(
         EntityManagerInterface $doctrine,
         ValidatorBuilderInterface $validator,
-        PriceCalculatorInterface $priceCalculator
+        PriceCalculatorInterface $priceCalculator,
+        PayloadFactory $payload
     )
     {
         $this->doctrine = $doctrine;
         $this->validator = $validator;
         $this->calculator = $priceCalculator;
+        $this->payload = $payload;
     }
 
     public function createCommand(string $data)
@@ -34,9 +38,7 @@ class CommandManager
 
         $ticketRemaining = $this->doctrine->getRepository('AppBundle:Ticket')->getTicketsRemaining($content->entry_at);
 
-        if (count($content->tickets) > $ticketRemaining) {
-            return ['content' => 'Errror', 'status_code' => JsonResponse::HTTP_BAD_REQUEST];
-        }
+        if (count($content->tickets) > $ticketRemaining) return $this->payload->badRequest(['content' => 'Not enough ticket remaining']);
 
         $command = new Command();
         $command->setCreatedAt($now);
@@ -45,7 +47,6 @@ class CommandManager
         $totalPrice = 0;
 
         foreach ($content->tickets as $index => $data) {
-
             $ticket = new Ticket();
             $ticket->setFirstName($data->first_name);
             $ticket->setReduction($data->reduction);
@@ -70,7 +71,8 @@ class CommandManager
                     $messages[$error->getPropertyPath()] = $error->getMessage();
                     $messages['index'] = $index;
                 }
-                return ['content' => $messages, 'status_code' => JsonResponse::HTTP_BAD_REQUEST];
+
+                return $this->payload->badRequest(['content' => $messages]);
             }
 
             $this->doctrine->persist($ticket);
@@ -80,6 +82,6 @@ class CommandManager
 
         $this->doctrine->flush();
 
-        return ['content' => 'created', 'status_code' => JsonResponse::HTTP_CREATED];
+        return $this->payload->created(['content' => 'created']);
     }
 }

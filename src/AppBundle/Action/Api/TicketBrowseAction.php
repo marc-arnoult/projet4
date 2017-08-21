@@ -30,12 +30,16 @@ class TicketBrowseAction
      *
      * @Method("GET")
      * @Route("api/ticket")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function __invoke(Request $request)
     {
         $day = $request->query->get('day');
-        $data = $this->manager->getTicketsRemaining($day);
+        $payload = $this->manager->getTicketsRemaining($day);
 
-        return $this->responder->__invoke($data);
+        $this->responder->setPayload($payload);
+
+        return $this->responder->__invoke();
     }
 }

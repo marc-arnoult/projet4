@@ -6872,7 +6872,7 @@ function isSlowBuffer (obj) {
     }
 
     /**
-     * The base implementation of `setData` without support for hot loop shorting.
+     * The base implementation of `setPayload` without support for hot loop shorting.
      *
      * @private
      * @param {Function} func The function to associate metadata with.

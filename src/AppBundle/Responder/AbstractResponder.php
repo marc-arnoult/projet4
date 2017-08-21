@@ -4,17 +4,19 @@
 namespace AppBundle\Responder;
 
 
+use AppBundle\Domain\Payload\PayloadInterface;
+
 abstract class AbstractResponder
 {
-    private $data;
+    private $payload;
 
-    public function setData($data)
+    public function setPayload(PayloadInterface $payload)
     {
-        $this->data = $data;
+        $this->payload = $payload;
     }
 
-    public function getData()
+    public function getPayload() : PayloadInterface
     {
-        return $this->data;
+        return $this->payload;
     }
 }

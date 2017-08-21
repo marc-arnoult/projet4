@@ -9,8 +9,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CommandResponder extends AbstractResponder
 {
-    public function __invoke($data)
+    public function __invoke()
     {
-        return new JsonResponse(json_encode($data['content']), $data['status_code'], [], true);
+        $payload = $this->getPayload();
+
+        $response = new JsonResponse();
+        $response->setData($payload->get('content'));
+        $response->setStatusCode($payload->status);
+
+        return $response;
     }
 }
