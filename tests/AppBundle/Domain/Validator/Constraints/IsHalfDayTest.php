@@ -5,42 +5,53 @@ namespace Test\AppBundle\Domain\Validator\Constraints;
 
 use AppBundle\Domain\Entity\Command;
 use AppBundle\Domain\Entity\Ticket;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use AppBundle\Domain\Validator\Constraints\IsHalfDay;
+use AppBundle\Domain\Validator\Constraints\IsHalfDayValidator;
 
-class IsHalfDayTest extends WebTestCase
+require_once(__DIR__.'/ValidatorTestAbstract');
+
+class IsHalfDayTest extends ValidatorTestAbstract
 {
-    private $ticket;
-
-    public function setUp()
+    /**
+     * {@inheritdoc}
+     */
+    protected function getValidatorInstance()
     {
-        $now = new \DateTime('NOW');
-        $birthday = new \DateTime('1991-09-01');
-        $entry = new \DateTime('2017-09-02');
-
-        $command = new Command();
-        $ticket = new Ticket();
-
-        $ticket->setCommand($command);
-        $ticket->setBirthday($birthday);
-        $ticket->setCountry('France');
-        $ticket->setFirstName('Marc');
-        $ticket->setLastName('Arnoult');
-        $ticket->setEntryAt($entry);
-        $ticket->setReduction(false);
-        $ticket->setCreatedAt($now);
-        $ticket->setType('Journée');
-
-        $this->ticket = $ticket;
+        return new IsHalfDayValidator();
     }
 
     public function testIsValid()
     {
-        $kernel = self::createKernel();
-        $kernel->boot();
+        $ticket = new Ticket();
+        $command = new Command();
 
-        $validator = $kernel->getContainer()->get('validator');
+        $command->setType('Demi-journée');
+        $ticket->setEntryAt(new \DateTime('NOW'));
+        $ticket->setCommand($command);
 
-        $errors = $validator->validate($this->ticket);
-        $this->assertCount(0, $errors);
+        $isHalfDayConstraint = new IsHalfDay();
+        $validator = $this->initValidator();
+
+        $validator->validate($ticket, $isHalfDayConstraint);
+    }
+
+    public function testIsNotValid()
+    {
+        $ticket = new Ticket();
+        $command = new Command();
+
+        $command->setType('Journée');
+        $ticket->setEntryAt(new \DateTime('now'));
+        $ticket->setCommand($command);
+
+        $isHalfDayConstraint = new IsHalfDay();
+
+        if (date('H', $ticket->getEntryAt()->getTimeStamp()) >= 14 ) {
+            $validator = $this->initValidator($isHalfDayConstraint->message);
+        } else {
+            $validator = $this->initValidator();
+        }
+
+        $validator->validate($ticket, $isHalfDayConstraint);
     }
 }

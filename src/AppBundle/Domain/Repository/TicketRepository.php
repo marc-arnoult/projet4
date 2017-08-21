@@ -16,10 +16,10 @@ class TicketRepository extends \Doctrine\ORM\EntityRepository
     public function getTicketsRemaining($date)
     {
         return Ticket::TICKET_LIMIT - $this->createQueryBuilder('t')
-            ->select('COUNT(t)')
-            ->where("t.entryAt LIKE :day")
-            ->setParameter(':day', "$date%")
-            ->getQuery()
-            ->getSingleScalarResult();
+                ->select('COUNT(t)')
+                ->where("t.entryAt LIKE :day")
+                ->setParameter(':day', "$date%")
+                ->getQuery()
+                ->getSingleScalarResult();
     }
 }

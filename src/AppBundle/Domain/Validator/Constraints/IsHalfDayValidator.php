@@ -14,18 +14,15 @@ class IsHalfDayValidator extends ConstraintValidator
      *
      * @param mixed $ticket
      * @param Constraint $constraint The constraint for the validation
-     * @codeCoverageIgnore
      */
     public function validate($ticket, Constraint $constraint)
     {
-        $now = (new \DateTime('NOW'))->getTimeStamp();
-        $type = $ticket->getType();
-        $entry = $ticket->getEntryAt()->getTimeStamp();
+        $today = (new \DateTime('NOW'))->getTimeStamp();
 
         if (
-            $type == 'Journée' &&
-            date('H', $now) > 14 &&
-            date('Ymd') === date('Ymd', $entry)
+            date('H', $today) >= 14 &&
+            date('d/m/y', $today) === date('d/m/y', $ticket->getEntryAt()->getTimeStamp()) &&
+            $ticket->getCommand()->getType() === "Journée"
         )
         {
             $this->context->buildViolation($constraint->message)
