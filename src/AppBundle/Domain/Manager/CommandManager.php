@@ -30,7 +30,7 @@ class CommandManager
         $this->calculator = $priceCalculator;
     }
 
-    public function createCommand($data)
+    public function createCommand(string $data)
     {
         $content = json_decode($data);
         $now = new \DateTime('NOW');
