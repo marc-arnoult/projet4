@@ -35,7 +35,7 @@ class CommandManager
         $ticketRemaining = $this->doctrine->getRepository('AppBundle:Ticket')->getTicketsRemaining($content->entry_at);
 
         if (count($content->tickets) > $ticketRemaining) {
-            return ['content' => 'Errror', 'status_code' => JsonResponse::HTTP_BAD_REQUEST];
+            return ['content' => 'There is not enough ticket remaining for this day', 'status_code' => JsonResponse::HTTP_BAD_REQUEST];
         }
 
         $command = new Command();
