@@ -4,12 +4,12 @@
 namespace AppBundle\Domain\Payload;
 
 
-class Payload implements PayloadInterface
+class AbstractPayload implements PayloadInterface
 {
     private $payload;
 
     /**
-     * Payload constructor.
+     * AbstractPayload constructor.
      * @param array $payload
      */
     public function __construct(array $payload)

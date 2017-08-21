@@ -6,6 +6,7 @@ namespace AppBundle\Domain\Manager;
 
 use AppBundle\Domain\Entity\Ticket;
 use AppBundle\Domain\Filter\DateFilterInterface;
+use AppBundle\Domain\Payload\PayloadFactory;
 use AppBundle\Domain\Service\PriceCalculatorInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use JMS\Serializer\SerializerInterface;
@@ -20,14 +21,17 @@ class TicketManager
 {
     private $doctrine;
     private $dateFilter;
+    private $payload;
 
     public function __construct(
         EntityManagerInterface $doctrine,
-        DateFilterInterface $dateFilter
+        DateFilterInterface $dateFilter,
+        PayloadFactory $payloadFactory
     )
     {
         $this->doctrine = $doctrine;
         $this->dateFilter = $dateFilter;
+        $this->payload = $payloadFactory;
     }
 
     public function getTicketsRemaining($day)
@@ -37,9 +41,11 @@ class TicketManager
         if ($this->dateFilter->isValid($day)) {
             $remaining = $repository->getTicketsRemaining((new \DateTime($day))->format('Y-m-d'));
 
-            return ['content' => $remaining, 'status_code' => JsonResponse::HTTP_OK];
+            if (is_null($remaining)) return $this->payload->notFound(['content' => 'Not found']);
+
+            return $this->payload->found(['content' => $remaining]);
         }
 
-        return ['content' => 'Le champ date doit être correction rempli', 'status_code' => JsonResponse::HTTP_BAD_REQUEST];
+        return $this->payload->badRequest(['content' => 'There is an error in your request']);
     }
 }

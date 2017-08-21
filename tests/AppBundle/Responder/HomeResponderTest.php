@@ -19,8 +19,8 @@ class HomeResponderTest extends TestCase
     public function testSetData()
     {
         $responder = new HomeResponder($this->twig);
-        $responder->setData('Hello');
+        $responder->setPayload('Hello');
 
-        $this->assertEquals('Hello', $responder->getData());
+        $this->assertEquals('Hello', $responder->getPayload());
     }
 }

@@ -74,6 +74,7 @@ class Ticket
      * @var Command
      * @ORM\ManyToOne(targetEntity="AppBundle\Domain\Entity\Command", inversedBy="tickets", cascade={"persist"})
      * @Assert\NotNull()
+     * @Assert\Valid()
      * @ORM\JoinColumn(referencedColumnName="id", nullable=false)
      */
     private $command;
