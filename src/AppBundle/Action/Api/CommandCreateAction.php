@@ -28,7 +28,9 @@ class CommandCreateAction
      */
     public function __invoke(Request $request)
     {
-        $payload = $this->manager->createCommand($request->getContent());
+        $data = json_decode($request->getContent(), true);
+        $payload = $this->manager->createCommand($data);
+
         $this->responder->setPayload($payload);
 
         return $this->responder->__invoke();
