@@ -14,19 +14,16 @@ class CommandManager
 {
     private $doctrine;
     private $validator;
-    private $serializer;
     private $calculator;
 
     public function __construct(
         EntityManagerInterface $doctrine,
         ValidatorBuilderInterface $validator,
-        SerializerInterface $serializer,
         PriceCalculatorInterface $priceCalculator
     )
     {
         $this->doctrine = $doctrine;
         $this->validator = $validator;
-        $this->serializer = $serializer;
         $this->calculator = $priceCalculator;
     }
 
