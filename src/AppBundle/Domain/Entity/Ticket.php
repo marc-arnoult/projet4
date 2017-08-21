@@ -81,7 +81,7 @@ class Ticket
     /**
      * @var \DateTime
      * @ORM\Column(name="entry_at", type="datetime")
-     * @CustomAssert\IsClosed
+     * @CustomAssert\IsClosed()
      */
     private $entryAt;
 

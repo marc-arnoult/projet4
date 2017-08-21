@@ -12,7 +12,6 @@ class TicketTest extends WebTestCase
     {
         $now = new \DateTime('NOW');
         $birthday = new \DateTime('1991-09-01');
-        $entry = new \DateTime('2017-09-09');
 
         $command = new Command();
         $ticket = new Ticket();
