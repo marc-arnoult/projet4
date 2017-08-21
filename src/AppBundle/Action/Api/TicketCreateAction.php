@@ -28,7 +28,6 @@ class TicketCreateAction
     public function __invoke(Request $request)
     {
         $data = $this->manager->addTickets($request->getContent());
-        dump($data);die;
         return new Response($data['content']);
     }
 }
