@@ -1,9 +1,6 @@
 <?php
 
 namespace AppBundle\Domain\Repository;
-use AppBundle\Domain\Entity\{
-    Ticket
-};
 
 /**
  * CommandRepository

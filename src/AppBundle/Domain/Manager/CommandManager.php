@@ -7,9 +7,9 @@ use AppBundle\Domain\Entity\Ticket;
 use AppBundle\Domain\Payload\PayloadFactory;
 use AppBundle\Domain\Service\PriceCalculatorInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use JMS\Serializer\SerializerInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Validator\ValidatorBuilderInterface;
+use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
 class CommandManager
 {
@@ -31,57 +31,37 @@ class CommandManager
         $this->payload = $payload;
     }
 
-    public function createCommand(string $data)
+    public function createCommand($content)
     {
-        $content = json_decode($data);
-        $now = new \DateTime('NOW');
+        $hydrator = new DoctrineHydrator($this->doctrine);
 
-        $ticketRemaining = $this->doctrine->getRepository('AppBundle:Ticket')->getTicketsRemaining($content->entry_at);
+        $ticketRemaining = $this->doctrine->getRepository('AppBundle:Ticket')->getTicketsRemaining($content['entryAt']);
 
-        if (count($content->tickets) > $ticketRemaining) return $this->payload->badRequest(['content' => 'Not enough ticket remaining']);
-
-        $command = new Command();
-        $command->setCreatedAt($now);
-        $command->setType($content->type);
-        $command->setEmail($content->email);
-        $totalPrice = 0;
-
-        foreach ($content->tickets as $index => $data) {
-            $ticket = new Ticket();
-            $ticket->setFirstName($data->first_name);
-            $ticket->setReduction($data->reduction);
-            $ticket->setLastName($data->last_name);
-            $ticket->setBirthday(new \DateTime($data->birthday));
-            $ticket->setCountry($data->country);
-            $ticket->setEntryAt(new \DateTime($data->entry_at));
-
-            $ticket->setCreatedAt($now);
-            $ticket->setCommand($command);
-            $command->setEntryAt($ticket->getEntryAt());
-
-            $this->calculator->calculatePrice($ticket);
-
-            $totalPrice += $ticket->getPrice();
-
-            $errors = $this->validator->getValidator()->validate($ticket);
-
-            if (count($errors) != 0) {
-                $messages = [];
-                foreach ($errors as $error) {
-                    $messages[$error->getPropertyPath()] = $error->getMessage();
-                    $messages['index'] = $index;
-                }
-
-                return $this->payload->badRequest(['content' => $messages]);
-            }
-
-            $this->doctrine->persist($ticket);
+        if (count($content['tickets']) > $ticketRemaining) {
+            return $this->payload->badRequest(['content' => 'Not enough ticket remaining']);
         }
 
-        $command->setPrice($totalPrice);
+        $command = new Command();
+        $command->setType($content['type']);
+        $command->setEmail($content['email']);
+        $command->setEntryAt(new \DateTime($content['entryAt']));
 
-        $this->doctrine->flush();
+        foreach ($content['tickets'] as $data) {
+            $ticket = new Ticket();
+            $ticket = $hydrator->hydrate($data, $ticket);
+            $ticket->setCommand($command);
+        }
 
-        return $this->payload->created(['content' => 'created']);
+        $this->calculator->calculatePriceFromCommand($command);
+        $errors = $this->validator->getValidator()->validate($command);
+
+        if (count($errors) > 0) {
+            return $this->payload->badRequest(['content' => (string) $errors]);
+        }
+
+        $session = new Session();
+        $session->set('command', $command);
+
+        return $this->payload->found(['content' => 'found']);
     }
 }

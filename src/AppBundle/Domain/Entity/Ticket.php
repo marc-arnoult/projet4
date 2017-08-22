@@ -29,21 +29,21 @@ class Ticket
     /**
      * @var string
      *
-     * @Assert\NotNull()
+     * @Assert\NotBlank()
      * @ORM\Column(name="first_name", type="string", length=255, nullable=false)
      */
     private $firstName;
 
     /**
      * @var string
-     * @Assert\NotNull()
+     * @Assert\NotBlank()
      * @ORM\Column(name="last_name", type="string", length=255, nullable=false)
      */
     private $lastName;
 
     /**
      * @var \DateTime
-     * @Assert\NotNull()
+     * @Assert\NotBlank()
      * @ORM\Column(name="birthday", type="date", nullable=false)
      */
     private $birthday;
@@ -73,8 +73,6 @@ class Ticket
     /**
      * @var Command
      * @ORM\ManyToOne(targetEntity="AppBundle\Domain\Entity\Command", inversedBy="tickets", cascade={"persist"})
-     * @Assert\NotNull()
-     * @Assert\Valid()
      * @ORM\JoinColumn(referencedColumnName="id", nullable=false)
      */
     private $command;
@@ -92,6 +90,11 @@ class Ticket
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime('NOW');
+    }
 
     /**
      * Get id
@@ -250,6 +253,7 @@ class Ticket
     public function setCommand(Command $command)
     {
         $this->command = $command;
+        $this->command->addTicket($this);
 
         return $this;
     }
@@ -289,7 +293,7 @@ class Ticket
     }
 
     /**
-     * @param mixed $entryAt
+     * @internal param $
      */
     public function setEntryAt($entryAt)
     {
