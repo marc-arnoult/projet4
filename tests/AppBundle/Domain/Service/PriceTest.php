@@ -38,35 +38,35 @@ class PriceTest extends TestCase
 
     public function testAveragePrice()
     {
-        $this->calculator->calculatePriceFromOrder($this->command);
+        $this->calculator->calculatePriceFromCommand($this->command);
         $this->assertEquals(16, $this->ticket->getPrice());
     }
 
     public function testSeniorPrice()
     {
         $this->ticket->setBirthday(new \DateTime('1950-09-01'));
-        $this->calculator->calculatePriceFromOrder($this->command);
+        $this->calculator->calculatePriceFromCommand($this->command);
         $this->assertEquals(12, $this->ticket->getPrice());
     }
 
     public function testJuniorPrice()
     {
         $this->ticket->setBirthday(new \DateTime('2010-09-01'));
-        $this->calculator->calculatePriceFromOrder($this->command);
+        $this->calculator->calculatePriceFromCommand($this->command);
         $this->assertEquals(8, $this->ticket->getPrice());
     }
 
     public function testVeryYoungPrice()
     {
         $this->ticket->setBirthday(new \DateTime('2015-09-01'));
-        $this->calculator->calculatePriceFromOrder($this->command);
+        $this->calculator->calculatePriceFromCommand($this->command);
         $this->assertEquals(0, $this->ticket->getPrice());
     }
 
     public function testPromoPrice()
     {
         $this->ticket->setReduction(true);
-        $this->calculator->calculatePriceFromOrder($this->command);
+        $this->calculator->calculatePriceFromCommand($this->command);
         $this->assertEquals(10, $this->ticket->getPrice());
     }
 
@@ -80,7 +80,7 @@ class PriceTest extends TestCase
             $command->addTicket($ticket);
         }
 
-        $this->calculator->calculatePriceFromOrder($command);
+        $this->calculator->calculatePriceFromCommand($command);
 
         $this->assertEquals(48, $command->getPrice());
     }

@@ -4,7 +4,6 @@ namespace AppBundle\Domain\Service;
 
 
 use AppBundle\Domain\Entity\Command;
-use AppBundle\Domain\Entity\Ticket;
 
 class PriceCalculator implements PriceCalculatorInterface
 {
@@ -21,7 +20,7 @@ class PriceCalculator implements PriceCalculatorInterface
      * @return void
      * @internal param Ticket $ticket
      */
-    public function calculatePriceFromOrder(Command $command) : void
+    public function calculatePriceFromCommand(Command $command) : void
     {
         $priceOrder = 0;
 

@@ -52,7 +52,7 @@ class CommandManager
             $ticket->setCommand($command);
         }
 
-        $this->calculator->calculatePriceFromOrder($command);
+        $this->calculator->calculatePriceFromCommand($command);
         $errors = $this->validator->getValidator()->validate($command);
 
         if (count($errors) > 0) {
