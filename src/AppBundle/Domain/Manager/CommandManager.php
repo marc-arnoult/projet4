@@ -34,7 +34,6 @@ class CommandManager
     public function createCommand($content)
     {
         $hydrator = new DoctrineHydrator($this->doctrine);
-        $session = new Session();
 
         $ticketRemaining = $this->doctrine->getRepository('AppBundle:Ticket')->getTicketsRemaining($content['entryAt']);
 
@@ -60,7 +59,9 @@ class CommandManager
             return $this->payload->badRequest(['content' => (string) $errors]);
         }
 
-       $session->set('command', $command);
-        return $this->payload->found(['content' => 'created']);
+        $session = new Session();
+        $session->set('command', $command);
+
+        return $this->payload->found(['content' => 'found']);
     }
 }
