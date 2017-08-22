@@ -3,7 +3,6 @@
 namespace AppBundle\Domain\Entity;
 
 use AppBundle\Domain\Validator\Constraints\IsClosed;
-use AppBundle\Domain\Validator\Constraints\IsHoliday;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
@@ -41,7 +40,7 @@ class Command
     /**
      * @var string
      *
-     * @Assert\NotNull()
+     * @Assert\NotBlank()
      * @Assert\Email(
      *     message = "The email '{{ value }}' is not a valid email.",
      *     checkMX = true
@@ -51,7 +50,10 @@ class Command
     private $email;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Domain\Entity\Ticket", mappedBy="command", cascade={"persist"})
+     * @Assert\Valid()
+     * @Assert\NotBlank()
+     * @ORM\OneToMany(targetEntity="AppBundle\Domain\Entity\Ticket", mappedBy="command", cascade={"persist", "remove"})
+     *
      */
     private $tickets;
 
@@ -73,6 +75,7 @@ class Command
     public function __construct()
     {
         $this->tickets = new ArrayCollection();
+        $this->createdAt = new \DateTime('NOW');
     }
 
     /**
@@ -187,6 +190,10 @@ class Command
      */
     public function addTicket(Ticket $ticket)
     {
+        if ($this->tickets->contains($ticket)) {
+            return;
+        }
+
         $this->tickets->add($ticket);
     }
 
@@ -195,6 +202,10 @@ class Command
         $this->tickets->removeElement($ticket);
     }
 
+    public function containTicket(Ticket $ticket)
+    {
+        return $this->tickets->contains($ticket);
+    }
     /**
      * @return mixed
      */

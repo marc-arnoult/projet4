@@ -3,6 +3,7 @@
 namespace AppBundle\Domain\Service;
 
 
+use AppBundle\Domain\Entity\Command;
 use AppBundle\Domain\Entity\Ticket;
 
 class PriceCalculator implements PriceCalculatorInterface
@@ -16,31 +17,38 @@ class PriceCalculator implements PriceCalculatorInterface
     /**
      * Calculate the price of the ticket from is age ( return nothing the object is passed by reference ).
      *
-     * @param Ticket $ticket
+     * @param Command $command
      * @return void
+     * @internal param Ticket $ticket
      */
-    public function calculatePrice(Ticket $ticket) : void
+    public function calculatePriceFromOrder(Command $command) : void
     {
-        $age = $this->calculateAge($ticket->getBirthday());
+        $priceOrder = 0;
 
-        if ($ticket->getReduction()) {
-            $ticket->setPrice(PriceCalculator::PROMO);
-        } else {
-            switch ($age) {
-                case ($age < 4):
-                    $ticket->setPrice(PriceCalculator::FREE);
-                    break;
-                case ($age >= 4 && $age < 12):
-                    $ticket->setPrice(PriceCalculator::CHILD);
-                    break;
-                case ($age >= 60):
-                    $ticket->setPrice(PriceCalculator::SENIOR);
-                    break;
-                default:
-                    $ticket->setPrice(PriceCalculator::ADULT);
-                    break;
+        foreach ($command->getTickets() as $ticket) {
+            $age = $this->calculateAge($ticket->getBirthday());
+            if ($ticket->getReduction()) {
+                $ticket->setPrice(PriceCalculator::PROMO);
+            } else {
+                switch ($age) {
+                    case ($age < 4):
+                        $ticket->setPrice(PriceCalculator::FREE);
+                        break;
+                    case ($age >= 4 && $age < 12):
+                        $ticket->setPrice(PriceCalculator::CHILD);
+                        break;
+                    case ($age >= 60):
+                        $ticket->setPrice(PriceCalculator::SENIOR);
+                        break;
+                    default:
+                        $ticket->setPrice(PriceCalculator::ADULT);
+                        break;
+                }
             }
+            $priceOrder += $ticket->getPrice();
         }
+
+        $command->setPrice($priceOrder);
     }
 
 
