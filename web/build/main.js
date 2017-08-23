@@ -2738,6 +2738,13 @@ lists.forEach(list => {
                 event.target.classList.remove('is-danger');
                 event.target.classList.add('is-success');
             }
+        },
+        isValidType(event) {
+            let type = event.target.value;
+            if (type) {
+                event.target.parentNode.classList.remove('is-danger');
+                event.target.parentNode.classList.add('is-success');
+            }
         }
     },
     mounted() {
@@ -37900,6 +37907,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "required": ""
     },
     on: {
+      "blur": function($event) {
+        _vm.isValidType($event)
+      },
       "change": function($event) {
         var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
           return o.selected
