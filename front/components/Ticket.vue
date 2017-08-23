@@ -342,8 +342,6 @@
                     birthday: '',
                     country: '',
                     reduction: false,
-                    entry_at: store.entry_at,
-                    type: store.type,
                     price: 0
                 },
             }

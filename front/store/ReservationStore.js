@@ -4,4 +4,5 @@ export default {
     entry_at: '',
     ticketRemaining: '',
     numberOfTicket: 0,
+    tickets: []
 }

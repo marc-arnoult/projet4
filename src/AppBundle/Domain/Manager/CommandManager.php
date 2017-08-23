@@ -52,6 +52,7 @@ class CommandManager
             $ticket = new Ticket();
             $ticket = $hydrator->hydrate($data, $ticket);
             $ticket->setCommand($command);
+            $ticket->setEntryAt($command->getEntryAt());
         }
 
         $this->calculator->calculatePriceFromCommand($command);
@@ -63,6 +64,8 @@ class CommandManager
 
         $session = new Session();
         $session->set('command', $command);
+        $this->doctrine->persist($command);
+        $this->doctrine->flush();
 
         return $this->payload->found(['content' => 'found']);
     }
@@ -75,7 +78,7 @@ class CommandManager
             'amount' => 20 * 100,
             'currency' => 'eur',
             'source' => $token,
-            'description' => 'Musée du Louvre - Billeterie',
+            'description' => 'Ticketing, Museum of louvre',
         ]);
         dump($response);die;
         return null;

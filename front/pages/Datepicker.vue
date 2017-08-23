@@ -117,8 +117,8 @@
         },
         methods: {
             setDateEnter(event) {
-                this.store.entry_at = event.target.value;
-                this.state.date = new Date(moment(event.target.value, 'DD/MM/YYYY'));
+                this.store.entry_at = new Date(moment(event.target.value, 'YYYY-MM-DD'));
+                this.state.date = new Date(moment(event.target.value, 'YYYY-MM-DD'));
             },
             getTickerRemaining(date) {
                 let day = moment(date).format('YYYY-MM-DD');

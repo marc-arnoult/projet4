@@ -26,6 +26,8 @@
 <script>
     import Ticket from '../components/Ticket.vue'
     import store from '../store/ReservationStore'
+    import axios from 'axios'
+    import moment from 'moment'
 
     export default {
         data() {
@@ -33,7 +35,7 @@
                 disabled: true,
                 totalPrice: 0,
                 store,
-                tickets: []
+                command: {}
             }
         },
         components: {
@@ -41,7 +43,22 @@
         },
         methods: {
             payment() {
-                this.$parent._router.push('/payment')
+                this.store.tickets = [];
+                this.$children.forEach(child => {
+                    this.store.tickets.push(child._data.ticket)
+                });
+
+                this.command.type = this.store.type;
+                this.command.email = this.store.email;
+                this.command.entryAt = new Date(this.store.entry_at);
+                this.command.tickets = this.store.tickets;
+
+                axios({
+                    method: 'post',
+                    url: '/api/command',
+                    data: this.command
+                }).then(res => console.log(res))
+                //this.$parent._router.push('/payment')
             },
             priceTotal() {
                 let total = 0;

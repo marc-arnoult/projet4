@@ -22,7 +22,7 @@
 <script>
     import Datepicker from './Datepicker.vue'
     import Command from './Command.vue'
-    import Payment from './Payement.vue'
+    import Payment from './Payment.vue'
     import VueRouter from 'vue-router'
     import store from '../store/ReservationStore'
 
@@ -45,7 +45,7 @@
                         if (store.email !== '' && store.numberOfTicket !== 0 && store.type !== '') {
                             next()
                         } else {
-                            window.location.href = from.path
+                            window.location.href = '/'
                         }
                     }
                 },
