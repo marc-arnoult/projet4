@@ -64,23 +64,30 @@ class CommandManager
 
         $session = new Session();
         $session->set('command', $command);
-        $this->doctrine->persist($command);
-        $this->doctrine->flush();
 
-        return $this->payload->found(['content' => 'found']);
+        $message = ['content' => [
+                'price' => $command->getPrice(),
+                'started' => true
+            ]
+        ];
+
+        return $this->payload->found($message);
     }
 
     public function payment($token)
     {
+        $session = new Session();
+        $command = $session->get('command');
+
         Stripe::setApiKey("sk_test_ZejfvxMqrtcsR2P4A09QKR0i");
 
-        $response =Charge::create([
-            'amount' => 20 * 100,
+        $response = Charge::create([
+            'amount' => $command->getPrice() * 100,
             'currency' => 'eur',
             'source' => $token,
             'description' => 'Ticketing, Museum of louvre',
         ]);
-        dump($response);die;
-        return null;
+
+
     }
 }

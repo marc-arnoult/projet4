@@ -4,5 +4,7 @@ export default {
     entry_at: '',
     ticketRemaining: '',
     numberOfTicket: 0,
-    tickets: []
+    priceCommand: 0,
+    started: false,
+    tickets: [],
 }

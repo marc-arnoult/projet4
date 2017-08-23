@@ -459,6 +459,8 @@ exports.default = {
     entry_at: '',
     ticketRemaining: '',
     numberOfTicket: 0,
+    priceCommand: 0,
+    started: false,
     tickets: []
 };
 
@@ -2527,8 +2529,11 @@ module.exports = {
                 method: 'post',
                 url: '/api/command',
                 data: this.command
-            }).then(res => console.log(res));
-            //this.$parent._router.push('/payment')
+            }).then(res => {
+                this.store.price = res.data.price;
+                this.store.started = res.data.started;
+                this.$parent._router.push('/payment');
+            });
         },
         priceTotal() {
             let total = 0;
@@ -2769,6 +2774,8 @@ lists.forEach(list => {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__("./node_modules/axios/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__store_ReservationStore__);
 //
 //
 //
@@ -2783,10 +2790,20 @@ lists.forEach(list => {
 //
 //
 //
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+    data() {
+        return {
+            store: __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore___default.a,
+            stripe: '',
+            elements: '',
+            card: ''
+        };
+    },
     mounted() {
         this.stripe = Stripe('pk_test_iEZp1ORNhztnwy5qRbdAWTD3');
         this.elements = this.stripe.elements();
@@ -2808,13 +2825,6 @@ lists.forEach(list => {
         });
 
         this.card.mount('#card-element');
-    },
-    data() {
-        return {
-            stripe: '',
-            elements: '',
-            card: ''
-        };
     },
     methods: {
         pay() {
@@ -2894,7 +2904,14 @@ lists.forEach(list => {
         }, {
             path: '/payment',
             name: 'payment',
-            component: __WEBPACK_IMPORTED_MODULE_2__Payment_vue__["a" /* default */]
+            component: __WEBPACK_IMPORTED_MODULE_2__Payment_vue__["a" /* default */],
+            beforeEnter: (to, from, next) => {
+                if (__WEBPACK_IMPORTED_MODULE_4__store_ReservationStore___default.a.started) {
+                    next();
+                } else {
+                    console.log('Erreur');
+                }
+            }
         }]
     })
 });
@@ -37984,7 +38001,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "id": "form-payment"
     }
-  }, [_c('form', [_vm._m(0), _vm._v(" "), _c('button', {
+  }, [_c('h1', {
+    staticClass: "title is-1"
+  }, [_vm._v("Paiement")]), _vm._v(" "), _c('form', [_vm._m(0), _vm._v(" "), _c('button', {
     staticClass: "button is-success is-medium",
     attrs: {
       "type": "submit"

@@ -57,8 +57,11 @@
                     method: 'post',
                     url: '/api/command',
                     data: this.command
-                }).then(res => console.log(res))
-                //this.$parent._router.push('/payment')
+                }).then(res => {
+                    this.store.price = res.data.price;
+                    this.store.started = res.data.started;
+                    this.$parent._router.push('/payment')
+                });
             },
             priceTotal() {
                 let total = 0;

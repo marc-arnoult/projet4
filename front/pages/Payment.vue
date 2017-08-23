@@ -1,5 +1,6 @@
 <template>
     <div id="form-payment">
+        <h1 class="title is-1">Paiement</h1>
         <form>
             <div class="field">
                 <label>
@@ -14,8 +15,17 @@
 
 <script>
     import axios from 'axios';
+    import store from '../store/ReservationStore'
 
     export default {
+        data() {
+            return {
+                store,
+                stripe: '',
+                elements: '',
+                card: ''
+            }
+        },
         mounted() {
             this.stripe = Stripe('pk_test_iEZp1ORNhztnwy5qRbdAWTD3');
             this.elements = this.stripe.elements();
@@ -37,13 +47,6 @@
             });
 
             this.card.mount('#card-element');
-        },
-        data() {
-            return {
-                stripe: '',
-                elements: '',
-                card: ''
-            }
         },
         methods: {
             pay() {
