@@ -125,7 +125,10 @@ to {
     width: 10%;
 }
 }
-#form-payment {
-  width: 600px;
-  margin: auto;
+.ticket-resume {
+  display: flex;
+  justify-content: space-between;
+}
+.bold {
+  font-weight: bold;
 }

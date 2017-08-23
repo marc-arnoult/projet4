@@ -2523,7 +2523,7 @@ module.exports = {
 
             this.command.type = this.store.type;
             this.command.email = this.store.email;
-            this.command.entryAt = new Date(this.store.entry_at);
+            this.command.entryAt = this.store.entry_at;
             this.command.tickets = this.store.tickets;
 
             __WEBPACK_IMPORTED_MODULE_2_axios___default()({
@@ -2531,7 +2531,7 @@ module.exports = {
                 url: '/api/command',
                 data: this.command
             }).then(res => {
-                this.store.price = res.data.price;
+                this.store.priceCommand = res.data.price;
                 this.store.nbTickets = res.data.nbTickets;
                 this.store.started = res.data.started;
                 this.$parent._router.push('/payment');
@@ -2800,6 +2800,39 @@ lists.forEach(list => {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2915,11 +2948,13 @@ lists.forEach(list => {
             name: 'payment',
             component: __WEBPACK_IMPORTED_MODULE_2__Payment_vue__["a" /* default */],
             beforeEnter: (to, from, next) => {
-                if (__WEBPACK_IMPORTED_MODULE_4__store_ReservationStore___default.a.started) {
-                    next();
+                next();
+                /*
+                if (store.started) {
+                    next()
                 } else {
-                    console.log('Erreur');
-                }
+                    console.log('Erreur')
+                }*/
             }
         }]
     })
@@ -38013,8 +38048,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "id": "form-payment"
     }
+  }, [_c('div', {
+    staticClass: "columns"
+  }, [_c('div', {
+    staticClass: "column is-two-thirds"
   }, [_c('h1', {
-    staticClass: "title is-1"
+    staticClass: "title is-3 has-text-centered"
   }, [_vm._v("Paiement")]), _vm._v(" "), _c('form', [_vm._m(0), _vm._v(" "), _c('button', {
     staticClass: "button is-success is-medium",
     attrs: {
@@ -38026,7 +38065,39 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         _vm.pay()
       }
     }
-  }, [_vm._v("Payer")])])])
+  }, [_vm._v("Payer")])])]), _vm._v(" "), _c('div', {
+    staticClass: "column"
+  }, [_c('h2', {
+    staticClass: "title is-5 has-text-centered"
+  }, [_vm._v("Résumé de la commande")]), _vm._v(" "), _c('div', {
+    staticClass: "card"
+  }, [_c('header', {
+    staticClass: "card-header"
+  }, [_c('p', {
+    staticClass: "card-header-title"
+  }, [_vm._v("Nombre d'article : " + _vm._s(_vm.store.nbTickets))])]), _vm._v(" "), _c('div', {
+    staticClass: "card-content"
+  }, [_c('div', {
+    staticClass: "content"
+  }, [_vm._l((_vm.store.tickets), function(ticket, index) {
+    return _c('div', [_c('div', {
+      staticClass: "ticket-resume"
+    }, [_c('span', [_vm._v("Ticket n°" + _vm._s(index + 1))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(ticket.price) + " euros")])])])
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "ticket-resume"
+  }, [_c('span', {
+    staticClass: "bold"
+  }, [_vm._v("Total :")]), _vm._v(" "), _c('span', {
+    staticClass: "bold"
+  }, [_vm._v(_vm._s(_vm.store.priceCommand) + " euros")])]), _vm._v(" "), _c('div', {
+    staticClass: "ticket-resume"
+  }, [_c('span', {
+    staticClass: "bold"
+  }, [_vm._v("Email :")]), _vm._v(" "), _c('span', {
+    staticClass: "bold"
+  }, [_vm._v(_vm._s(_vm.store.email))])])], 2)]), _vm._v(" "), _c('footer', {
+    staticClass: "card-footer"
+  })])])])])
 }
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
@@ -38062,7 +38133,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "index": index
       },
       on: {
-        "setPrice": _vm.priceTotal
+        "setPrice": function($event) {
+          _vm.priceTotal()
+        }
       }
     })
   }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {

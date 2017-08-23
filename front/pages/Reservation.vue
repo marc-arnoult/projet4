@@ -54,11 +54,13 @@
                     name: 'payment',
                     component: Payment,
                     beforeEnter: (to, from, next) => {
+                        next()
+                        /*
                         if (store.started) {
                             next()
                         } else {
                             console.log('Erreur')
-                        }
+                        }*/
                     }
                 }
             ]

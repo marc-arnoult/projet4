@@ -46,7 +46,7 @@ class CommandManager
         $command = new Command();
         $command->setType($content['type']);
         $command->setEmail($content['email']);
-        $command->setEntryAt(new \DateTime($content['entryAt']));
+        $command->setEntryAt(\DateTime::createFromFormat('d/m/Y', $content['entryAt']));
 
         foreach ($content['tickets'] as $data) {
             $ticket = new Ticket();
@@ -88,7 +88,5 @@ class CommandManager
             'source' => $token,
             'description' => 'Ticketing, Museum of louvre',
         ]);
-
-
     }
 }

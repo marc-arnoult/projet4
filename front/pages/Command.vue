@@ -4,7 +4,7 @@
                 v-for="(ticket, index) in parseInt(store.numberOfTicket)"
                 :index="index"
                 :key="index"
-                @setPrice="priceTotal"
+                @setPrice="priceTotal()"
         >
         </Ticket>
         <hr>
@@ -50,7 +50,7 @@
 
                 this.command.type = this.store.type;
                 this.command.email = this.store.email;
-                this.command.entryAt = new Date(this.store.entry_at);
+                this.command.entryAt = this.store.entry_at;
                 this.command.tickets = this.store.tickets;
 
                 axios({
@@ -58,7 +58,7 @@
                     url: '/api/command',
                     data: this.command
                 }).then(res => {
-                    this.store.price = res.data.price;
+                    this.store.priceCommand = res.data.price;
                     this.store.nbTickets = res.data.nbTickets;
                     this.store.started = res.data.started;
                     this.$parent._router.push('/payment')

@@ -1,15 +1,48 @@
 <template>
     <div id="form-payment">
-        <h1 class="title is-1">Paiement</h1>
-        <form>
-            <div class="field">
-                <label>
-                    <span>Carte de crédit</span>
-                    <div id="card-element" class="control"></div>
-                </label>
+        <div class="columns">
+            <div class="column is-two-thirds">
+                <h1 class="title is-3 has-text-centered">Paiement</h1>
+                <form>
+                    <div class="field">
+                        <label>
+                            <span>Carte de crédit</span>
+                            <div id="card-element" class="control"></div>
+                        </label>
+                    </div>
+                    <button class="button is-success is-medium" type="submit" @click.prevent="pay()">Payer</button>
+                </form>
             </div>
-            <button class="button is-success is-medium" type="submit" @click.prevent="pay()">Payer</button>
-        </form>
+            <div class="column">
+                <h2 class="title is-5 has-text-centered">Résumé de la commande</h2>
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">Nombre d'article : {{ store.nbTickets }}</p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <div v-for="(ticket, index) in store.tickets">
+                                <div class="ticket-resume">
+                                    <span>Ticket n°{{ index + 1 }}</span>
+                                    <span>{{ ticket.price }} euros</span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="ticket-resume">
+                                <span class="bold">Total :</span>
+                                <span class="bold">{{ store.priceCommand }} euros</span>
+                            </div>
+                            <div class="ticket-resume">
+                                <span class="bold">Email :</span>
+                                <span class="bold">{{ store.email }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                    </footer>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -66,8 +99,9 @@
 </script>
 
 <style lang="sass">
-    #form-payment
-        width: 600px
-        margin: auto
-
+    .ticket-resume
+        display: flex
+        justify-content: space-between
+    .bold
+        font-weight: bold
 </style>
