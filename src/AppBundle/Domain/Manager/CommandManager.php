@@ -67,6 +67,7 @@ class CommandManager
 
         $message = ['content' => [
                 'price' => $command->getPrice(),
+                'nbTickets' => $command->getTickets()->count(),
                 'started' => true
             ]
         ];

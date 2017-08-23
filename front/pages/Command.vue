@@ -59,6 +59,7 @@
                     data: this.command
                 }).then(res => {
                     this.store.price = res.data.price;
+                    this.store.nbTickets = res.data.nbTickets;
                     this.store.started = res.data.started;
                     this.$parent._router.push('/payment')
                 });
