@@ -2772,7 +2772,6 @@ lists.forEach(list => {
         this.elements = this.stripe.elements();
         this.card = this.elements.create('card', {
             style: {
-                class: 'input',
                 base: {
                     iconColor: '#666EE8',
                     color: '#777',

@@ -21,7 +21,6 @@
             this.elements = this.stripe.elements();
             this.card = this.elements.create('card', {
                 style: {
-                    class: 'input',
                     base: {
                         iconColor: '#666EE8',
                         color: '#777',
@@ -64,9 +63,6 @@
 </script>
 
 <style lang="sass">
-    .StripeElement--focus
-        border-color: #1b6d85
-
     #form-payment
         width: 600px
         margin: auto
