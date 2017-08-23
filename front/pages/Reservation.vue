@@ -7,7 +7,7 @@
                 <router-link to="/command" tag="li" class="step-item" exact>
                     <a>Commande</a>
                 </router-link>
-                <router-link to="/aaaaa" tag="li" class="step-item" exact>
+                <router-link to="/payment" tag="li" class="step-item" exact>
                     <a>Paiement</a>
                 </router-link>
         </ul>

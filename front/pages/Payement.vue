@@ -49,10 +49,11 @@
         methods: {
             pay() {
                 this.stripe.createToken(this.card)
-                    .then(token => {
+                    .then(res => {
                         return axios({
                             method: 'post',
-                            url: '/api/payment'
+                            url: '/api/payment',
+                            data: res.token.id
                         })
                     }).then(res => {
                         console.log(res)

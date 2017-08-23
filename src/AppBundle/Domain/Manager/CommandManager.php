@@ -7,8 +7,8 @@ use AppBundle\Domain\Entity\Ticket;
 use AppBundle\Domain\Payload\PayloadFactory;
 use AppBundle\Domain\Service\PriceCalculatorInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use JMS\Serializer\SerializerInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Stripe\Charge;
+use Stripe\Stripe;
 use Symfony\Component\Validator\ValidatorBuilderInterface;
 
 class CommandManager
@@ -83,5 +83,19 @@ class CommandManager
         $this->doctrine->flush();
 
         return $this->payload->created(['content' => 'created']);
+    }
+
+    public function payment($token)
+    {
+        Stripe::setApiKey("sk_test_ZejfvxMqrtcsR2P4A09QKR0i");
+
+        $response =Charge::create([
+            'amount' => 20 * 100,
+            'currency' => 'eur',
+            'source' => $token,
+            'description' => 'Musée du Louvre - Billeterie',
+        ]);
+        dump($response);die;
+        return null;
     }
 }

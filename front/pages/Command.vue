@@ -18,7 +18,7 @@
             <span>{{ totalPrice }} euros</span>
         </div>
         <div class="has-text-right">
-            <button class="button is-success is-medium" :disabled="disabled">Commander</button>
+            <button class="button is-success is-medium" :disabled="disabled" @click="payment()">Commander</button>
         </div>
     </div>
 </template>
@@ -40,6 +40,9 @@
             Ticket
         },
         methods: {
+            payment() {
+                this.$parent._router.push('/payment')
+            },
             priceTotal() {
                 let total = 0;
 
@@ -64,6 +67,9 @@
             }
         },
         mounted() {
+            this.priceTotal()
+        },
+        updated() {
             this.priceTotal();
         }
     }

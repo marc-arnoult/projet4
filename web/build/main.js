@@ -2408,7 +2408,7 @@ module.exports = {
                 reduction: false,
                 entry_at: __WEBPACK_IMPORTED_MODULE_2__store_ReservationStore___default.a.entry_at,
                 type: __WEBPACK_IMPORTED_MODULE_2__store_ReservationStore___default.a.type,
-                price: 16
+                price: 0
             }
         };
     },
@@ -2443,8 +2443,10 @@ module.exports = {
     },
     watch: {
         ticket: {
-            handler: __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.debounce(function () {
-                this.calculatePrice();
+            handler: __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.debounce(function (ticket) {
+                if (ticket.birthday !== '') {
+                    this.calculatePrice();
+                }
             }, 200),
             deep: true
         }
@@ -2505,6 +2507,9 @@ module.exports = {
         Ticket: __WEBPACK_IMPORTED_MODULE_0__components_Ticket_vue__["a" /* default */]
     },
     methods: {
+        payment() {
+            this.$parent._router.push('/payment');
+        },
         priceTotal() {
             let total = 0;
 
@@ -2529,6 +2534,9 @@ module.exports = {
         }
     },
     mounted() {
+        this.priceTotal();
+    },
+    updated() {
         this.priceTotal();
     }
 });
@@ -2791,10 +2799,11 @@ lists.forEach(list => {
     },
     methods: {
         pay() {
-            this.stripe.createToken(this.card).then(token => {
+            this.stripe.createToken(this.card).then(res => {
                 return __WEBPACK_IMPORTED_MODULE_0_axios___default()({
                     method: 'post',
-                    url: '/api/payment'
+                    url: '/api/payment',
+                    data: res.token.id
                 });
             }).then(res => {
                 console.log(res);
@@ -38016,6 +38025,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "button is-success is-medium",
     attrs: {
       "disabled": _vm.disabled
+    },
+    on: {
+      "click": function($event) {
+        _vm.payment()
+      }
     }
   }, [_vm._v("Commander")])])], 2)
 }
@@ -38076,7 +38090,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_c('a', [_vm._v("Commande")])]), _vm._v(" "), _c('router-link', {
     staticClass: "step-item",
     attrs: {
-      "to": "/aaaaa",
+      "to": "/payment",
       "tag": "li",
       "exact": ""
     }
