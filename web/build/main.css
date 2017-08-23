@@ -125,3 +125,10 @@ to {
     width: 10%;
 }
 }
+.StripeElement--focus {
+  border-color: #1b6d85;
+}
+#form-payment {
+  width: 600px;
+  margin: auto;
+}

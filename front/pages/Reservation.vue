@@ -22,6 +22,7 @@
 <script>
     import Datepicker from './Datepicker.vue'
     import Command from './Command.vue'
+    import Payment from './Payement.vue'
     import VueRouter from 'vue-router'
     import store from '../store/ReservationStore'
 
@@ -34,7 +35,7 @@
             routes: [
                 {
                     path: '/',
-                    name: 'first-step',
+                    name: 'datepicker',
                     component: Datepicker,
                 },
                 {
@@ -47,6 +48,11 @@
                             window.location.href = from.path
                         }
                     }
+                },
+                {
+                    path: '/payment',
+                    name: 'payment',
+                    component: Payment,
                 }
             ]
         }),

@@ -335,6 +335,60 @@ if (false) {(function () {
 
 /***/ }),
 
+/***/ "./front/pages/Payement.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_node_modules_vue_loader_lib_selector_type_script_index_0_Payement_vue__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./front/pages/Payement.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_30e61e21_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Payement_vue__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-30e61e21\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./front/pages/Payement.vue");
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/extract-text-webpack-plugin/dist/loader.js?{\"omit\":1,\"remove\":true}!./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js?{\"minimize\":false,\"sourceMap\":false,\"importLoaders\":0}!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-30e61e21\",\"scoped\":false,\"hasInlineConfig\":false}!./node_modules/resolve-url-loader/index.js?{\"sourceMap\":false}!./node_modules/sass-loader/lib/loader.js?{\"indentedSyntax\":true,\"sourceMap\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./front/pages/Payement.vue")
+}
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+
+/* template */
+
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_cacheDirectory_true_node_modules_vue_loader_lib_selector_type_script_index_0_Payement_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_30e61e21_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_Payement_vue__["a" /* default */],
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "front/pages/Payement.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Payement.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-30e61e21", Component.options)
+  } else {
+    hotAPI.reload("data-v-30e61e21", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+
 /***/ "./front/pages/Reservation.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2681,15 +2735,86 @@ lists.forEach(list => {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./front/pages/Payement.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__("./node_modules/axios/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    mounted() {
+        this.stripe = Stripe('pk_test_iEZp1ORNhztnwy5qRbdAWTD3');
+        this.elements = this.stripe.elements();
+        this.card = this.elements.create('card', {
+            style: {
+                class: 'input',
+                base: {
+                    iconColor: '#666EE8',
+                    color: '#777',
+                    lineHeight: '50px',
+                    fontWeight: 300,
+                    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                    fontSize: '18px',
+
+                    '::placeholder': {
+                        color: '#666'
+                    }
+                }
+            }
+        });
+
+        this.card.mount('#card-element');
+    },
+    data() {
+        return {
+            stripe: '',
+            elements: '',
+            card: ''
+        };
+    },
+    methods: {
+        pay() {
+            this.stripe.createToken(this.card).then(token => {
+                return __WEBPACK_IMPORTED_MODULE_0_axios___default()({
+                    method: 'post',
+                    url: '/api/payment'
+                });
+            }).then(res => {
+                console.log(res);
+            });
+        }
+    }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./front/pages/Reservation.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Datepicker_vue__ = __webpack_require__("./front/pages/Datepicker.vue");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Command_vue__ = __webpack_require__("./front/pages/Command.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__("./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__store_ReservationStore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Payement_vue__ = __webpack_require__("./front/pages/Payement.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_router__ = __webpack_require__("./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__store_ReservationStore__);
 //
 //
 //
@@ -2711,6 +2836,7 @@ lists.forEach(list => {
 //
 //
 //
+
 
 
 
@@ -2721,22 +2847,26 @@ lists.forEach(list => {
     props: {
         language: { default: 'fr' }
     },
-    router: new __WEBPACK_IMPORTED_MODULE_2_vue_router__["default"]({
+    router: new __WEBPACK_IMPORTED_MODULE_3_vue_router__["default"]({
         linkActiveClass: 'is-active',
         routes: [{
             path: '/',
-            name: 'first-step',
+            name: 'datepicker',
             component: __WEBPACK_IMPORTED_MODULE_0__Datepicker_vue__["a" /* default */]
         }, {
             path: '/command',
             component: __WEBPACK_IMPORTED_MODULE_1__Command_vue__["a" /* default */],
             beforeEnter: (to, from, next) => {
-                if (__WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a.email !== '' && __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a.numberOfTicket !== 0 && __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a.type !== '') {
+                if (__WEBPACK_IMPORTED_MODULE_4__store_ReservationStore___default.a.email !== '' && __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore___default.a.numberOfTicket !== 0 && __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore___default.a.type !== '') {
                     next();
                 } else {
                     window.location.href = from.path;
                 }
             }
+        }, {
+            path: '/payment',
+            name: 'payment',
+            component: __WEBPACK_IMPORTED_MODULE_2__Payement_vue__["a" /* default */]
         }]
     })
 });
@@ -2815,6 +2945,13 @@ module.exports = function() {
 /***/ }),
 
 /***/ "./node_modules/extract-text-webpack-plugin/dist/loader.js?{\"omit\":1,\"remove\":true}!./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js?{\"minimize\":false,\"sourceMap\":false,\"importLoaders\":0}!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-27cdb575\",\"scoped\":true,\"hasInlineConfig\":false}!./node_modules/resolve-url-loader/index.js?{\"sourceMap\":false}!./node_modules/sass-loader/lib/loader.js?{\"indentedSyntax\":true,\"sourceMap\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./front/components/Citation.vue":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./node_modules/extract-text-webpack-plugin/dist/loader.js?{\"omit\":1,\"remove\":true}!./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js?{\"minimize\":false,\"sourceMap\":false,\"importLoaders\":0}!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-30e61e21\",\"scoped\":false,\"hasInlineConfig\":false}!./node_modules/resolve-url-loader/index.js?{\"sourceMap\":false}!./node_modules/sass-loader/lib/loader.js?{\"indentedSyntax\":true,\"sourceMap\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./front/pages/Payement.vue":
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -6872,7 +7009,7 @@ function isSlowBuffer (obj) {
     }
 
     /**
-     * The base implementation of `setPayload` without support for hot loop shorting.
+     * The base implementation of `setData` without support for hot loop shorting.
      *
      * @private
      * @param {Function} func The function to associate metadata with.
@@ -37805,6 +37942,50 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-27cdb575", esExports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-30e61e21\",\"hasScoped\":false}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./front/pages/Payement.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "form-payment"
+    }
+  }, [_c('form', [_vm._m(0), _vm._v(" "), _c('button', {
+    staticClass: "button is-success is-medium",
+    attrs: {
+      "type": "submit"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.pay()
+      }
+    }
+  }, [_vm._v("Payer")])])])
+}
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "field"
+  }, [_c('label', [_c('span', [_vm._v("Carte de crédit")]), _vm._v(" "), _c('div', {
+    staticClass: "control",
+    attrs: {
+      "id": "card-element"
+    }
+  })])])
+}]
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-30e61e21", esExports)
   }
 }
 
