@@ -36,6 +36,8 @@ class CommandTest extends WebTestCase
         $this->assertInstanceOf(ArrayCollection::class, $command->getTickets());
         $this->assertInstanceOf(Ticket::class, $command->getTickets()->get(0));
 
+        $this->assertTrue($command->containTicket($ticket));
+
         $command->removeTicket($ticket);
         $this->assertEmpty($command->getTickets()->get(0));
     }

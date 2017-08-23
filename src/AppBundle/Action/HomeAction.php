@@ -7,6 +7,7 @@ use AppBundle\Domain\Entity\Ticket;
 use AppBundle\Responder\HomeResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeAction

@@ -4,10 +4,10 @@
 namespace AppBundle\Domain\Service;
 
 
-use AppBundle\Domain\Entity\Ticket;
+use AppBundle\Domain\Entity\Command;
 
 interface PriceCalculatorInterface
 {
-    public function calculatePrice(Ticket $ticket) : void;
+    public function calculatePriceFromCommand(Command $command) : void;
     public function calculateAge(\DateTime $birthday) : int;
 }
