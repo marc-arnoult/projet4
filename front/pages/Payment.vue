@@ -51,6 +51,18 @@
 <script>
     import axios from 'axios';
     import store from '../store/ReservationStore'
+    import CxltToastr from 'cxlt-vue2-toastr'
+    import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
+    import Vue from 'vue'
+
+    const toastrConfigs = {
+        position: 'top full width',
+        timeOut: 8000,
+        successColor: '#70C25A',
+        showMethod: 'bounceInDown',
+    };
+
+    Vue.use(CxltToastr, toastrConfigs);
 
     export default {
         data() {
@@ -96,13 +108,20 @@
                         })
                     }).then(res => {
                         event.target.classList.remove('is-loading');
+
                         if (res.status === 201) {
-                            console.log('Okay', res);
-                            store.tickets = [];
+                            this.$toast.success({
+                                message: res.data,
+                                timeOut: 3000
+                            })
                         }
                     }).catch(err => {
                         event.target.classList.remove('is-loading');
-                        console.log(err)
+
+                        this.$toast.error({
+                            message: err.response.data,
+                            timeOut: 3000
+                        })
                     })
             }
         }
@@ -111,7 +130,7 @@
 
 <style lang="sass">
     #form-payment form > .field
-        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1)
         padding: 30px
     .ticket-resume
         display: flex

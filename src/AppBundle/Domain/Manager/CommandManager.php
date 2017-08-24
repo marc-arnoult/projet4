@@ -81,7 +81,7 @@ class CommandManager
         $command = $session->get('command');
 
         if (!isset($command)) {
-            return $this->payload->badRequest(['content' => 'Erreur commande inexistante']);
+            return $this->payload->badRequest(['content' => 'Erreur commande déjà réglé, ou inexistante']);
         }
 
 
