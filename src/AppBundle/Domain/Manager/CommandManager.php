@@ -80,13 +80,33 @@ class CommandManager
         $session = new Session();
         $command = $session->get('command');
 
+        if (!isset($command)) {
+            return $this->payload->badRequest(['content' => 'Erreur commande inexistante']);
+        }
+
+
         Stripe::setApiKey("sk_test_ZejfvxMqrtcsR2P4A09QKR0i");
 
         $response = Charge::create([
             'amount' => $command->getPrice() * 100,
             'currency' => 'eur',
             'source' => $token,
+            'metadata' => [
+                'command_email' => $command->getEmail(),
+            ],
             'description' => 'Ticketing, Museum of louvre',
         ]);
+
+        if ($response->paid) {
+            $command->setPayment(true);
+
+            $this->doctrine->persist($command);
+            $this->doctrine->flush();
+
+            $session->remove('command');
+
+            return $this->payload->created(['content' => 'Merci, votre paiement a été validé']);
+        }
+        return $this->payload->badRequest(['content' => 'Erreur lors du paiement']);
     }
 }

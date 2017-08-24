@@ -2871,7 +2871,9 @@ lists.forEach(list => {
         this.card.mount('#card-element');
     },
     methods: {
-        pay() {
+        pay(event) {
+            event.target.classList.add('is-loading');
+
             this.stripe.createToken(this.card).then(res => {
                 return __WEBPACK_IMPORTED_MODULE_0_axios___default()({
                     method: 'post',
@@ -2879,7 +2881,14 @@ lists.forEach(list => {
                     data: res.token.id
                 });
             }).then(res => {
-                console.log(res);
+                event.target.classList.remove('is-loading');
+                if (res.status === 201) {
+                    console.log('Okay', res);
+                    __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore___default.a.tickets = [];
+                }
+            }).catch(err => {
+                event.target.classList.remove('is-loading');
+                console.log(err);
             });
         }
     }
@@ -38068,7 +38077,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.pay()
+        _vm.pay($event)
       }
     }
   }, [_vm._v("Valider ma commande")])])])]), _vm._v(" "), _c('div', {

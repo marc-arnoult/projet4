@@ -13,7 +13,7 @@
                     </div>
                     <div class="has-text-right">
                         <button class="button is-medium">Annuler</button>
-                        <button class="button is-success is-medium" type="submit" @click.prevent="pay()">Valider ma commande</button>
+                        <button class="button is-success is-medium" type="submit" @click.prevent="pay($event)">Valider ma commande</button>
                     </div>
                 </form>
             </div>
@@ -84,7 +84,9 @@
             this.card.mount('#card-element');
         },
         methods: {
-            pay() {
+            pay(event) {
+                event.target.classList.add('is-loading');
+
                 this.stripe.createToken(this.card)
                     .then(res => {
                         return axios({
@@ -93,7 +95,14 @@
                             data: res.token.id
                         })
                     }).then(res => {
-                        console.log(res)
+                        event.target.classList.remove('is-loading');
+                        if (res.status === 201) {
+                            console.log('Okay', res);
+                            store.tickets = [];
+                        }
+                    }).catch(err => {
+                        event.target.classList.remove('is-loading');
+                        console.log(err)
                     })
             }
         }
