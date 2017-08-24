@@ -7,14 +7,18 @@
                     <div class="field">
                         <label>
                             <span>Carte de crédit</span>
+                            <hr>
                             <div id="card-element" class="control"></div>
                         </label>
                     </div>
-                    <button class="button is-success is-medium" type="submit" @click.prevent="pay()">Payer</button>
+                    <div class="has-text-right">
+                        <button class="button is-medium">Annuler</button>
+                        <button class="button is-success is-medium" type="submit" @click.prevent="pay()">Valider ma commande</button>
+                    </div>
                 </form>
             </div>
             <div class="column">
-                <h2 class="title is-5 has-text-centered">Résumé de la commande</h2>
+                <h2 class="title is-3 has-text-centered">Résumé de la commande</h2>
                 <div class="card">
                     <header class="card-header">
                         <p class="card-header-title">Nombre d'article : {{ store.nbTickets }}</p>
@@ -38,8 +42,6 @@
                             </div>
                         </div>
                     </div>
-                    <footer class="card-footer">
-                    </footer>
                 </div>
             </div>
         </div>
@@ -99,6 +101,9 @@
 </script>
 
 <style lang="sass">
+    #form-payment form > .field
+        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+        padding: 30px
     .ticket-resume
         display: flex
         justify-content: space-between

@@ -2833,6 +2833,8 @@ lists.forEach(list => {
 //
 //
 //
+//
+//
 
 
 
@@ -38054,7 +38056,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "column is-two-thirds"
   }, [_c('h1', {
     staticClass: "title is-3 has-text-centered"
-  }, [_vm._v("Paiement")]), _vm._v(" "), _c('form', [_vm._m(0), _vm._v(" "), _c('button', {
+  }, [_vm._v("Paiement")]), _vm._v(" "), _c('form', [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "has-text-right"
+  }, [_c('button', {
+    staticClass: "button is-medium"
+  }, [_vm._v("Annuler")]), _vm._v(" "), _c('button', {
     staticClass: "button is-success is-medium",
     attrs: {
       "type": "submit"
@@ -38065,10 +38071,10 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         _vm.pay()
       }
     }
-  }, [_vm._v("Payer")])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Valider ma commande")])])])]), _vm._v(" "), _c('div', {
     staticClass: "column"
   }, [_c('h2', {
-    staticClass: "title is-5 has-text-centered"
+    staticClass: "title is-3 has-text-centered"
   }, [_vm._v("Résumé de la commande")]), _vm._v(" "), _c('div', {
     staticClass: "card"
   }, [_c('header', {
@@ -38095,14 +38101,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "bold"
   }, [_vm._v("Email :")]), _vm._v(" "), _c('span', {
     staticClass: "bold"
-  }, [_vm._v(_vm._s(_vm.store.email))])])], 2)]), _vm._v(" "), _c('footer', {
-    staticClass: "card-footer"
-  })])])])])
+  }, [_vm._v(_vm._s(_vm.store.email))])])], 2)])])])])])
 }
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "field"
-  }, [_c('label', [_c('span', [_vm._v("Carte de crédit")]), _vm._v(" "), _c('div', {
+  }, [_c('label', [_c('span', [_vm._v("Carte de crédit")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "control",
     attrs: {
       "id": "card-element"
