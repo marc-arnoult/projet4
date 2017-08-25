@@ -7,7 +7,7 @@
                 <router-link to="/command" tag="li" class="step-item" exact>
                     <a>Commande</a>
                 </router-link>
-                <router-link to="/aaaaa" tag="li" class="step-item" exact>
+                <router-link to="/payment" tag="li" class="step-item" exact>
                     <a>Paiement</a>
                 </router-link>
         </ul>
@@ -22,6 +22,7 @@
 <script>
     import Datepicker from './Datepicker.vue'
     import Command from './Command.vue'
+    import Payment from './Payment.vue'
     import VueRouter from 'vue-router'
     import store from '../store/ReservationStore'
 
@@ -34,7 +35,7 @@
             routes: [
                 {
                     path: '/',
-                    name: 'first-step',
+                    name: 'datepicker',
                     component: Datepicker,
                 },
                 {
@@ -44,8 +45,22 @@
                         if (store.email !== '' && store.numberOfTicket !== 0 && store.type !== '') {
                             next()
                         } else {
-                            window.location.href = from.path
+                            window.location.href = '/'
                         }
+                    }
+                },
+                {
+                    path: '/payment',
+                    name: 'payment',
+                    component: Payment,
+                    beforeEnter: (to, from, next) => {
+                        next()
+                        /*
+                        if (store.started) {
+                            next()
+                        } else {
+                            console.log('Erreur')
+                        }*/
                     }
                 }
             ]

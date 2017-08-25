@@ -59,7 +59,7 @@
                         </span>
                         <div class="control">
                             <div class="select is-medium">
-                                <select v-model="store.type" required>
+                                <select v-model="store.type" required @blur="isValidType($event)">
                                     <option value="Journée">Journées</option>
                                     <option value="Demi-journée">Demi-journées</option>
                                 </select>
@@ -117,8 +117,8 @@
         },
         methods: {
             setDateEnter(event) {
-                this.store.entry_at = event.target.value;
-                this.state.date = new Date(moment(event.target.value, 'DD/MM/YYYY'));
+                this.store.entry_at = new Date(moment(event.target.value, 'YYYY-MM-DD'));
+                this.state.date = new Date(moment(event.target.value, 'YYYY-MM-DD'));
             },
             getTickerRemaining(date) {
                 let day = moment(date).format('YYYY-MM-DD');
@@ -152,6 +152,13 @@
                 } else {
                     event.target.classList.remove('is-danger');
                     event.target.classList.add('is-success');
+                }
+            },
+            isValidType(event) {
+                let type = event.target.value;
+                if (type) {
+                    event.target.parentNode.classList.remove('is-danger');
+                    event.target.parentNode.classList.add('is-success');
                 }
             }
         },

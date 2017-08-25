@@ -4,7 +4,7 @@
                 v-for="(ticket, index) in parseInt(store.numberOfTicket)"
                 :index="index"
                 :key="index"
-                @setPrice="priceTotal"
+                @setPrice="priceTotal()"
         >
         </Ticket>
         <hr>
@@ -18,7 +18,7 @@
             <span>{{ totalPrice }} euros</span>
         </div>
         <div class="has-text-right">
-            <button class="button is-success is-medium" :disabled="disabled">Commander</button>
+            <button class="button is-success is-medium" :disabled="disabled" @click="payment()">Commander</button>
         </div>
     </div>
 </template>
@@ -26,6 +26,8 @@
 <script>
     import Ticket from '../components/Ticket.vue'
     import store from '../store/ReservationStore'
+    import axios from 'axios'
+    import moment from 'moment'
 
     export default {
         data() {
@@ -33,13 +35,35 @@
                 disabled: true,
                 totalPrice: 0,
                 store,
-                tickets: []
+                command: {}
             }
         },
         components: {
             Ticket
         },
         methods: {
+            payment() {
+                this.store.tickets = [];
+                this.$children.forEach(child => {
+                    this.store.tickets.push(child._data.ticket)
+                });
+
+                this.command.type = this.store.type;
+                this.command.email = this.store.email;
+                this.command.entryAt = this.store.entry_at;
+                this.command.tickets = this.store.tickets;
+
+                axios({
+                    method: 'post',
+                    url: '/api/command',
+                    data: this.command
+                }).then(res => {
+                    this.store.priceCommand = res.data.price;
+                    this.store.nbTickets = res.data.nbTickets;
+                    this.store.started = res.data.started;
+                    this.$parent._router.push('/payment')
+                });
+            },
             priceTotal() {
                 let total = 0;
 
@@ -64,6 +88,9 @@
             }
         },
         mounted() {
+            this.priceTotal()
+        },
+        updated() {
             this.priceTotal();
         }
     }

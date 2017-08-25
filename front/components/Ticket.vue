@@ -342,9 +342,7 @@
                     birthday: '',
                     country: '',
                     reduction: false,
-                    entry_at: store.entry_at,
-                    type: store.type,
-                    price: 16
+                    price: 0
                 },
             }
         },
@@ -379,8 +377,10 @@
         },
         watch: {
             ticket: {
-                handler: _.debounce(function() {
-                    this.calculatePrice()
+                handler: _.debounce(function(ticket) {
+                    if (ticket.birthday !== '') {
+                        this.calculatePrice()
+                    }
                 }, 200),
                 deep: true
             }

@@ -7,6 +7,8 @@ use AppBundle\Domain\Entity\Ticket;
 use AppBundle\Domain\Payload\PayloadFactory;
 use AppBundle\Domain\Service\PriceCalculatorInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Stripe\Charge;
+use Stripe\Stripe;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Validator\ValidatorBuilderInterface;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
@@ -44,12 +46,13 @@ class CommandManager
         $command = new Command();
         $command->setType($content['type']);
         $command->setEmail($content['email']);
-        $command->setEntryAt(new \DateTime($content['entryAt']));
+        $command->setEntryAt(\DateTime::createFromFormat('d/m/Y', $content['entryAt']));
 
         foreach ($content['tickets'] as $data) {
             $ticket = new Ticket();
             $ticket = $hydrator->hydrate($data, $ticket);
             $ticket->setCommand($command);
+            $ticket->setEntryAt($command->getEntryAt());
         }
 
         $this->calculator->calculatePriceFromCommand($command);
@@ -62,6 +65,48 @@ class CommandManager
         $session = new Session();
         $session->set('command', $command);
 
-        return $this->payload->found(['content' => 'found']);
+        $message = ['content' => [
+                'price' => $command->getPrice(),
+                'nbTickets' => $command->getTickets()->count(),
+                'started' => true
+            ]
+        ];
+
+        return $this->payload->found($message);
+    }
+
+    public function payment($token)
+    {
+        $session = new Session();
+        $command = $session->get('command');
+
+        if (!isset($command)) {
+            return $this->payload->badRequest(['content' => 'Erreur commande déjà réglé, ou inexistante']);
+        }
+
+
+        Stripe::setApiKey("sk_test_ZejfvxMqrtcsR2P4A09QKR0i");
+
+        $response = Charge::create([
+            'amount' => $command->getPrice() * 100,
+            'currency' => 'eur',
+            'source' => $token,
+            'metadata' => [
+                'command_email' => $command->getEmail(),
+            ],
+            'description' => 'Ticketing, Museum of louvre',
+        ]);
+
+        if ($response->paid) {
+            $command->setPayment(true);
+
+            $this->doctrine->persist($command);
+            $this->doctrine->flush();
+
+            $session->remove('command');
+
+            return $this->payload->created(['content' => 'Merci, votre paiement a été validé']);
+        }
+        return $this->payload->badRequest(['content' => 'Erreur lors du paiement']);
     }
 }
