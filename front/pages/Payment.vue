@@ -57,7 +57,6 @@
 
     const toastrConfigs = {
         position: 'top full width',
-        timeOut: 8000,
         successColor: '#70C25A',
         showMethod: 'bounceInDown',
     };
@@ -112,15 +111,18 @@
                         if (res.status === 201) {
                             this.$toast.success({
                                 message: res.data,
-                                timeOut: 3000
-                            })
+                                timeOut: 6000
+                            });
+                            setTimeout(() => {
+                               window.location = '/'
+                            }, 7000)
                         }
                     }).catch(err => {
                         event.target.classList.remove('is-loading');
 
                         this.$toast.error({
                             message: err.response.data,
-                            timeOut: 3000
+                            timeOut: 6000
                         })
                     })
             }
