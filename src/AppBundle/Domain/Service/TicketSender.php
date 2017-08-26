@@ -24,16 +24,13 @@ class TicketSender
 
         $message = (new \Swift_Message('Ticket'))
             ->setFrom('send@example.com')
-            ->setTo('marc.arnoult@hotmail.fr')
+            ->setTo($data->getEmail())
             ->setBody(
                 $this->twig->render(
-                // app/Resources/views/Emails/registration.html.twig
-                    'Emails/registration.html.twig',
-                    [
+                    'Emails/registration.html.twig', [
                         'command' => $data,
                         'numCommand' => $numCommand
-                    ]
-                ),
+                    ]),
                 'text/html'
             );
 
