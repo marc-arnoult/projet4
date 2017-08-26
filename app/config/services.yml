@@ -37,6 +37,9 @@ services:
         resource: '../../src/AppBundle/Domain/Manager'
         public: true
 
+    AppBundle\Domain\EventListener\CommandListener:
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:
     #     arguments:
