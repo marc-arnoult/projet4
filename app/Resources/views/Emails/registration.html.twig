@@ -166,22 +166,24 @@
                                     <!--[if mso | IE]><table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" style="font-size:1px;margin:0px auto;border-top:4px solid #555;width:100%;" width="600"><tr><td style="height:0;line-height:0;"> </td></tr></table><![endif]-->
                                 </td>
                             </tr>
-                            {% for ticket in command.tickets %}
                                 <tr>
                                     <td style="word-wrap:break-word;font-size:0px;padding:10px 25px;" align="left">
                                         <table cellpadding="0" cellspacing="0" style="cellspacing:0px;color:#000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;" width="100%" border="0">
                                             <tr style="border-bottom:1px solid #ecedee;text-align:left;padding:15px 0;">
+                                                <th style="padding: 0 15px 0 0;">N°</th>
                                                 <th style="padding: 0 15px;">Nom</th>
-                                                <th style="padding: 0 15px 0 0;">Prenom</th>
+                                                <th style="padding: 0 15px;">Prenom</th>
                                             </tr>
+                                            {% for ticket in command.tickets %}
                                             <tr>
-                                                <td style="padding: 0 15px 0 0;">{{ ticket.firstName }}</td>
+                                                <td style="padding: 0 15px 0 0;">{{ loop.index }}</td>
+                                                <td style="padding: 0 15px;">{{ ticket.firstName }}</td>
                                                 <td style="padding: 0 15px;">{{ ticket.lastName }}</td>
                                             </tr>
+                                            {% endfor %}
                                         </table>
                                     </td>
                                 </tr>
-                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
