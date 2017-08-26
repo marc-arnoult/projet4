@@ -22,7 +22,7 @@ class TicketSender
         $numCommand = (string) $data->getId();
         $numCommand .= $data->getEntryAt()->format('dmy');
 
-        $message = (new \Swift_Message('Hello Email'))
+        $message = (new \Swift_Message('Ticket'))
             ->setFrom('send@example.com')
             ->setTo('marc.arnoult@hotmail.fr')
             ->setBody(
