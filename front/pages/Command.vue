@@ -28,6 +28,17 @@
     import store from '../store/ReservationStore'
     import axios from 'axios'
     import moment from 'moment'
+    import CxltToastr from 'cxlt-vue2-toastr'
+    import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
+    import Vue from 'vue'
+
+    const toastrConfigs = {
+        position: 'top full width',
+        successColor: '#70C25A',
+        showMethod: 'bounceInDown',
+    };
+
+    Vue.use(CxltToastr, toastrConfigs);
 
     export default {
         data() {
@@ -62,6 +73,12 @@
                     this.store.nbTickets = res.data.nbTickets;
                     this.store.started = res.data.started;
                     this.$parent._router.push('/payment')
+                }).catch(err => {
+                    console.log(err.response);
+                    this.$toast.error({
+                        message: err.response.data,
+                        timeOut: 6000
+                    })
                 });
             },
             priceTotal() {

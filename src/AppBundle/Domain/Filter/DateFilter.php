@@ -10,6 +10,8 @@ namespace AppBundle\Domain\Filter;
 class DateFilter implements DateFilterInterface
 {
     /**
+     * Verify is the date in the param is a valid date.
+     *
      * @param string $value
      * @return bool
      */

@@ -82,12 +82,23 @@
     import _ from 'lodash'
     import axios from 'axios'
     import store from '../store/ReservationStore'
+    import CxltToastr from 'cxlt-vue2-toastr'
+    import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
+    import Vue from 'vue'
+
+    const toastrConfigs = {
+        position: 'top full width',
+        successColor: '#70C25A',
+        showMethod: 'bounceInDown',
+    };
+
+    Vue.use(CxltToastr, toastrConfigs);
 
     let state = {
         date: new Date(moment()),
         disabled: {
             to: new Date(moment().subtract(1, 'days')),
-            days: [2],
+            days: [0, 2],
             dates: [
                 new Date(moment(this.date).format('YYYY'), 4, 1),
                 new Date(moment(this.date).format('YYYY'), 10, 1),
@@ -187,7 +198,45 @@
                 }
                 this.disabled = false;
             }
-        }, 500)
+        }, 500),
+        beforeRouteLeave: function (from, to, next) {
+            let actualHour = moment().format('H');
+            let disabledDate = this._data.state.disabled;
+            let isValid = true;
+
+            for (let key in disabledDate) {
+                _.forEach(disabledDate[key], (val) => {
+                    if (moment(val).format('dmY') === moment(store.entry_at).format('dmY')) {
+                        this.$toast.error({
+                            message: 'Vous ne pouvez reserver pour ce jour.',
+                            timeOut: 6000
+                        });
+                        return isValid = false;
+                    }
+                });
+            }
+            if (store.type === "Journée" && actualHour >= 14) {
+                this.$toast.error({
+                    message: 'Ticket journée indisponible après 14h.',
+                    timeOut: 6000
+                });
+                return;
+            }
+
+            if (
+                store.email !== '' &&
+                store.numberOfTicket !== 0 &&
+                store.type !== '' &&
+                isValid === true
+            ) {
+                next()
+            } else {
+                this.$toast.error({
+                    message: 'Veuillez remplir les champs correctement.',
+                    timeOut: 6000
+                });
+            }
+        }
     }
 </script>
 

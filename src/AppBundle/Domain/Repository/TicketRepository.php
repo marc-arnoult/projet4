@@ -13,6 +13,12 @@ use AppBundle\Domain\Entity\{
  */
 class TicketRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Return the number of ticket remaining for the day passed in the parameter.
+     *
+     * @param $date
+     * @return int
+     */
     public function getTicketsRemaining($date)
     {
         return Ticket::TICKET_LIMIT - $this->createQueryBuilder('t')

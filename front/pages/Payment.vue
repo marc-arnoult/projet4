@@ -126,6 +126,11 @@
                         })
                     })
             }
+        },
+        beforeRouteEnter(to, from, next) {
+            if (store.started) {
+                next()
+            }
         }
     }
 </script>

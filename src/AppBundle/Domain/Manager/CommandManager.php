@@ -33,6 +33,12 @@ class CommandManager
         $this->payload = $payload;
     }
 
+    /**
+     * Start a command, with validation of the entity and saving in the session.
+     *
+     * @param $content
+     * @return \AppBundle\Domain\Payload\BadRequest|\AppBundle\Domain\Payload\Found
+     */
     public function createCommand($content)
     {
         $hydrator = new DoctrineHydrator($this->doctrine);
@@ -59,7 +65,11 @@ class CommandManager
         $errors = $this->validator->getValidator()->validate($command);
 
         if (count($errors) > 0) {
-            return $this->payload->badRequest(['content' => (string) $errors]);
+            $messages = [];
+            foreach ($errors as $error) {
+                array_push($messages, $error->getMessage());
+            }
+            return $this->payload->badRequest(['content' => (string) $messages[0]]);
         }
 
         $session = new Session();
@@ -75,6 +85,12 @@ class CommandManager
         return $this->payload->found($message);
     }
 
+    /**
+     * Payment for the command started.
+     *
+     * @param $token
+     * @return \AppBundle\Domain\Payload\BadRequest|\AppBundle\Domain\Payload\Created
+     */
     public function payment($token)
     {
         $session = new Session();
