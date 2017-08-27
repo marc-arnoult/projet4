@@ -23,7 +23,7 @@ class TicketSender
         $numCommand .= $data->getEntryAt()->format('dmy');
 
         $message = (new \Swift_Message('Ticket'))
-            ->setFrom('send@example.com')
+            ->setFrom('marc.arnoult76@gmail.com')
             ->setTo($data->getEmail())
             ->setBody(
                 $this->twig->render(

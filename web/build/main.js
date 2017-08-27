@@ -2404,6 +2404,7 @@ module.exports = {
     },
     data() {
         return {
+            store: __WEBPACK_IMPORTED_MODULE_2__store_ReservationStore___default.a,
             ticket: {
                 first_name: '',
                 last_name: '',
@@ -2418,6 +2419,7 @@ module.exports = {
         calculatePrice() {
             let now = __WEBPACK_IMPORTED_MODULE_0_moment___default()();
             let age = parseInt(now.diff(this.ticket.birthday, 'years'));
+            let coef = this.store.type === "Demi-journée" ? 0.5 : 1;
 
             switch (true) {
                 case age < 4:
@@ -2425,19 +2427,19 @@ module.exports = {
                     break;
 
                 case this.ticket.reduction === true:
-                    this.ticket.price = 10;
+                    this.ticket.price = 10 * coef;
                     break;
 
                 case age >= 4 && age < 12:
-                    this.ticket.price = 8;
+                    this.ticket.price = 8 * coef;
                     break;
 
                 case age >= 60:
-                    this.ticket.price = 12;
+                    this.ticket.price = 12 * coef;
                     break;
 
                 default:
-                    this.ticket.price = 16;
+                    this.ticket.price = 16 * coef;
                     break;
             }
             this.$emit('setPrice');
@@ -2586,6 +2588,11 @@ module.exports = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__store_ReservationStore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_cxlt_vue2_toastr__ = __webpack_require__("./node_modules/cxlt-vue2-toastr/dist/js/cxlt-vue2-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_cxlt_vue2_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_cxlt_vue2_toastr__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css__ = __webpack_require__("./node_modules/cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue__ = __webpack_require__("./node_modules/vue/dist/vue.esm.js");
 //
 //
 //
@@ -2670,12 +2677,23 @@ module.exports = {
 
 
 
+
+
+
+
+const toastrConfigs = {
+    position: 'top full width',
+    successColor: '#70C25A',
+    showMethod: 'bounceInDown'
+};
+
+__WEBPACK_IMPORTED_MODULE_8_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_6_cxlt_vue2_toastr___default.a, toastrConfigs);
 
 let state = {
     date: new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()()),
     disabled: {
         to: new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()().subtract(1, 'days')),
-        days: [2],
+        days: [0, 2],
         dates: [new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()(this.date).format('YYYY'), 4, 1), new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()(this.date).format('YYYY'), 10, 1), new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()(this.date).format('YYYY'), 11, 25)]
     }
 };
@@ -2772,7 +2790,40 @@ lists.forEach(list => {
             }
             this.disabled = false;
         }
-    }, 500)
+    }, 500),
+    beforeRouteLeave: function (from, to, next) {
+        let actualHour = __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('H');
+        let disabledDate = this._data.state.disabled;
+        let isValid = true;
+
+        for (let key in disabledDate) {
+            __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.forEach(disabledDate[key], val => {
+                if (__WEBPACK_IMPORTED_MODULE_1_moment___default()(val).format('dmY') === __WEBPACK_IMPORTED_MODULE_1_moment___default()(__WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default.a.entry_at).format('dmY')) {
+                    this.$toast.error({
+                        message: 'Vous ne pouvez reserver pour ce jour.',
+                        timeOut: 6000
+                    });
+                    return isValid = false;
+                }
+            });
+        }
+        if (__WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default.a.type === "Journée" && actualHour >= 14) {
+            this.$toast.error({
+                message: 'Ticket journée indisponible après 14h.',
+                timeOut: 6000
+            });
+            return;
+        }
+
+        if (__WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default.a.email !== '' && __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default.a.numberOfTicket !== 0 && __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default.a.type !== '' && isValid === true) {
+            next();
+        } else {
+            this.$toast.error({
+                message: 'Veuillez remplir les champs correctement.',
+                timeOut: 6000
+            });
+        }
+    }
 });
 
 /***/ }),
@@ -2917,6 +2968,11 @@ __WEBPACK_IMPORTED_MODULE_4_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_2_cxl
                 });
             });
         }
+    },
+    beforeRouteEnter(to, from, next) {
+        if (__WEBPACK_IMPORTED_MODULE_1__store_ReservationStore___default.a.started) {
+            next();
+        }
     }
 });
 
@@ -2972,27 +3028,11 @@ __WEBPACK_IMPORTED_MODULE_4_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_2_cxl
             component: __WEBPACK_IMPORTED_MODULE_0__Datepicker_vue__["a" /* default */]
         }, {
             path: '/command',
-            component: __WEBPACK_IMPORTED_MODULE_1__Command_vue__["a" /* default */],
-            beforeEnter: (to, from, next) => {
-                if (__WEBPACK_IMPORTED_MODULE_4__store_ReservationStore___default.a.email !== '' && __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore___default.a.numberOfTicket !== 0 && __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore___default.a.type !== '') {
-                    next();
-                } else {
-                    window.location.href = '/';
-                }
-            }
+            component: __WEBPACK_IMPORTED_MODULE_1__Command_vue__["a" /* default */]
         }, {
             path: '/payment',
             name: 'payment',
-            component: __WEBPACK_IMPORTED_MODULE_2__Payment_vue__["a" /* default */],
-            beforeEnter: (to, from, next) => {
-                next();
-                /*
-                if (store.started) {
-                    next()
-                } else {
-                    console.log('Erreur')
-                }*/
-            }
+            component: __WEBPACK_IMPORTED_MODULE_2__Payment_vue__["a" /* default */]
         }]
     })
 });

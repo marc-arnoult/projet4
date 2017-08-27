@@ -41,27 +41,11 @@
                 {
                     path: '/command',
                     component: Command,
-                    beforeEnter: (to, from, next) => {
-                        if (store.email !== '' && store.numberOfTicket !== 0 && store.type !== '') {
-                            next()
-                        } else {
-                            window.location.href = '/'
-                        }
-                    }
                 },
                 {
                     path: '/payment',
                     name: 'payment',
                     component: Payment,
-                    beforeEnter: (to, from, next) => {
-                        next()
-                        /*
-                        if (store.started) {
-                            next()
-                        } else {
-                            console.log('Erreur')
-                        }*/
-                    }
                 }
             ]
         }),

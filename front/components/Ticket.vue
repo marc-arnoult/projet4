@@ -336,6 +336,7 @@
         },
         data() {
             return {
+                store,
                 ticket: {
                     first_name:'',
                     last_name: '',
@@ -350,6 +351,7 @@
             calculatePrice() {
                 let now = moment();
                 let age = parseInt(now.diff(this.ticket.birthday, 'years'));
+                let coef = this.store.type === "Demi-journée" ? 0.5 : 1;
 
                 switch (true) {
                     case age < 4:
@@ -357,19 +359,19 @@
                         break;
 
                     case this.ticket.reduction === true:
-                        this.ticket.price = 10;
+                        this.ticket.price = 10 * coef;
                         break;
 
                     case (age >= 4 && age < 12):
-                        this.ticket.price = 8;
+                        this.ticket.price = 8 * coef;
                         break;
 
                     case (age >= 60):
-                        this.ticket.price = 12;
+                        this.ticket.price = 12 * coef;
                         break;
 
                     default:
-                        this.ticket.price = 16;
+                        this.ticket.price = 16 * coef;
                         break;
                 }
                 this.$emit('setPrice')
