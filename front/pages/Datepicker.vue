@@ -11,7 +11,7 @@
                             @blur="setDateEnter($event)"
                             @keyup.enter="setDateEnter($event)"
                     >
-                    <span class="ticket-remaining">Ticket restant : <strong>{{ store.ticketRemaining }}</strong></span>
+                    <span class="ticket-remaining">{{ t('Ticket restant') }} : <strong>{{ store.ticketRemaining }}</strong></span>
                 </div>
                 <Datepicker
                         :disabled="state.disabled"
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="field">
-                        <label>Nombre de tickets*</label>
+                        <label>{{ t('Nombre de tickets*') }}</label>
                         <div class="control">
                             <input
                                     type="number"
@@ -76,15 +76,16 @@
 </template>
 
 <script>
-    import Datepicker from 'vuejs-datepicker'
-    import moment from 'moment'
-    import holiday from 'moment-ferie-fr'
-    import _ from 'lodash'
-    import axios from 'axios'
-    import store from '../store/ReservationStore'
-    import CxltToastr from 'cxlt-vue2-toastr'
-    import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
-    import Vue from 'vue'
+    import Vue from 'vue';
+    import VueTranslate from 'vue-translate-plugin';
+    import Datepicker from 'vuejs-datepicker';
+    import moment from 'moment';
+    import holiday from 'moment-ferie-fr';
+    import _ from 'lodash';
+    import axios from 'axios';
+    import store from '../store/ReservationStore';
+    import CxltToastr from 'cxlt-vue2-toastr';
+    import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css';
 
     const toastrConfigs = {
         position: 'top full width',
@@ -93,6 +94,7 @@
     };
 
     Vue.use(CxltToastr, toastrConfigs);
+    Vue.use(VueTranslate);
 
     let state = {
         date: new Date(moment()),
@@ -121,6 +123,12 @@
                 store: store,
                 state: state,
                 format: 'DD/MM/YYYY'
+            }
+        },
+        locales: {
+            en: {
+                'Ticket restant': 'Remaining ticket',
+                'Nombre de tickets*': 'Number of tickets*',
             }
         },
         components: {
@@ -174,6 +182,8 @@
             }
         },
         mounted() {
+            this.$translate.setLang(store.language);
+
             if (moment().format('d') === 2) {
                 this.store.entry_at = "Vous ne pouvez pas reserver pour aujourd'hui"
             } else {
@@ -215,7 +225,7 @@
                     }
                 });
             }
-            if (store.type === "Journée" && actualHour >= 14) {
+            if (store.type === "Journée" && actualHour >= 14 && moment(this.state.date).format('dmY') === moment().format('dmY')) {
                 this.$toast.error({
                     message: 'Ticket journée indisponible après 14h.',
                     timeOut: 6000

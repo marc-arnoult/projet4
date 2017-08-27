@@ -21,6 +21,7 @@
     "vue-country-select": "^0.2.2",
     "vue-router": "^2.7.0",
     "vue-stripe-elements": "^0.2.0",
+    "vue-translate-plugin": "^1.2.0",
     "vuejs-datepicker": "^0.9.7"
   }
 }

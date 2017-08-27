@@ -10,7 +10,7 @@
         <hr>
         <div id="total-price">
             <div>
-                Prix total
+                {{ t('Prix total') }}
                 <span class="icon tooltip tooltip-bottom" data-tooltip="Ce prix est une estimation">
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
                 </span>
@@ -18,19 +18,22 @@
             <span>{{ totalPrice }} euros</span>
         </div>
         <div class="has-text-right">
-            <button class="button is-success is-medium" :disabled="disabled" @click="payment()">Commander</button>
+            <button class="button is-success is-medium" :disabled="disabled" @click="payment()">
+                {{ t('Order') }}
+            </button>
         </div>
     </div>
 </template>
 
 <script>
+    import Vue from 'vue';
+    import VueTranslate from 'vue-translate-plugin';
     import Ticket from '../components/Ticket.vue'
     import store from '../store/ReservationStore'
     import axios from 'axios'
     import moment from 'moment'
     import CxltToastr from 'cxlt-vue2-toastr'
     import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
-    import Vue from 'vue'
 
     const toastrConfigs = {
         position: 'top full width',
@@ -47,6 +50,12 @@
                 totalPrice: 0,
                 store,
                 command: {}
+            }
+        },
+        locales: {
+            en: {
+                'Prix total': 'Total price',
+                'Commander': 'Order',
             }
         },
         components: {
