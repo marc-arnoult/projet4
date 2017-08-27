@@ -2473,6 +2473,11 @@ module.exports = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__("./node_modules/moment/moment.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_cxlt_vue2_toastr__ = __webpack_require__("./node_modules/cxlt-vue2-toastr/dist/js/cxlt-vue2-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_cxlt_vue2_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_cxlt_vue2_toastr__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css__ = __webpack_require__("./node_modules/cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue__ = __webpack_require__("./node_modules/vue/dist/vue.esm.js");
 //
 //
 //
@@ -2503,6 +2508,17 @@ module.exports = {
 
 
 
+
+
+
+
+const toastrConfigs = {
+    position: 'top full width',
+    successColor: '#70C25A',
+    showMethod: 'bounceInDown'
+};
+
+__WEBPACK_IMPORTED_MODULE_6_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_4_cxlt_vue2_toastr___default.a, toastrConfigs);
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data() {
@@ -2537,6 +2553,12 @@ module.exports = {
                 this.store.nbTickets = res.data.nbTickets;
                 this.store.started = res.data.started;
                 this.$parent._router.push('/payment');
+            }).catch(err => {
+                console.log(err.response);
+                this.$toast.error({
+                    message: err.response.data,
+                    timeOut: 6000
+                });
             });
         },
         priceTotal() {
@@ -3036,6 +3058,63 @@ __WEBPACK_IMPORTED_MODULE_4_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_2_cxl
         }]
     })
 });
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/lib/css-base.js":
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function() {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		var result = [];
+		for(var i = 0; i < this.length; i++) {
+			var item = this[i];
+			if(item[2]) {
+				result.push("@media " + item[2] + "{" + item[1] + "}");
+			} else {
+				result.push(item[1]);
+			}
+		}
+		return result.join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
 
 /***/ }),
 

@@ -65,7 +65,11 @@ class CommandManager
         $errors = $this->validator->getValidator()->validate($command);
 
         if (count($errors) > 0) {
-            return $this->payload->badRequest(['content' => (string) $errors]);
+            $messages = [];
+            foreach ($errors as $error) {
+                array_push($messages, $error->getMessage());
+            }
+            return $this->payload->badRequest(['content' => (string) $messages[0]]);
         }
 
         $session = new Session();
