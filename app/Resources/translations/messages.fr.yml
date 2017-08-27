@@ -9,9 +9,8 @@ Legals mentions: 'Mentions légales'
 French: 'Français'
 English: 'Anglais'
 
-#Email
-
-Resume of the command, the ticket would be asked at the entry of the musuem: "Voici le résumé de votre réservation, elle vous sera demandé à l'entrée du musée".
+#Email command
+Resume of the command, the ticket would be asked at the entry of the musuem: "Voici le résumé de votre réservation, elle vous sera demandé à l'entrée du musée."
 Command: 'Commande'
 Entry at: "Date d'entrée"
 Price of order: 'Prix de la commande'
