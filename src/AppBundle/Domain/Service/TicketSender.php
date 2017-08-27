@@ -39,7 +39,7 @@ class TicketSender
             ->setTo($data->getEmail())
             ->setBody(
                 $this->twig->render(
-                    'command.html.twig', [
+                    ':Emails:command.html.twig', [
                         'command' => $data,
                         'numCommand' => $numCommand
                     ]),
