@@ -28,6 +28,7 @@ class PriceTest extends TestCase
         $ticket->setCreatedAt(new \DateTime('now'));
         $ticket->setBirthday(new \DateTime('1991-09-01'));
         $ticket->setReduction(false);
+        $command->setType(Command::DAY);
 
         $command->addTicket($ticket);
 
@@ -73,6 +74,7 @@ class PriceTest extends TestCase
     public function testPriceCommand()
     {
         $command = new Command();
+        $command->setType(Command::DAY);
 
         for ($i = 0; $i < 3; $i++) {
             $ticket = new Ticket();
@@ -83,5 +85,34 @@ class PriceTest extends TestCase
         $this->calculator->calculatePriceFromCommand($command);
 
         $this->assertEquals(48, $command->getPrice());
+    }
+
+    public function testPriceHalfDay()
+    {
+        $command = new Command();
+        $command->setType(Command::HALF_DAY);
+
+        $ticket = new Ticket();
+        $ticket->setReduction(true);
+        $ticket->setBirthday(new \DateTime('1991-09-01'));
+        $command->addTicket($ticket);
+
+        $this->calculator->calculatePriceFromCommand($command);
+
+        $this->assertEquals(5, $command->getPrice());
+    }
+
+    public function testPriceHalfDayJunior()
+    {
+        $command = new Command();
+        $command->setType(Command::HALF_DAY);
+
+        $ticket = new Ticket();
+        $ticket->setBirthday(new \DateTime('2015-09-01'));
+        $command->addTicket($ticket);
+
+        $this->calculator->calculatePriceFromCommand($command);
+
+        $this->assertEquals(0, $command->getPrice());
     }
 }
