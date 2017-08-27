@@ -6,22 +6,22 @@
                 <form>
                     <div class="field">
                         <label>
-                            <span>Carte de crédit</span>
+                            <span>{{ t('Carte de crédit') }}</span>
                             <hr>
                             <div id="card-element" class="control"></div>
                         </label>
                     </div>
                     <div class="has-text-right">
-                        <button class="button is-medium">Annuler</button>
-                        <button class="button is-success is-medium" type="submit" @click.prevent="pay($event)">Valider ma commande</button>
+                        <button class="button is-medium">{{ t('Annuler') }}</button>
+                        <button class="button is-success is-medium" type="submit" @click.prevent="pay($event)">{{ t('Valider ma commande') }}</button>
                     </div>
                 </form>
             </div>
             <div class="column">
-                <h2 class="title is-3 has-text-centered">Résumé de la commande</h2>
+                <h2 class="title is-3 has-text-centered">{{ t('Résumé de la commande') }}</h2>
                 <div class="card">
                     <header class="card-header">
-                        <p class="card-header-title">Nombre d'article : {{ store.nbTickets }}</p>
+                        <p class="card-header-title">{{ t('Nombre d\'article') }} : {{ store.nbTickets }}</p>
                     </header>
                     <div class="card-content">
                         <div class="content">
@@ -49,11 +49,12 @@
 </template>
 
 <script>
+    import Vue from 'vue';
+    import VueTranslate from 'vue-translate-plugin';
     import axios from 'axios';
     import store from '../store/ReservationStore'
     import CxltToastr from 'cxlt-vue2-toastr'
     import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
-    import Vue from 'vue'
 
     const toastrConfigs = {
         position: 'top full width',
@@ -62,6 +63,7 @@
     };
 
     Vue.use(CxltToastr, toastrConfigs);
+    Vue.use(VueTranslate);
 
     export default {
         data() {
@@ -70,6 +72,15 @@
                 stripe: '',
                 elements: '',
                 card: ''
+            }
+        },
+        locales: {
+            en: {
+                'Carte de crédit': 'Credit Card',
+                'Annuler': 'Cancelling',
+                'Valider ma commande': 'Validate order',
+                'Résumé de la commande': 'Order summary',
+                'Nombre d\'article': 'Number of article'
             }
         },
         mounted() {

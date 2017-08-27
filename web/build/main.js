@@ -454,6 +454,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = {
+    language: '',
     email: '',
     type: '',
     entry_at: '',
@@ -2060,12 +2061,15 @@ module.exports = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__("./node_modules/moment/moment.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__store_ReservationStore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__("./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin__ = __webpack_require__("./node_modules/vue-translate-plugin/dist/vue-translate.common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__store_ReservationStore__);
 //
 //
 //
@@ -2394,6 +2398,10 @@ module.exports = {
 
 
 
+
+
+
+__WEBPACK_IMPORTED_MODULE_0_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin___default.a);
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     props: {
@@ -2404,7 +2412,7 @@ module.exports = {
     },
     data() {
         return {
-            store: __WEBPACK_IMPORTED_MODULE_2__store_ReservationStore___default.a,
+            store: __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore___default.a,
             ticket: {
                 first_name: '',
                 last_name: '',
@@ -2415,9 +2423,18 @@ module.exports = {
             }
         };
     },
+    locales: {
+        en: {
+            'Prix': 'Price',
+            'Nom*': 'Last name*',
+            'Prenom*': 'First name*',
+            'Date de naissance*': 'Birthday*',
+            'Nationalité*': 'Nationality*'
+        }
+    },
     methods: {
         calculatePrice() {
-            let now = __WEBPACK_IMPORTED_MODULE_0_moment___default()();
+            let now = __WEBPACK_IMPORTED_MODULE_2_moment___default()();
             let age = parseInt(now.diff(this.ticket.birthday, 'years'));
             let coef = this.store.type === "Demi-journée" ? 0.5 : 1;
 
@@ -2447,7 +2464,7 @@ module.exports = {
     },
     watch: {
         ticket: {
-            handler: __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.debounce(function (ticket) {
+            handler: __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.debounce(function (ticket) {
                 if (ticket.birthday !== '') {
                     this.calculatePrice();
                 }
@@ -2455,7 +2472,7 @@ module.exports = {
             deep: true
         }
     },
-    updated: __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.debounce(function () {
+    updated: __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.debounce(function () {
         this.$parent.isCompleted();
     }, 200)
 });
@@ -2466,18 +2483,20 @@ module.exports = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Ticket_vue__ = __webpack_require__("./front/components/Ticket.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__store_ReservationStore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__("./node_modules/axios/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__("./node_modules/moment/moment.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_cxlt_vue2_toastr__ = __webpack_require__("./node_modules/cxlt-vue2-toastr/dist/js/cxlt-vue2-toastr.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_cxlt_vue2_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_cxlt_vue2_toastr__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css__ = __webpack_require__("./node_modules/cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue__ = __webpack_require__("./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__("./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin__ = __webpack_require__("./node_modules/vue-translate-plugin/dist/vue-translate.common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Ticket_vue__ = __webpack_require__("./front/components/Ticket.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__store_ReservationStore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios__ = __webpack_require__("./node_modules/axios/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_cxlt_vue2_toastr__ = __webpack_require__("./node_modules/cxlt-vue2-toastr/dist/js/cxlt-vue2-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_cxlt_vue2_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_cxlt_vue2_toastr__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css__ = __webpack_require__("./node_modules/cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css__);
 //
 //
 //
@@ -2503,6 +2522,9 @@ module.exports = {
 //
 //
 //
+//
+//
+
 
 
 
@@ -2518,19 +2540,25 @@ const toastrConfigs = {
     showMethod: 'bounceInDown'
 };
 
-__WEBPACK_IMPORTED_MODULE_6_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_4_cxlt_vue2_toastr___default.a, toastrConfigs);
+__WEBPACK_IMPORTED_MODULE_0_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_6_cxlt_vue2_toastr___default.a, toastrConfigs);
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data() {
         return {
             disabled: true,
             totalPrice: 0,
-            store: __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore___default.a,
+            store: __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a,
             command: {}
         };
     },
+    locales: {
+        en: {
+            'Prix total': 'Total price',
+            'Commander': 'Order'
+        }
+    },
     components: {
-        Ticket: __WEBPACK_IMPORTED_MODULE_0__components_Ticket_vue__["a" /* default */]
+        Ticket: __WEBPACK_IMPORTED_MODULE_2__components_Ticket_vue__["a" /* default */]
     },
     methods: {
         payment() {
@@ -2544,7 +2572,7 @@ __WEBPACK_IMPORTED_MODULE_6_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_4_cxl
             this.command.entryAt = this.store.entry_at;
             this.command.tickets = this.store.tickets;
 
-            __WEBPACK_IMPORTED_MODULE_2_axios___default()({
+            __WEBPACK_IMPORTED_MODULE_4_axios___default()({
                 method: 'post',
                 url: '/api/command',
                 data: this.command
@@ -2598,23 +2626,25 @@ __WEBPACK_IMPORTED_MODULE_6_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_4_cxl
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__ = __webpack_require__("./node_modules/vuejs-datepicker/dist/build.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__("./node_modules/moment/moment.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment_ferie_fr__ = __webpack_require__("./node_modules/moment-ferie-fr/moment-ferie-fr.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment_ferie_fr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment_ferie_fr__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios__ = __webpack_require__("./node_modules/axios/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__store_ReservationStore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_cxlt_vue2_toastr__ = __webpack_require__("./node_modules/cxlt-vue2-toastr/dist/js/cxlt-vue2-toastr.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_cxlt_vue2_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_cxlt_vue2_toastr__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css__ = __webpack_require__("./node_modules/cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue__ = __webpack_require__("./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__("./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin__ = __webpack_require__("./node_modules/vue-translate-plugin/dist/vue-translate.common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuejs_datepicker__ = __webpack_require__("./node_modules/vuejs-datepicker/dist/build.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuejs_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vuejs_datepicker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__("./node_modules/moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment_ferie_fr__ = __webpack_require__("./node_modules/moment-ferie-fr/moment-ferie-fr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment_ferie_fr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment_ferie_fr__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash__ = __webpack_require__("./node_modules/lodash/lodash.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_axios__ = __webpack_require__("./node_modules/axios/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__store_ReservationStore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_cxlt_vue2_toastr__ = __webpack_require__("./node_modules/cxlt-vue2-toastr/dist/js/cxlt-vue2-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_cxlt_vue2_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_cxlt_vue2_toastr__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css__ = __webpack_require__("./node_modules/cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css__);
 //
 //
 //
@@ -2692,6 +2722,7 @@ __WEBPACK_IMPORTED_MODULE_6_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_4_cxl
 //
 //
 //
+
 
 
 
@@ -2709,18 +2740,19 @@ const toastrConfigs = {
     showMethod: 'bounceInDown'
 };
 
-__WEBPACK_IMPORTED_MODULE_8_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_6_cxlt_vue2_toastr___default.a, toastrConfigs);
+__WEBPACK_IMPORTED_MODULE_0_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_8_cxlt_vue2_toastr___default.a, toastrConfigs);
+__WEBPACK_IMPORTED_MODULE_0_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin___default.a);
 
 let state = {
-    date: new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()()),
+    date: new Date(__WEBPACK_IMPORTED_MODULE_3_moment___default()()),
     disabled: {
-        to: new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()().subtract(1, 'days')),
+        to: new Date(__WEBPACK_IMPORTED_MODULE_3_moment___default()().subtract(1, 'days')),
         days: [0, 2],
-        dates: [new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()(this.date).format('YYYY'), 4, 1), new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()(this.date).format('YYYY'), 10, 1), new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()(this.date).format('YYYY'), 11, 25)]
+        dates: [new Date(__WEBPACK_IMPORTED_MODULE_3_moment___default()(this.date).format('YYYY'), 4, 1), new Date(__WEBPACK_IMPORTED_MODULE_3_moment___default()(this.date).format('YYYY'), 10, 1), new Date(__WEBPACK_IMPORTED_MODULE_3_moment___default()(this.date).format('YYYY'), 11, 25)]
     }
 };
 
-let lists = __WEBPACK_IMPORTED_MODULE_1_moment___default()().getFerieList();
+let lists = __WEBPACK_IMPORTED_MODULE_3_moment___default()().getFerieList();
 
 lists.forEach(list => {
     state.disabled.dates.push(new Date(list.date));
@@ -2731,23 +2763,29 @@ lists.forEach(list => {
         return {
             disabled: true,
             language: this.$parent.language,
-            store: __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default.a,
+            store: __WEBPACK_IMPORTED_MODULE_7__store_ReservationStore___default.a,
             state: state,
             format: 'DD/MM/YYYY'
         };
     },
+    locales: {
+        en: {
+            'Ticket restant': 'Remaining ticket',
+            'Nombre de tickets*': 'Number of tickets*'
+        }
+    },
     components: {
-        Datepicker: __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker___default.a
+        Datepicker: __WEBPACK_IMPORTED_MODULE_2_vuejs_datepicker___default.a
     },
     methods: {
         setDateEnter(event) {
-            this.store.entry_at = new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()(event.target.value, 'YYYY-MM-DD'));
-            this.state.date = new Date(__WEBPACK_IMPORTED_MODULE_1_moment___default()(event.target.value, 'YYYY-MM-DD'));
+            this.store.entry_at = new Date(__WEBPACK_IMPORTED_MODULE_3_moment___default()(event.target.value, 'YYYY-MM-DD'));
+            this.state.date = new Date(__WEBPACK_IMPORTED_MODULE_3_moment___default()(event.target.value, 'YYYY-MM-DD'));
         },
         getTickerRemaining(date) {
-            let day = __WEBPACK_IMPORTED_MODULE_1_moment___default()(date).format('YYYY-MM-DD');
+            let day = __WEBPACK_IMPORTED_MODULE_3_moment___default()(date).format('YYYY-MM-DD');
 
-            __WEBPACK_IMPORTED_MODULE_4_axios___default.a.get('/api/ticket', {
+            __WEBPACK_IMPORTED_MODULE_6_axios___default.a.get('/api/ticket', {
                 params: { day }
             }).then(res => this.store.ticketRemaining = res.data);
         },
@@ -2771,7 +2809,7 @@ lists.forEach(list => {
         isValidNumber(event) {
             let number = parseInt(event.target.value);
 
-            if (number > __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default.a.ticketRemaining || number === 0) {
+            if (number > __WEBPACK_IMPORTED_MODULE_7__store_ReservationStore___default.a.ticketRemaining || number === 0) {
                 event.target.classList.remove('is-success');
                 event.target.classList.add('is-danger');
             } else {
@@ -2788,23 +2826,25 @@ lists.forEach(list => {
         }
     },
     mounted() {
-        if (__WEBPACK_IMPORTED_MODULE_1_moment___default()().format('d') === 2) {
+        this.$translate.setLang(__WEBPACK_IMPORTED_MODULE_7__store_ReservationStore___default.a.language);
+
+        if (__WEBPACK_IMPORTED_MODULE_3_moment___default()().format('d') === 2) {
             this.store.entry_at = "Vous ne pouvez pas reserver pour aujourd'hui";
         } else {
-            this.store.entry_at = __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DD/MM/YYYY');
+            this.store.entry_at = __WEBPACK_IMPORTED_MODULE_3_moment___default()().format('DD/MM/YYYY');
         }
-        this.getTickerRemaining(__WEBPACK_IMPORTED_MODULE_1_moment___default()().format('YYYY-MM-DD'));
+        this.getTickerRemaining(__WEBPACK_IMPORTED_MODULE_3_moment___default()().format('YYYY-MM-DD'));
     },
     watch: {
         state: {
             handler(val) {
-                this.store.entry_at = __WEBPACK_IMPORTED_MODULE_1_moment___default()(val.date).format('DD/MM/YYYY');
+                this.store.entry_at = __WEBPACK_IMPORTED_MODULE_3_moment___default()(val.date).format('DD/MM/YYYY');
                 this.getTickerRemaining(val.date);
             },
             deep: true
         }
     },
-    updated: __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.debounce(function () {
+    updated: __WEBPACK_IMPORTED_MODULE_5_lodash___default.a.debounce(function () {
         for (let key in this.store) {
             if (this.store[key] === '') {
                 this.disabled = true;
@@ -2814,13 +2854,13 @@ lists.forEach(list => {
         }
     }, 500),
     beforeRouteLeave: function (from, to, next) {
-        let actualHour = __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('H');
+        let actualHour = __WEBPACK_IMPORTED_MODULE_3_moment___default()().format('H');
         let disabledDate = this._data.state.disabled;
         let isValid = true;
 
         for (let key in disabledDate) {
-            __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.forEach(disabledDate[key], val => {
-                if (__WEBPACK_IMPORTED_MODULE_1_moment___default()(val).format('dmY') === __WEBPACK_IMPORTED_MODULE_1_moment___default()(__WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default.a.entry_at).format('dmY')) {
+            __WEBPACK_IMPORTED_MODULE_5_lodash___default.a.forEach(disabledDate[key], val => {
+                if (__WEBPACK_IMPORTED_MODULE_3_moment___default()(val).format('dmY') === __WEBPACK_IMPORTED_MODULE_3_moment___default()(__WEBPACK_IMPORTED_MODULE_7__store_ReservationStore___default.a.entry_at).format('dmY')) {
                     this.$toast.error({
                         message: 'Vous ne pouvez reserver pour ce jour.',
                         timeOut: 6000
@@ -2829,7 +2869,7 @@ lists.forEach(list => {
                 }
             });
         }
-        if (__WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default.a.type === "Journée" && actualHour >= 14) {
+        if (__WEBPACK_IMPORTED_MODULE_7__store_ReservationStore___default.a.type === "Journée" && actualHour >= 14 && __WEBPACK_IMPORTED_MODULE_3_moment___default()(this.state.date).format('dmY') === __WEBPACK_IMPORTED_MODULE_3_moment___default()().format('dmY')) {
             this.$toast.error({
                 message: 'Ticket journée indisponible après 14h.',
                 timeOut: 6000
@@ -2837,7 +2877,7 @@ lists.forEach(list => {
             return;
         }
 
-        if (__WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default.a.email !== '' && __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default.a.numberOfTicket !== 0 && __WEBPACK_IMPORTED_MODULE_5__store_ReservationStore___default.a.type !== '' && isValid === true) {
+        if (__WEBPACK_IMPORTED_MODULE_7__store_ReservationStore___default.a.email !== '' && __WEBPACK_IMPORTED_MODULE_7__store_ReservationStore___default.a.numberOfTicket !== 0 && __WEBPACK_IMPORTED_MODULE_7__store_ReservationStore___default.a.type !== '' && isValid === true) {
             next();
         } else {
             this.$toast.error({
@@ -2854,15 +2894,17 @@ lists.forEach(list => {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__("./node_modules/axios/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__store_ReservationStore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_cxlt_vue2_toastr__ = __webpack_require__("./node_modules/cxlt-vue2-toastr/dist/js/cxlt-vue2-toastr.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_cxlt_vue2_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_cxlt_vue2_toastr__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css__ = __webpack_require__("./node_modules/cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue__ = __webpack_require__("./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__("./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin__ = __webpack_require__("./node_modules/vue-translate-plugin/dist/vue-translate.common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__("./node_modules/axios/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__store_ReservationStore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_cxlt_vue2_toastr__ = __webpack_require__("./node_modules/cxlt-vue2-toastr/dist/js/cxlt-vue2-toastr.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_cxlt_vue2_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_cxlt_vue2_toastr__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css__ = __webpack_require__("./node_modules/cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_cxlt_vue2_toastr_dist_css_cxlt_vue2_toastr_css__);
 //
 //
 //
@@ -2913,6 +2955,7 @@ lists.forEach(list => {
 //
 //
 //
+
 
 
 
@@ -2926,16 +2969,26 @@ const toastrConfigs = {
     showMethod: 'bounceInDown'
 };
 
-__WEBPACK_IMPORTED_MODULE_4_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_2_cxlt_vue2_toastr___default.a, toastrConfigs);
+__WEBPACK_IMPORTED_MODULE_0_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_4_cxlt_vue2_toastr___default.a, toastrConfigs);
+__WEBPACK_IMPORTED_MODULE_0_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin___default.a);
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data() {
         return {
-            store: __WEBPACK_IMPORTED_MODULE_1__store_ReservationStore___default.a,
+            store: __WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a,
             stripe: '',
             elements: '',
             card: ''
         };
+    },
+    locales: {
+        en: {
+            'Carte de crédit': 'Credit Card',
+            'Annuler': 'Cancelling',
+            'Valider ma commande': 'Validate order',
+            'Résumé de la commande': 'Order summary',
+            'Nombre d\'article': 'Number of article'
+        }
     },
     mounted() {
         this.stripe = Stripe('pk_test_iEZp1ORNhztnwy5qRbdAWTD3');
@@ -2964,7 +3017,7 @@ __WEBPACK_IMPORTED_MODULE_4_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_2_cxl
             event.target.classList.add('is-loading');
 
             this.stripe.createToken(this.card).then(res => {
-                return __WEBPACK_IMPORTED_MODULE_0_axios___default()({
+                return __WEBPACK_IMPORTED_MODULE_2_axios___default()({
                     method: 'post',
                     url: '/api/payment',
                     data: res.token.id
@@ -2992,7 +3045,7 @@ __WEBPACK_IMPORTED_MODULE_4_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_2_cxl
         }
     },
     beforeRouteEnter(to, from, next) {
-        if (__WEBPACK_IMPORTED_MODULE_1__store_ReservationStore___default.a.started) {
+        if (__WEBPACK_IMPORTED_MODULE_3__store_ReservationStore___default.a.started) {
             next();
         }
     }
@@ -3004,12 +3057,15 @@ __WEBPACK_IMPORTED_MODULE_4_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_2_cxl
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Datepicker_vue__ = __webpack_require__("./front/pages/Datepicker.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Command_vue__ = __webpack_require__("./front/pages/Command.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Payment_vue__ = __webpack_require__("./front/pages/Payment.vue");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_router__ = __webpack_require__("./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__store_ReservationStore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__("./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin__ = __webpack_require__("./node_modules/vue-translate-plugin/dist/vue-translate.common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Datepicker_vue__ = __webpack_require__("./front/pages/Datepicker.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Command_vue__ = __webpack_require__("./front/pages/Command.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Payment_vue__ = __webpack_require__("./front/pages/Payment.vue");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_router__ = __webpack_require__("./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_ReservationStore__ = __webpack_require__("./front/store/ReservationStore.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_ReservationStore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__store_ReservationStore__);
 //
 //
 //
@@ -3037,24 +3093,38 @@ __WEBPACK_IMPORTED_MODULE_4_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_2_cxl
 
 
 
+
+
+
+__WEBPACK_IMPORTED_MODULE_0_vue__["default"].use(__WEBPACK_IMPORTED_MODULE_1_vue_translate_plugin___default.a);
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+    mounted() {
+        __WEBPACK_IMPORTED_MODULE_6__store_ReservationStore___default.a.language = this.language;
+        this.$translate.setLang(this.language);
+    },
+    locales: {
+        en: {
+            'Commande': 'Command',
+            'Paiement': 'Payment'
+        }
+    },
     props: {
         language: { default: 'fr' }
     },
-    router: new __WEBPACK_IMPORTED_MODULE_3_vue_router__["default"]({
+    router: new __WEBPACK_IMPORTED_MODULE_5_vue_router__["default"]({
         linkActiveClass: 'is-active',
         routes: [{
             path: '/',
             name: 'datepicker',
-            component: __WEBPACK_IMPORTED_MODULE_0__Datepicker_vue__["a" /* default */]
+            component: __WEBPACK_IMPORTED_MODULE_2__Datepicker_vue__["a" /* default */]
         }, {
             path: '/command',
-            component: __WEBPACK_IMPORTED_MODULE_1__Command_vue__["a" /* default */]
+            component: __WEBPACK_IMPORTED_MODULE_3__Command_vue__["a" /* default */]
         }, {
             path: '/payment',
             name: 'payment',
-            component: __WEBPACK_IMPORTED_MODULE_2__Payment_vue__["a" /* default */]
+            component: __WEBPACK_IMPORTED_MODULE_4__Payment_vue__["a" /* default */]
         }]
     })
 });
@@ -36696,7 +36766,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "ticket-title"
   }, [_c('span', [_vm._v("Ticket " + _vm._s(_vm.index + 1))]), _vm._v(" "), _c('span', {
     staticClass: "is-hidden-mobile"
-  }, [_vm._v("Prix")])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.t('Prix')))])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "columns"
   }, [_c('div', {
     staticClass: "column is-two-thirds"
@@ -36711,7 +36781,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "for": "nom"
     }
-  }, [_vm._v("Nom*")]), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(_vm.t('Nom*')))]), _vm._v(" "), _c('p', {
     staticClass: "control is-expanded "
   }, [_c('input', {
     directives: [{
@@ -36742,7 +36812,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "for": "prenom"
     }
-  }, [_vm._v("Prenom*")]), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(_vm.t('Prenom*')))]), _vm._v(" "), _c('p', {
     staticClass: "control is-expanded "
   }, [_c('input', {
     directives: [{
@@ -36772,7 +36842,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "field-body"
   }, [_c('div', {
     staticClass: "field"
-  }, [_vm._m(0), _vm._v(" "), _c('p', {
+  }, [_c('label', {
+    staticClass: "label has-text-left",
+    attrs: {
+      "for": "birthday"
+    }
+  }, [_vm._v("\n                           " + _vm._s(_vm.t('Date de naissance*')) + "\n                            "), _vm._m(0)]), _vm._v(" "), _c('p', {
     staticClass: "control is-expanded "
   }, [_c('input', {
     directives: [{
@@ -36811,7 +36886,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "for": "country"
     }
-  }, [_vm._v("Nationalité*")]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.t('Nationalité*')))]), _vm._v(" "), _c('div', {
     staticClass: "control is-expanded"
   }, [_c('div', {
     staticClass: "select is-medium"
@@ -37877,12 +37952,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("\n                " + _vm._s(_vm.ticket.price) + " euros\n            ")])])])])
 }
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('label', {
-    staticClass: "label has-text-left",
-    attrs: {
-      "for": "birthday"
-    }
-  }, [_vm._v("\n                            Date de naissance*\n                            "), _c('span', {
+  return _c('span', {
     staticClass: "icon tooltip tooltip-right is-hidden-mobile",
     attrs: {
       "data-tooltip": "Le prix du billet sera calculé en fonction de l'age"
@@ -37892,14 +37962,14 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
     attrs: {
       "aria-hidden": "true"
     }
-  })])])
+  })])
 },function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('label', {
     staticClass: "label has-text-left",
     attrs: {
       "for": "promo"
     }
-  }, [_vm._v("\n                            Réduction\n                            "), _c('span', {
+  }, [_vm._v("\n                            Reduction\n                            "), _c('span', {
     staticClass: "icon tooltip tooltip-right is-hidden-mobile",
     attrs: {
       "data-tooltip": "Il vous sera demandez une pièce justificative à l'entrée"
@@ -37960,7 +38030,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }), _vm._v(" "), _c('span', {
     staticClass: "ticket-remaining"
-  }, [_vm._v("Ticket restant : "), _c('strong', [_vm._v(_vm._s(_vm.store.ticketRemaining))])])]), _vm._v(" "), _c('Datepicker', {
+  }, [_vm._v(_vm._s(_vm.t('Ticket restant')) + " : "), _c('strong', [_vm._v(_vm._s(_vm.store.ticketRemaining))])])]), _vm._v(" "), _c('Datepicker', {
     attrs: {
       "disabled": _vm.state.disabled,
       "inline": true,
@@ -38011,7 +38081,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   })])]), _vm._v(" "), _c('div', {
     staticClass: "field"
-  }, [_c('label', [_vm._v("Nombre de tickets*")]), _vm._v(" "), _c('div', {
+  }, [_c('label', [_vm._v(_vm._s(_vm.t('Nombre de tickets*')))]), _vm._v(" "), _c('div', {
     staticClass: "control"
   }, [_c('input', {
     directives: [{
@@ -38168,11 +38238,18 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "column is-two-thirds"
   }, [_c('h1', {
     staticClass: "title is-3 has-text-centered"
-  }, [_vm._v("Paiement")]), _vm._v(" "), _c('form', [_vm._m(0), _vm._v(" "), _c('div', {
+  }, [_vm._v("Paiement")]), _vm._v(" "), _c('form', [_c('div', {
+    staticClass: "field"
+  }, [_c('label', [_c('span', [_vm._v(_vm._s(_vm.t('Carte de crédit')))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "control",
+    attrs: {
+      "id": "card-element"
+    }
+  })])]), _vm._v(" "), _c('div', {
     staticClass: "has-text-right"
   }, [_c('button', {
     staticClass: "button is-medium"
-  }, [_vm._v("Annuler")]), _vm._v(" "), _c('button', {
+  }, [_vm._v(_vm._s(_vm.t('Annuler')))]), _vm._v(" "), _c('button', {
     staticClass: "button is-success is-medium",
     attrs: {
       "type": "submit"
@@ -38183,17 +38260,17 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         _vm.pay($event)
       }
     }
-  }, [_vm._v("Valider ma commande")])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.t('Valider ma commande')))])])])]), _vm._v(" "), _c('div', {
     staticClass: "column"
   }, [_c('h2', {
     staticClass: "title is-3 has-text-centered"
-  }, [_vm._v("Résumé de la commande")]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.t('Résumé de la commande')))]), _vm._v(" "), _c('div', {
     staticClass: "card"
   }, [_c('header', {
     staticClass: "card-header"
   }, [_c('p', {
     staticClass: "card-header-title"
-  }, [_vm._v("Nombre d'article : " + _vm._s(_vm.store.nbTickets))])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.t('Nombre d\'article')) + " : " + _vm._s(_vm.store.nbTickets))])]), _vm._v(" "), _c('div', {
     staticClass: "card-content"
   }, [_c('div', {
     staticClass: "content"
@@ -38215,16 +38292,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "bold"
   }, [_vm._v(_vm._s(_vm.store.email))])])], 2)])])])])])
 }
-var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "field"
-  }, [_c('label', [_c('span', [_vm._v("Carte de crédit")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
-    staticClass: "control",
-    attrs: {
-      "id": "card-element"
-    }
-  })])])
-}]
+var staticRenderFns = []
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
@@ -38258,7 +38326,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "id": "total-price"
     }
-  }, [_vm._m(0), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.totalPrice) + " euros")])]), _vm._v(" "), _c('div', {
+  }, [_c('div', [_vm._v("\n            " + _vm._s(_vm.t('Prix total')) + "\n            "), _vm._m(0)]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.totalPrice) + " euros")])]), _vm._v(" "), _c('div', {
     staticClass: "has-text-right"
   }, [_c('button', {
     staticClass: "button is-success is-medium",
@@ -38270,10 +38338,10 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         _vm.payment()
       }
     }
-  }, [_vm._v("Commander")])])], 2)
+  }, [_vm._v("\n            " + _vm._s(_vm.t('Order')) + "\n        ")])])], 2)
 }
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._v("\n            Prix total\n            "), _c('span', {
+  return _c('span', {
     staticClass: "icon tooltip tooltip-bottom",
     attrs: {
       "data-tooltip": "Ce prix est une estimation"
@@ -38283,7 +38351,7 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
     attrs: {
       "aria-hidden": "true"
     }
-  })])])
+  })])
 }]
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
@@ -38326,14 +38394,14 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "tag": "li",
       "exact": ""
     }
-  }, [_c('a', [_vm._v("Commande")])]), _vm._v(" "), _c('router-link', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.t('Commande')))])]), _vm._v(" "), _c('router-link', {
     staticClass: "step-item",
     attrs: {
       "to": "/payment",
       "tag": "li",
       "exact": ""
     }
-  }, [_c('a', [_vm._v("Paiement")])])], 1), _vm._v(" "), _c('transition', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.t('Paiement')))])])], 1), _vm._v(" "), _c('transition', {
     attrs: {
       "name": "fade"
     }
@@ -40864,6 +40932,144 @@ if (inBrowser && window.Vue) {
 /* harmony default export */ __webpack_exports__["default"] = (VueRouter);
 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/vue-translate-plugin/dist/vue-translate.common.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * VueTranslate plugin v1.2.0
+ *
+ * Handle basic translations in VueJS
+ *
+ * This is a plugin to handle basic translations for a component in VueJS. * @author Javis Perez <javisperez@gmail.com>
+ * https://github.com/javisperez/vuetranslate
+ * Released under the MIT License.
+ */
+
+
+
+// We need a vue instance to handle reactivity
+var vm = null;
+
+// The plugin
+var VueTranslate = {
+
+    // Install the method
+    install: function (Vue) {
+        var _Vue$mixin;
+
+        var version = Vue.version[0];
+
+        if (!vm) {
+            vm = new Vue({
+                data: function () {
+                    return {
+                        current: '',
+                        locales: {}
+                    };
+                },
+
+
+                computed: {
+                    // Current selected language
+                    lang: function () {
+                        return this.current;
+                    },
+
+
+                    // Current locale values
+                    locale: function () {
+                        if (!this.locales[this.current]) return null;
+
+                        return this.locales[this.current];
+                    }
+                },
+
+                methods: {
+                    // Set a language as current
+                    setLang: function (val) {
+                        if (this.current !== val) {
+                            if (this.current === '') {
+                                this.$emit('language:init', val);
+                            } else {
+                                this.$emit('language:changed', val);
+                            }
+                        }
+
+                        this.current = val;
+
+                        this.$emit('language:modified', val);
+                    },
+
+
+                    // Set a locale tu use
+                    setLocales: function (locales) {
+                        if (!locales) return;
+
+                        var newLocale = Object.create(this.locales);
+
+                        for (var key in locales) {
+                            if (!newLocale[key]) newLocale[key] = {};
+
+                            Vue.util.extend(newLocale[key], locales[key]);
+                        }
+
+                        this.locales = Object.create(newLocale);
+
+                        this.$emit('locales:loaded', locales);
+                    },
+                    text: function (t) {
+                        if (!this.locale || !this.locale[t]) {
+                            return t;
+                        }
+
+                        return this.locale[t];
+                    }
+                }
+            });
+
+            Vue.prototype.$translate = vm;
+        }
+
+        // Mixin to read locales and add the translation method and directive
+        Vue.mixin((_Vue$mixin = {}, _Vue$mixin[version === '1' ? 'init' : 'beforeCreate'] = function () {
+            this.$translate.setLocales(this.$options.locales);
+        }, _Vue$mixin.methods = {
+            // An alias for the .$translate.text method
+            t: function (t) {
+                return this.$translate.text(t);
+            }
+        }, _Vue$mixin.directives = {
+            translate: function (el) {
+                if (!el.$translateKey) el.$translateKey = el.innerText;
+
+                var text = this.$translate.text(el.$translateKey);
+
+                el.innerText = text;
+            }.bind(vm)
+        }, _Vue$mixin));
+
+        // Global method for loading locales
+        Vue.locales = function (locales) {
+            vm.$translate.setLocales(locales);
+        };
+    }
+};
+
+if (true) {
+    module.exports = VueTranslate; // CommonJS
+} else if (typeof define === 'function' && define.amd) {
+    define([], function () {
+        return VueTranslate;
+    }); // AMD
+} else if (window.Vue) {
+    window.VueTranslate = VueTranslate; // Browser (not required options)
+    Vue.use(VueTranslate);
+}
+
 
 /***/ }),
 

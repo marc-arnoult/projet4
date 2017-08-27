@@ -131,7 +131,7 @@
                             </tr>
                             <tr>
                                 <td style="word-wrap:break-word;font-size:0px;padding:10px 25px;" align="left">
-                                    <div style="cursor:auto;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;text-align:left;">Voici le résumé de votre réservation, elle vous sera demandé à l'entrée du musée.</div>
+                                    <div style="cursor:auto;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;text-align:left;">{{ 'Resume of the command, the ticket would be asked at the entry of the musuem'|trans }}</div>
                                 </td>
                             </tr>
                             <tr>
@@ -142,17 +142,17 @@
                             </tr>
                             <tr>
                                 <td style="word-wrap:break-word;font-size:0px;padding:10px 25px;" align="left">
-                                    <div style="cursor:auto;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;text-align:left;">Commande n°{{ numCommand }}</div>
+                                    <div style="cursor:auto;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;text-align:left;">{{ 'Command'|trans }} n°{{ numCommand }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td style="word-wrap:break-word;font-size:0px;padding:10px 25px;" align="left">
-                                    <div style="cursor:auto;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;text-align:left;">Date d'entrée : {{ command.entryAt|date ('d/m/Y') }}</div>
+                                    <div style="cursor:auto;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;text-align:left;">{{ 'Entry at'|trans }} : {{ command.entryAt|date ('d/m/Y') }}</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td style="word-wrap:break-word;font-size:0px;padding:10px 25px;" align="left">
-                                    <div style="cursor:auto;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;text-align:left;">Prix de la commande : <span style="font-weight: 800">{{ command.price }} euros</span></div>
+                                    <div style="cursor:auto;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;text-align:left;">{{ 'Price of order'|trans }} : <span style="font-weight: 800">{{ command.price }} euros</span></div>
                                 </td>
                             </tr>
                             <tr>
@@ -171,8 +171,8 @@
                                         <table cellpadding="0" cellspacing="0" style="cellspacing:0px;color:#000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;" width="100%" border="0">
                                             <tr style="border-bottom:1px solid #ecedee;text-align:left;padding:15px 0;">
                                                 <th style="padding: 0 15px 0 0;">N°</th>
-                                                <th style="padding: 0 15px;">Nom</th>
-                                                <th style="padding: 0 15px;">Prenom</th>
+                                                <th style="padding: 0 15px;">{{ 'Last name'|trans }}</th>
+                                                <th style="padding: 0 15px;">{{ 'First name'|trans }}</th>
                                             </tr>
                                             {% for ticket in command.tickets %}
                                             <tr>

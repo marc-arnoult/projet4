@@ -2,7 +2,7 @@
     <div class="ticket">
         <div class="ticket-title">
             <span>Ticket {{ index + 1 }}</span>
-            <span class="is-hidden-mobile">Prix</span>
+            <span class="is-hidden-mobile">{{ t('Prix') }}</span>
         </div>
         <hr>
         <div class="columns">
@@ -10,13 +10,13 @@
                 <div class="field is-horizontal">
                     <div class="field-body">
                         <div class="field">
-                            <label for="nom" class="label has-text-left">Nom*</label>
+                            <label for="nom" class="label has-text-left">{{ t('Nom*') }}</label>
                             <p class="control is-expanded ">
                                 <input v-model="ticket.first_name" class="input is-medium" type="text" name="nom" required>
                             </p>
                         </div>
                         <div class="field">
-                            <label for="prenom" class="label has-text-left">Prenom*</label>
+                            <label for="prenom" class="label has-text-left">{{ t('Prenom*') }}</label>
                             <p class="control is-expanded ">
                                 <input v-model="ticket.last_name" class="input is-medium" type="text" name="prenom" required>
                             </p>
@@ -27,7 +27,7 @@
                     <div class="field-body">
                         <div class="field">
                             <label for="birthday" class="label has-text-left">
-                                Date de naissance*
+                               {{ t('Date de naissance*') }}
                                 <span class="icon tooltip tooltip-right is-hidden-mobile" data-tooltip="Le prix du billet sera calculé en fonction de l'age">
                                     <i class="fa fa-info-circle" aria-hidden="true"></i>
                                 </span>
@@ -41,7 +41,7 @@
                 <div class="field is-horizontal">
                     <div class="field-body">
                         <div class="field" id="country">
-                            <label for="country" class="label has-text-left">Nationalité*</label>
+                            <label for="country" class="label has-text-left">{{ t('Nationalité*') }}</label>
                             <div class="control is-expanded">
                                 <div class="select is-medium">
                                     <select v-model="ticket.country" required>
@@ -300,7 +300,7 @@
                         </div>
                         <div class="field">
                             <label for="promo" class="label has-text-left">
-                                Réduction
+                                Reduction
                                 <span class="icon tooltip tooltip-right is-hidden-mobile" data-tooltip="Il vous sera demandez une pièce justificative à l'entrée">
                                     <i class="fa fa-info-circle" aria-hidden="true"></i>
                                 </span>
@@ -323,9 +323,13 @@
 </template>
 
 <script>
+    import Vue from 'vue';
+    import VueTranslate from 'vue-translate-plugin';
     import moment from 'moment'
     import _ from 'lodash'
     import store from '../store/ReservationStore'
+
+    Vue.use(VueTranslate);
 
     export default {
         props: {
@@ -345,6 +349,15 @@
                     reduction: false,
                     price: 0
                 },
+            }
+        },
+        locales: {
+            en: {
+                'Prix': 'Price',
+                'Nom*': 'Last name*',
+                'Prenom*': 'First name*',
+                'Date de naissance*': 'Birthday*',
+                'Nationalité*': 'Nationality*'
             }
         },
         methods: {

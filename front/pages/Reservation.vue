@@ -5,10 +5,10 @@
                     <a>Reservation</a>
                 </router-link>
                 <router-link to="/command" tag="li" class="step-item" exact>
-                    <a>Commande</a>
+                    <a>{{ t('Commande') }}</a>
                 </router-link>
                 <router-link to="/payment" tag="li" class="step-item" exact>
-                    <a>Paiement</a>
+                    <a>{{ t('Paiement') }}</a>
                 </router-link>
         </ul>
         <transition name="fade">
@@ -20,13 +20,27 @@
 </template>
 
 <script>
-    import Datepicker from './Datepicker.vue'
-    import Command from './Command.vue'
-    import Payment from './Payment.vue'
-    import VueRouter from 'vue-router'
-    import store from '../store/ReservationStore'
+    import Vue from 'vue';
+    import VueTranslate from 'vue-translate-plugin';
+    import Datepicker from './Datepicker.vue';
+    import Command from './Command.vue';
+    import Payment from './Payment.vue';
+    import VueRouter from 'vue-router';
+    import store from '../store/ReservationStore';
+
+    Vue.use(VueTranslate);
 
     export default {
+        mounted() {
+            store.language = this.language;
+            this.$translate.setLang(this.language);
+        },
+        locales: {
+            en: {
+                'Commande': 'Command',
+                'Paiement': 'Payment',
+            }
+        },
         props: {
             language: {default: 'fr'}
         },

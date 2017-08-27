@@ -1,4 +1,5 @@
 export default {
+    language: '',
     email: '',
     type: '',
     entry_at: '',
