@@ -17,6 +17,11 @@ class CommandListener
         $this->sender = $sender;
     }
 
+    /**
+     * Send a email when the command is finished.
+     *
+     * @param LifecycleEventArgs $args
+     */
     public function postPersist(LifecycleEventArgs $args)
     {
         $command = $args->getObject();

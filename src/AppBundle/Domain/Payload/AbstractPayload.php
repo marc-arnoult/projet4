@@ -17,6 +17,10 @@ class AbstractPayload implements PayloadInterface
         $this->payload = $payload;
     }
 
+    /**
+     * @param null $key
+     * @return array|mixed|null
+     */
     public function get($key = null)
     {
         if ($key === null) {

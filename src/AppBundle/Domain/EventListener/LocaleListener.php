@@ -16,6 +16,8 @@ class LocaleListener implements EventSubscriberInterface
     }
 
     /**
+     * Set the language of the user.
+     *
      * @param GetResponseEvent $event
      * @codeCoverageIgnore
      */

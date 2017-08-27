@@ -9,6 +9,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CommandResponder extends AbstractResponder
 {
+    /**
+     * @return JsonResponse
+     */
     public function __invoke()
     {
         $payload = $this->getPayload();
