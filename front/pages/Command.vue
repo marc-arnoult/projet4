@@ -19,7 +19,7 @@
         </div>
         <div class="has-text-right">
             <button class="button is-success is-medium" :disabled="disabled" @click="payment()">
-                {{ t('Order') }}
+                {{ t('Commander') }}
             </button>
         </div>
     </div>
@@ -28,7 +28,7 @@
 <script>
     import Vue from 'vue';
     import VueTranslate from 'vue-translate-plugin';
-    import Ticket from '../components/Ticket.vue'
+    import Ticket from '../components/Ticket.vue';
     import store from '../store/ReservationStore'
     import axios from 'axios'
     import moment from 'moment'
