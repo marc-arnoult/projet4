@@ -19,7 +19,7 @@
         </div>
         <div class="has-text-right">
             <button class="button is-success is-medium" :disabled="disabled" @click="payment()">
-                {{ t('Order') }}
+                {{ t('Commander') }}
             </button>
         </div>
     </div>
