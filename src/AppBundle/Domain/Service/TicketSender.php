@@ -33,6 +33,7 @@ class TicketSender
     {
         $numCommand = (string) $data->getId();
         $numCommand .= $data->getEntryAt()->format('dmy');
+        $qrCode = $numCommand;
 
         $message = (new \Swift_Message('Ticket'))
             ->setFrom('marc.arnoult76@gmail.com')
@@ -41,7 +42,8 @@ class TicketSender
                 $this->twig->render(
                     ':Emails:command.html.twig', [
                         'command' => $data,
-                        'numCommand' => $numCommand
+                        'numCommand' => $numCommand,
+                        'qrcode' => $qrCode
                     ]),
                 'text/html'
             );

@@ -28,7 +28,7 @@
 <script>
     import Vue from 'vue';
     import VueTranslate from 'vue-translate-plugin';
-    import Ticket from '../components/Ticket.vue'
+    import Ticket from '../components/Ticket.vue';
     import store from '../store/ReservationStore'
     import axios from 'axios'
     import moment from 'moment'
