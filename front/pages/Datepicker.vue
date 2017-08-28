@@ -209,7 +209,7 @@
                 this.disabled = false;
             }
         }, 500),
-        beforeRouteLeave: function (from, to, next) {
+        beforeRouteLeave: function (to, from, next) {
             let actualHour = moment().format('H');
             let disabledDate = this._data.state.disabled;
             let isValid = true;

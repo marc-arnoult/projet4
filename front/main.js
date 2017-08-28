@@ -2,9 +2,10 @@
 import Vue from 'vue';
 import Citation from './components/Citation.vue';
 import Reservation from './pages/Reservation.vue';
-import VueRouter from 'vue-router'
+import VueRouter from 'vue-router';
+import Contact from './components/Contact.vue';
 import store from './store/ReservationStore';
-import * as VueGoogleMaps from 'vue2-google-maps'
+import * as VueGoogleMaps from 'vue2-google-maps';
 
 Vue.use(VueRouter);
 Vue.use(VueGoogleMaps, {
@@ -25,7 +26,8 @@ new Vue({
     el: '#app',
     components: {
         Citation,
-        Reservation
+        Reservation,
+        Contact
     },
     created() {
         console.log('Vue Enabled')

@@ -33,10 +33,10 @@ export default {
 
 <style scoped lang="sass">
     blockquote
-        font-size: 1.3rem
+        font-size: 1.55rem
 
     em
         padding-top: 12px
         font-weight: bolder
-        font-size: 1.2rem
+        font-size: 1.4rem
 </style>

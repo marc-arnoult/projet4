@@ -1,11 +1,11 @@
 
 blockquote[data-v-27cdb575] {
-  font-size: 1.3rem;
+  font-size: 1.55rem;
 }
 em[data-v-27cdb575] {
   padding-top: 12px;
   font-weight: bolder;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 #reservation {
   margin-bottom: 40px;
@@ -141,6 +141,9 @@ to {
 }
 .bold {
   font-weight: bold;
+}
+.contact[data-v-5acabc82] {
+  margin-top: 130px;
 }
 .vue-map-container {
   position: relative;
